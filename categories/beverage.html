@@ -7,9 +7,110 @@
   <link rel="stylesheet" href="../css/base.css">
 </head>
 <body>
-  <main data-cat="beverage"></main>
+  <main>
+    <div class="cat-banner bg-beverage">
+      <div style="font-size:48px; line-height:1;">🔵</div>
+      <div>
+        <h1>飲料容器</h1>
+        <p>寶特瓶、瓶蓋、玻璃瓶、罐、外帶飲料杯</p>
+        <span class="badge">ICC 1, 2, 8, 10, 11, 12</span>
+      </div>
+    </div>
+
+    <p class="lead">
+      你昨天喝了什麼？礦泉水？手搖飲？啤酒（爸媽的）？
+      只要是裝飲料的容器，都算這一類——而且，它們是<strong>台灣海廢前 5 名</strong>的常客。
+    </p>
+
+    <section class="section section--beverage">
+      <h2>它們長什麼樣</h2>
+      <div class="photo-grid" id="photos" data-cat="beverage">
+        <p style="color:var(--ink-soft);">圖片載入中…</p>
+      </div>
+    </section>
+
+    <section class="section section--beverage">
+      <h2>它們從哪來？</h2>
+      <p>一支寶特瓶從你手上到海裡，可能只要 24 小時。</p>
+      <div class="journey">
+        <div class="step"><span class="num">1</span><span class="icon">🏪</span>便利店買飲料</div>
+        <div class="step"><span class="num">2</span><span class="icon">🛣️</span>喝完隨手丟在路邊</div>
+        <div class="step"><span class="num">3</span><span class="icon">🌧️</span>下雨被沖進水溝</div>
+        <div class="step"><span class="num">4</span><span class="icon">🏞️</span>水溝→河川→出海口</div>
+        <div class="step"><span class="num">5</span><span class="icon">🌊</span>洋流帶到全台甚至跨國</div>
+      </div>
+      <p style="font-size:15px; color:var(--ink-soft); margin-top:12px;">
+        所以海廢不是「海上的問題」，是<strong>陸地上每個人的問題</strong>。
+      </p>
+    </section>
+
+    <section class="section section--beverage">
+      <h2>它們在海裡多久才會消失？</h2>
+      <div class="lifespan">
+        <h4>分解時間（年）</h4>
+        <div class="lifespan-row"><span class="item">寶特瓶</span><span class="bar"><span style="width:90%"></span></span><span class="years">450</span></div>
+        <div class="lifespan-row"><span class="item">塑膠瓶蓋</span><span class="bar"><span style="width:80%"></span></span><span class="years">400</span></div>
+        <div class="lifespan-row"><span class="item">外帶飲料杯</span><span class="bar"><span style="width:50%"></span></span><span class="years">250</span></div>
+        <div class="lifespan-row"><span class="item">鋁罐</span><span class="bar"><span style="width:40%"></span></span><span class="years">200</span></div>
+        <div class="lifespan-row"><span class="item">玻璃瓶</span><span class="bar"><span style="width:100%"></span></span><span class="years">100 萬+</span></div>
+      </div>
+      <div class="keypoint">
+        <span class="big">🤯</span>
+        <p>你今天丟一支寶特瓶，它<strong>會比你的孫子的孫子的孫子</strong>還活得久。</p>
+      </div>
+    </section>
+
+    <section class="section section--beverage">
+      <h2>對動物的影響</h2>
+      <div class="story story-blue">
+        <h3>🦅 海鳥誤食瓶蓋</h3>
+        <p>
+          海鳥的眼睛看不出塑膠和食物的差別。
+          <strong>瓶蓋的紅、橘、黃色</strong>看起來像漂在水面的小魚或海中的果實，海鳥就會把它叼起來餵小鳥。
+          小鳥吃了塑膠胃裡裝滿但沒營養，最後活活餓死。
+        </p>
+        <p class="source">每年全球有超過 100 萬隻海鳥因海廢死亡。</p>
+      </div>
+    </section>
+
+    <section class="section section--beverage">
+      <h2>台灣的數據</h2>
+      <div class="facts">
+        <div class="fact fact-beverage">
+          <div class="num">#1<small>·#2</small></div>
+          <div class="label">瓶蓋與寶特瓶在台灣海廢前 2 名</div>
+        </div>
+        <div class="fact fact-beverage">
+          <div class="num">50<small> 億</small></div>
+          <div class="label">台灣每年用掉的塑膠飲料杯</div>
+        </div>
+        <div class="fact fact-beverage">
+          <div class="num">92<small>%</small></div>
+          <div class="label">台灣海廢是塑膠製品</div>
+        </div>
+      </div>
+      <p style="font-size:15px; color:var(--ink-soft);">
+        資料來源：荒野保護協會 ICC 國際淨灘行動年度報告、Greenpeace 海岸垃圾總體檢。
+      </p>
+    </section>
+
+    <section class="section section--beverage">
+      <h2>你能怎麼做？</h2>
+      <ul class="actions-list">
+        <li><span class="check">✓</span><div><strong>自備水壺</strong>。一個學期下來省 100+ 個寶特瓶。</div></li>
+        <li><span class="check">✓</span><div><strong>瓶蓋鎖緊再丟</strong>。瓶子和瓶蓋分開丟，瓶蓋常變成海廢第一名。</div></li>
+        <li><span class="check">✓</span><div><strong>選玻璃或鋁罐</strong>而不是寶特瓶（如果非買不可）。回收率比較高。</div></li>
+        <li><span class="check">✓</span><div><strong>不在海邊丟任何東西</strong>。連菸蒂大小的瓶蓋都不行。</div></li>
+      </ul>
+    </section>
+
+    <div class="page-nav">
+      <a class="btn btn-ghost" href="index.html">← 5 大類總覽</a>
+      <a class="btn btn-primary" href="food.html">下一類：食物包裝 →</a>
+    </div>
+  </main>
   <script src="../js/nav.js"></script>
   <script src="../js/category.js"></script>
-  <script>OG.renderNav('categories'); OG.renderCategoryPage(); OG.renderFooter();</script>
+  <script>OG.renderNav('categories'); OG.fillPhotos(); OG.renderFooter();</script>
 </body>
 </html>

@@ -7,9 +7,106 @@
   <link rel="stylesheet" href="../css/base.css">
 </head>
 <body>
-  <main data-cat="food"></main>
+  <main>
+    <div class="cat-banner bg-food">
+      <div style="font-size:48px; line-height:1;">🟢</div>
+      <div>
+        <h1>食物包裝</h1>
+        <p>塑膠袋、吸管、餐具、零食包裝、便當盒</p>
+        <span class="badge">ICC 3, 5, 6, 7, 9</span>
+      </div>
+    </div>
+
+    <p class="lead">
+      你今天去 7-11、全家、超市，**有沒有拿到塑膠袋？**有沒有用吸管？
+      這類海廢的源頭，就是<strong>「外帶 + 一次性」的生活習慣</strong>。
+      它們便宜、方便，但代價很高。
+    </p>
+
+    <section class="section section--food">
+      <h2>它們長什麼樣</h2>
+      <div class="photo-grid" id="photos" data-cat="food">
+        <p style="color:var(--ink-soft);">圖片載入中…</p>
+      </div>
+    </section>
+
+    <section class="section section--food">
+      <h2>吸管的 200 年旅程</h2>
+      <div class="journey">
+        <div class="step"><span class="num">1</span><span class="icon">🥤</span>手搖飲附吸管</div>
+        <div class="step"><span class="num">2</span><span class="icon">🚮</span>喝完隨手丟（or 公園垃圾桶）</div>
+        <div class="step"><span class="num">3</span><span class="icon">💨</span>風一吹掉到地上</div>
+        <div class="step"><span class="num">4</span><span class="icon">🌊</span>下雨進水溝、出海口</div>
+        <div class="step"><span class="num">5</span><span class="icon">🐢</span>200 年後還在海裡</div>
+      </div>
+    </section>
+
+    <section class="section section--food">
+      <h2>它們在海裡多久？</h2>
+      <div class="lifespan">
+        <h4>分解時間（年）</h4>
+        <div class="lifespan-row"><span class="item">塑膠提袋</span><span class="bar"><span style="width:30%"></span></span><span class="years">10–1000</span></div>
+        <div class="lifespan-row"><span class="item">塑膠吸管</span><span class="bar"><span style="width:55%"></span></span><span class="years">200</span></div>
+        <div class="lifespan-row"><span class="item">食品包裝袋</span><span class="bar"><span style="width:45%"></span></span><span class="years">100–1000</span></div>
+        <div class="lifespan-row"><span class="item">免洗餐具（塑膠）</span><span class="bar"><span style="width:35%"></span></span><span class="years">100</span></div>
+        <div class="lifespan-row"><span class="item">免洗筷（木）</span><span class="bar"><span style="width:8%"></span></span><span class="years">3–6 個月</span></div>
+      </div>
+      <div class="keypoint">
+        <span class="big">⏳</span>
+        <p>「方便」5 分鐘，<strong>污染 200 年</strong>。</p>
+      </div>
+    </section>
+
+    <section class="section section--food">
+      <h2>對動物的影響</h2>
+      <div class="story story-green">
+        <h3>🐢 海龜以為塑膠袋是水母</h3>
+        <p>
+          漂在水裡的塑膠袋，<strong>看起來和水母一模一樣</strong>。
+          海龜的主食就是水母，所以牠會吞下去。
+          研究發現：<strong>每 2 隻海龜就有 1 隻肚子裡有塑膠</strong>。
+        </p>
+        <p>塑膠在海龜胃裡塞住，讓牠以為飽了不再進食，最後餓死。</p>
+        <p class="source">來源：CSIRO 澳洲海洋研究、World Animal Protection。</p>
+      </div>
+    </section>
+
+    <section class="section section--food">
+      <h2>台灣的數據</h2>
+      <div class="facts">
+        <div class="fact fact-food">
+          <div class="num">180<small> 億</small></div>
+          <div class="label">台灣每年用掉的塑膠袋（每人 800 個）</div>
+        </div>
+        <div class="fact fact-food">
+          <div class="num">3<small> 萬噸</small></div>
+          <div class="label">台灣每年塑膠吸管丟棄量</div>
+        </div>
+        <div class="fact fact-food">
+          <div class="num">#5</div>
+          <div class="label">塑膠提袋在台灣海廢排行</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--food">
+      <h2>你能怎麼做？</h2>
+      <ul class="actions-list">
+        <li><span class="check">✓</span><div><strong>自備購物袋</strong>。一個帆布袋可以用 700 次。</div></li>
+        <li><span class="check">✓</span><div><strong>跟店員說「不要吸管」</strong>。一句話，海龜就少一個威脅。</div></li>
+        <li><span class="check">✓</span><div><strong>內用 &gt; 外帶</strong>。在店裡吃，沒有包裝袋。</div></li>
+        <li><span class="check">✓</span><div><strong>自備餐具</strong>。便當盒、湯匙、筷子帶在書包裡。</div></li>
+        <li><span class="check">✓</span><div><strong>零食大包裝</strong>，不買單顆獨立包裝。</div></li>
+      </ul>
+    </section>
+
+    <div class="page-nav">
+      <a class="btn btn-ghost" href="beverage.html">← 飲料容器</a>
+      <a class="btn btn-primary" href="fishing.html">下一類：漁業用具 →</a>
+    </div>
+  </main>
   <script src="../js/nav.js"></script>
   <script src="../js/category.js"></script>
-  <script>OG.renderNav('categories'); OG.renderCategoryPage(); OG.renderFooter();</script>
+  <script>OG.renderNav('categories'); OG.fillPhotos(); OG.renderFooter();</script>
 </body>
 </html>

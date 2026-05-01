@@ -7,9 +7,110 @@
   <link rel="stylesheet" href="../css/base.css">
 </head>
 <body>
-  <main data-cat="other"></main>
+  <main>
+    <div class="cat-banner bg-other">
+      <div style="font-size:48px; line-height:1;">⚪</div>
+      <div>
+        <h1>其他/不確定</h1>
+        <p>微塑膠、碎片、不明物、玩具、文具、生活雜物</p>
+        <span class="badge">ICC「當地關心的廢棄物」</span>
+      </div>
+    </div>
+
+    <p class="lead">
+      這一類有兩種東西：一種是<strong>看不出原本是什麼</strong>（已經碎成片片），
+      另一種是<strong>沒有專屬類別</strong>（像是塑膠玩具、文具、舊鞋）。
+      但**最重要、最難解決**的，是這類底下的<strong>微塑膠</strong>。
+    </p>
+
+    <section class="section section--other">
+      <h2>它們長什麼樣</h2>
+      <div class="photo-grid" id="photos" data-cat="other">
+        <p style="color:var(--ink-soft);">圖片載入中…</p>
+      </div>
+    </section>
+
+    <section class="section section--other">
+      <h2>什麼是微塑膠？</h2>
+      <p>
+        <strong>微塑膠 = 比 5 mm 還小的塑膠粒</strong>（差不多是一粒米的大小）。
+        它有兩種來源：
+      </p>
+      <div class="journey">
+        <div class="step"><span class="num">A</span><span class="icon">🏭</span><strong>原生</strong><br>工業塑膠粒（nurdle）<br>運送途中流出</div>
+        <div class="step"><span class="num">B</span><span class="icon">🌊</span><strong>次生</strong><br>大塊塑膠在海裡<br>被太陽+海浪打碎</div>
+      </div>
+      <div class="keypoint">
+        <span class="big">🔬</span>
+        <p>更小的叫「奈米塑膠」（小於 0.001 mm），<strong>連顯微鏡都不一定看得到</strong>。</p>
+      </div>
+    </section>
+
+    <section class="section section--other">
+      <h2>微塑膠跑進食物鏈</h2>
+      <div class="story">
+        <h3>從浮游動物到你的便當</h3>
+        <p>
+          海裡的小蝦、浮游動物會把微塑膠當食物吃下去。<br>
+          → 小魚吃浮游動物。<br>
+          → 大魚吃小魚。<br>
+          → <strong>你吃大魚的便當。</strong>
+        </p>
+        <p>
+          研究發現：<strong>每個人每週吃下約 5 公克塑膠</strong>，
+          相當於<strong>一張信用卡</strong>。
+        </p>
+        <p class="source">來源：WWF / 紐卡素大學 2019 年研究。</p>
+      </div>
+    </section>
+
+    <section class="section section--other">
+      <h2>全球規模</h2>
+      <div class="facts">
+        <div class="fact fact-other">
+          <div class="num">5<small>兆</small></div>
+          <div class="label">全球海洋中的塑膠碎片數量（不只海岸）</div>
+        </div>
+        <div class="fact fact-other">
+          <div class="num">800<small>萬噸</small></div>
+          <div class="label">每年新流入海洋的塑膠</div>
+        </div>
+        <div class="fact fact-other">
+          <div class="num">2050</div>
+          <div class="label">海中塑膠重量將超過魚類的年份預測</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--other">
+      <h2>什麼樣的東西放這類？</h2>
+      <ul class="actions-list">
+        <li><span class="check">✓</span><div><strong>看不出原本是什麼</strong>的塑膠碎片</div></li>
+        <li><span class="check">✓</span><div><strong>微塑膠</strong>（沙裡夾雜的小白點/小彩點）</div></li>
+        <li><span class="check">✓</span><div><strong>塑膠玩具</strong>（鴨子、人偶、玩具車）</div></li>
+        <li><span class="check">✓</span><div><strong>文具</strong>（橡皮擦、原子筆、橡皮筋）</div></li>
+        <li><span class="check">✓</span><div><strong>舊鞋、拖鞋</strong></div></li>
+        <li><span class="check">✓</span><div><strong>不明物體</strong>——叫老師判斷</div></li>
+      </ul>
+    </section>
+
+    <section class="section section--other">
+      <h2>你能怎麼做？</h2>
+      <ul class="actions-list">
+        <li><span class="check">✓</span><div><strong>大塊垃圾不亂丟</strong>——減少破碎成微塑膠的源頭。</div></li>
+        <li><span class="check">✓</span><div><strong>選棉質衣服</strong>。化纖衣（聚酯纖維）洗一次掉 70 萬根微塑膠纖維。</div></li>
+        <li><span class="check">✓</span><div><strong>不買含塑膠微粒的洗面乳/牙膏</strong>（看成分標示）。</div></li>
+        <li><span class="check">✓</span><div><strong>淨灘時也撿微塑膠</strong>——用篩子過濾沙子可以撿到。</div></li>
+      </ul>
+    </section>
+
+    <div class="page-nav">
+      <a class="btn btn-ghost" href="hazard.html">← 個人衛生與危險</a>
+      <a class="btn btn-primary" href="../game/">進入分類遊戲 →</a>
+    </div>
+  </main>
   <script src="../js/nav.js"></script>
   <script src="../js/category.js"></script>
-  <script>OG.renderNav('categories'); OG.renderCategoryPage(); OG.renderFooter();</script>
+  <script>OG.renderNav('categories'); OG.fillPhotos(); OG.renderFooter();</script>
 </body>
 </html>
