@@ -2,6 +2,9 @@
 // and calls renderCategoryPage().
 
 (function () {
+  // categories/ is always one level deep
+  const ROOT = '../';
+
   const META = {
     beverage: {
       cls: 'bg-beverage',
@@ -11,7 +14,7 @@
       tagline: '寶特瓶、瓶蓋、玻璃瓶、罐、飲料杯',
       description: '裝飲料的容器是台灣海廢前 5 名。手搖飲、礦泉水、啤酒罐都是。',
       extra: '',
-      next: '/categories/food.html',
+      next: 'food.html',
       nextLabel: '下一類：食物包裝 →',
     },
     food: {
@@ -22,7 +25,7 @@
       tagline: '塑膠袋、吸管、餐具、零食包裝',
       description: '吃完外帶、零食留下來的包裝。<strong>吸管和塑膠袋</strong>會在海裡漂很久。',
       extra: '',
-      next: '/categories/fishing.html',
+      next: 'fishing.html',
       nextLabel: '下一類：漁業用具 →',
     },
     fishing: {
@@ -39,7 +42,7 @@
           蚵棚會用很多<strong>保麗龍浮具</strong>和<strong>竹棚繩索</strong>，破掉之後就漂上岸——
           這是安平海岸的特色海廢。下次淨灘要特別注意。</p>
         </div>`,
-      next: '/categories/hazard.html',
+      next: 'hazard.html',
       nextLabel: '下一類：個人衛生與危險 →',
     },
     hazard: {
@@ -55,7 +58,7 @@
           <p>下次淨灘看到<strong>針筒、針頭、破玻璃、魚鉤</strong>，<strong>絕對不能徒手撿</strong>，
           要立刻叫老師處理。我們會準備<strong>厚手套</strong>，但這幾樣東西連手套都不行。</p>
         </div>`,
-      next: '/categories/other.html',
+      next: 'other.html',
       nextLabel: '下一類：其他 →',
     },
     other: {
@@ -71,7 +74,7 @@
           <p>大塊塑膠在海裡被太陽和波浪打碎，變成<strong>比沙子還小</strong>的塑膠粒。
           肉眼幾乎看不到，但魚會吃進去，最後可能也跑進我們嘴裡。</p>
         </div>`,
-      next: '/game/',
+      next: `${ROOT}game/`,
       nextLabel: '進入分類遊戲 →',
     },
   };
@@ -85,7 +88,6 @@
       return;
     }
 
-    // Render banner & extra immediately (don't wait for images)
     main.innerHTML = `
       <div class="cat-banner ${meta.cls}">
         <div style="font-size:48px; line-height:1;">${meta.emoji}</div>
@@ -101,16 +103,14 @@
         <p style="color:var(--ink-soft);">圖片載入中…</p>
       </div>
       <div class="page-nav">
-        <a class="btn btn-ghost" href="/categories/">← 5 大類總覽</a>
+        <a class="btn btn-ghost" href="index.html">← 5 大類總覽</a>
         <a class="btn btn-primary" href="${meta.next}">${meta.nextLabel}</a>
       </div>
     `;
 
-    // Load items
-    const prefix = (window.OG && window.OG.pathPrefix && window.OG.pathPrefix()) || '';
     let data;
     try {
-      const r = await fetch(`${prefix}/data/items.json`, { cache: 'no-store' });
+      const r = await fetch(`${ROOT}data/items.json`, { cache: 'no-store' });
       data = await r.json();
     } catch (err) {
       document.getElementById('photos').innerHTML =
@@ -126,7 +126,7 @@
     }
     photoGrid.innerHTML = items.slice(0, 8).map(it => `
       <figure class="photo-card">
-        <img src="${prefix}/${it.filename}" alt="${it.label || cat}" loading="lazy">
+        <img src="${ROOT}${it.filename}" alt="${it.label || cat}" loading="lazy">
         <figcaption class="photo-card__caption">
           <strong>${it.label || '海廢'}</strong>
           ${it.icc_item ? `<span>ICC 第 ${it.icc_item} 項</span>` : ''}

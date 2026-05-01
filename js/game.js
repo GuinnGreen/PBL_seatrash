@@ -1,17 +1,20 @@
 // 海廢分類遊戲：拖拉卡片到 5 個分類筐，即時對錯回饋
-// 不依賴 SortableJS — 用原生 PointerEvents（iPad Safari 友善）
+// 不依賴外部函式庫 — 用原生 PointerEvents（iPad Safari 友善）
 
 (function () {
-  const ROUNDS = 30;          // 每輪題數
+  const ROUNDS = 30;
   const FEEDBACK_OK_MS = 700;
   const FEEDBACK_WRONG_MS = 1800;
 
-  let dataset = null;         // items.json
-  let pool = [];              // 待答題目
-  let current = null;         // 目前卡片資料
+  // game/ is always one level deep, so root is one up
+  const ROOT = '../';
+
+  let dataset = null;
+  let pool = [];
+  let current = null;
   let score = 0;
   let answered = 0;
-  let perCatStats = {};       // {beverage: {asked, correct}, ...}
+  let perCatStats = {};
 
   const $ = (sel) => document.querySelector(sel);
 
@@ -25,8 +28,7 @@
   }
 
   async function loadData() {
-    const prefix = (window.OG && window.OG.pathPrefix && window.OG.pathPrefix()) || '';
-    const r = await fetch(`${prefix}/data/items.json`, { cache: 'no-store' });
+    const r = await fetch(`${ROOT}data/items.json`, { cache: 'no-store' });
     if (!r.ok) throw new Error(`items.json HTTP ${r.status}`);
     return r.json();
   }
@@ -35,11 +37,7 @@
     const cats = dataset.categories;
     const order = ['beverage', 'food', 'fishing', 'hazard', 'other'];
     const emojis = {
-      beverage: '🔵',
-      food: '🟢',
-      fishing: '🟡',
-      hazard: '🔴',
-      other: '⚪',
+      beverage: '🔵', food: '🟢', fishing: '🟡', hazard: '🔴', other: '⚪',
     };
     const iccHints = {
       beverage: '寶特瓶 / 罐 / 杯',
@@ -75,7 +73,7 @@
     card.className = 'card no-select';
     card.id = 'current-card';
     card.innerHTML = `
-      <img src="${current.filename}" alt="${current.label}" draggable="false">
+      <img src="${ROOT}${current.filename}" alt="${current.label}" draggable="false">
       <div class="label-hint">這是什麼？拖到下面正確的分類筐</div>
     `;
     stage.appendChild(card);
@@ -159,7 +157,6 @@
         const cat = hit.getAttribute('data-cat');
         evaluateAnswer(cat);
       } else {
-        // snap back
         card.style.transition = 'left 0.2s ease, top 0.2s ease';
         card.style.left = `${origLeft}px`;
         card.style.top = `${origTop}px`;
@@ -173,7 +170,6 @@
       }
     }
 
-    // Pointer events (modern; covers mouse + touch on iPad Safari 13+)
     card.addEventListener('pointerdown', onDown);
     document.addEventListener('pointermove', onMove);
     document.addEventListener('pointerup', onUp);
@@ -266,7 +262,7 @@
         </div>
         <div class="actions">
           <button class="btn btn-primary" id="play-again">再玩一次</button>
-          <a class="btn btn-ghost" href="/icc/">看 ICC 對照 →</a>
+          <a class="btn btn-ghost" href="${ROOT}icc/">看 ICC 對照 →</a>
         </div>
       </div>
     `;
