@@ -61,8 +61,41 @@
     document.body.appendChild(footer);
   }
 
+  // Click-to-enlarge for photo grids
+  function enableLightbox() {
+    const lb = document.createElement('div');
+    lb.className = 'lightbox';
+    lb.innerHTML = `
+      <button class="lightbox-close" aria-label="關閉">×</button>
+      <img alt="">
+      <div class="lightbox-caption"></div>
+    `;
+    document.body.appendChild(lb);
+    const lbImg = lb.querySelector('img');
+    const lbCap = lb.querySelector('.lightbox-caption');
+    const close = () => lb.classList.remove('show');
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb || e.target.classList.contains('lightbox-close')) close();
+    });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') close();
+    });
+    document.addEventListener('click', (e) => {
+      const img = e.target.closest('.photo-card img');
+      if (!img) return;
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      const card = img.closest('.photo-card');
+      const caption = card?.querySelector('.photo-card__caption');
+      lbCap.textContent = caption?.innerText.replace(/\s+/g, ' ').trim() || img.alt || '';
+      lb.classList.add('show');
+    });
+  }
+
   window.OG = window.OG || {};
   window.OG.renderNav = renderNav;
   window.OG.renderFooter = renderFooter;
   window.OG.rootPrefix = rootPrefix;
+
+  document.addEventListener('DOMContentLoaded', enableLightbox);
 })();
