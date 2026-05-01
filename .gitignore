@@ -1,0 +1,12 @@
+# macOS
+.DS_Store
+
+# Scraper intermediate outputs (draft data, not for the website)
+data/items.draft.json
+data/items.cat.json
+data/items.food.json
+
+# Local dev artifacts
+/tmp/
+*.pid
+*.log

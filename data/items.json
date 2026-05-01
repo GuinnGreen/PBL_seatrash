@@ -1,0 +1,357 @@
+{
+  "version": "1.0",
+  "categories": {
+    "beverage": { "label": "飲料容器", "color": "#3B82F6" },
+    "food":     { "label": "食物包裝", "color": "#10B981" },
+    "fishing":  { "label": "漁業用具", "color": "#F59E0B" },
+    "hazard":   { "label": "個人衛生與危險", "color": "#EF4444" },
+    "other":    { "label": "其他/不確定", "color": "#6B7280" }
+  },
+  "items": [
+    {
+      "id": "bev_01",
+      "filename": "images/beverage/bev_01_plastic_pollution_in_santa_luzia_cape_verde.jpg",
+      "category": "beverage",
+      "label": "海岸瓶罐堆",
+      "icc_item": 1,
+      "hint": "整片海岸都是寶特瓶與塑膠垃圾，台灣西海岸常見。",
+      "source": "https://commons.wikimedia.org/wiki/File:Plastic_Pollution_in_Santa_Luzia,_Cape_Verde.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "CaptainDarwin"
+    },
+    {
+      "id": "bev_02",
+      "filename": "images/beverage/bev_02_plastic_trash_in_raja_ampat_bird_s_head_seascape.jpg",
+      "category": "beverage",
+      "label": "海灘塑膠瓶",
+      "icc_item": 1,
+      "hint": "ICC 第 1 項：寶特瓶。",
+      "source": "https://commons.wikimedia.org/wiki/File:Plastic_Trash_in_Raja_Ampat,_Bird%27s_Head_Seascape.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Bird's Head Seascape"
+    },
+    {
+      "id": "bev_03",
+      "filename": "images/beverage/bev_03_lixo_recolhido_pela_brigada_do_mar_5.jpg",
+      "category": "beverage",
+      "label": "寶特瓶（漂流）",
+      "icc_item": 1,
+      "hint": "ICC 第 1 項：寶特瓶。在水裡漂的塑膠飲料瓶。",
+      "source": "https://commons.wikimedia.org/wiki/File:Lixo_recolhido_pela_Brigada_do_Mar_5.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Aspulgas"
+    },
+    {
+      "id": "bev_04",
+      "filename": "images/beverage/bev_04_pollution.jpg",
+      "category": "beverage",
+      "label": "玻璃瓶",
+      "icc_item": 10,
+      "hint": "ICC 第 10 項：玻璃瓶。常見的啤酒瓶或飲料瓶。",
+      "source": "https://commons.wikimedia.org/wiki/File:Pollution.jpg",
+      "license": "CC BY-SA 2.5",
+      "artist": "Falken"
+    },
+    {
+      "id": "bev_07",
+      "filename": "images/beverage/bev_07_water_pollution_with_trash_disposal_of_waste_at_the_garbage_beach.jpg",
+      "category": "beverage",
+      "label": "海邊寶特瓶",
+      "icc_item": 1,
+      "hint": "ICC 第 1 項：寶特瓶。多支塑膠瓶卡在沙堆。",
+      "source": "https://commons.wikimedia.org/wiki/File:Water_Pollution_with_Trash_Disposal_of_Waste_at_the_Garbage_Beach.jpg",
+      "license": "CC BY 2.0",
+      "artist": "epSos.de"
+    },
+    {
+      "id": "bev_09",
+      "filename": "images/beverage/bev_09_hel18_037_m_we_findet_plastik.jpg",
+      "category": "beverage",
+      "label": "塑膠瓶蓋（海鳥誤食）",
+      "icc_item": 2,
+      "hint": "ICC 第 2 項：塑膠瓶蓋。海鳥常把瓶蓋誤認為食物。",
+      "source": "https://commons.wikimedia.org/wiki/File:Hel18-037_M%C3%B6we-findet-Plastik.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Lusi Lindwurm"
+    },
+    {
+      "id": "bev_10",
+      "filename": "images/beverage/bev_10_clean_the_bay_2012_7324648864_.jpg",
+      "category": "beverage",
+      "label": "寶特瓶（沙灘）",
+      "icc_item": 1,
+      "hint": "ICC 第 1 項：寶特瓶。完整的塑膠瓶躺在沙上。",
+      "source": "https://commons.wikimedia.org/wiki/File:Clean_the_Bay_2012_(7324648864).jpg",
+      "license": "Public domain",
+      "artist": "U.S. Army Corps of Engineers"
+    },
+    {
+      "id": "bev_11",
+      "filename": "images/beverage/bev_11_beach_pet_bottles.jpg",
+      "category": "beverage",
+      "label": "寶特瓶群",
+      "icc_item": 1,
+      "hint": "ICC 第 1 項：寶特瓶。沙灘上多支寶特瓶。",
+      "source": "https://commons.wikimedia.org/wiki/File:Beach_pollution_1.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Wikimedia contributor"
+    },
+    {
+      "id": "bev_12",
+      "filename": "images/beverage/bev_12_pepsi_jug_beach.jpg",
+      "category": "beverage",
+      "label": "飲料容器（PEPSI）",
+      "icc_item": 8,
+      "hint": "ICC 第 8 項：外帶飲料容器。",
+      "source": "https://commons.wikimedia.org/wiki/File:Beach_pollution_2.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Wikimedia contributor"
+    },
+    {
+      "id": "bev_13",
+      "filename": "images/beverage/bev_13_coca_cola_can_beach.jpg",
+      "category": "beverage",
+      "label": "鐵鋁罐",
+      "icc_item": 11,
+      "hint": "ICC 第 11 項：鐵鋁罐。可樂罐或啤酒罐都算。",
+      "source": "https://commons.wikimedia.org/wiki/File:Beach_pollution_3.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Wikimedia contributor"
+    },
+
+    {
+      "id": "foo_01",
+      "filename": "images/food/foo_01_collected_trash_bags.jpg",
+      "category": "food",
+      "label": "食物包裝混合",
+      "icc_item": 6,
+      "hint": "ICC 第 6 項：食品包裝袋。撿起來的垃圾袋裡常常都是這些。",
+      "source": "https://commons.wikimedia.org/wiki/File:Rubbish_collected_in_Las_Canteras%27s_beach_09.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Santamarcanda"
+    },
+    {
+      "id": "foo_02",
+      "filename": "images/food/foo2_03_close_up_of_a_plastic_bag_full_of_trash_on_top_of_a_trash_can_51136251222_.jpg",
+      "category": "food",
+      "label": "塑膠提袋",
+      "icc_item": 5,
+      "hint": "ICC 第 5 項：塑膠提袋。買菜、外帶用的塑膠袋。",
+      "source": "https://commons.wikimedia.org/wiki/File:Close-up_of_a_plastic_bag_full_of_trash_on_top_of_a_trash_can_(51136251222).jpg",
+      "license": "CC BY 2.0",
+      "artist": "Marco Verch"
+    },
+
+    {
+      "id": "fis_01",
+      "filename": "images/fishing/fis_01_hawaiian_monk_seal_entangled_in_derelict_fishing_net.jpg",
+      "category": "fishing",
+      "label": "漁網（海豹被纏住）",
+      "icc_item": 17,
+      "hint": "ICC 第 17 項：漁網與繩子。被丟棄的漁網會纏住海洋動物。",
+      "source": "https://commons.wikimedia.org/wiki/File:Hawaiian_monk_seal_entangled_in_derelict_fishing_net.png",
+      "license": "Public domain",
+      "artist": "NOAA Fisheries"
+    },
+    {
+      "id": "fis_02",
+      "filename": "images/fishing/fis_02_knotted_net_geograph.org.uk_1297697.jpg",
+      "category": "fishing",
+      "label": "綠色漁網",
+      "icc_item": 17,
+      "hint": "ICC 第 17 項：漁網。被海浪沖上岸的破舊漁網。",
+      "source": "https://commons.wikimedia.org/wiki/File:Knotted_net_-_geograph.org.uk_-_1297697.jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "Richard Dorrell"
+    },
+    {
+      "id": "fis_03",
+      "filename": "images/fishing/fis_04_nova_scotia_dsc4723_beach_buoy_made_explore_2541453700_.jpg",
+      "category": "fishing",
+      "label": "漁業浮球",
+      "icc_item": 14,
+      "hint": "ICC 第 14 項：漁業浮球。從漁船或養殖區漂上岸。",
+      "source": "https://commons.wikimedia.org/wiki/File:Nova_Scotia_DSC4723_-_Beach_Buoy_-_Made_Explore_(2541453700).jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "Dennis G. Jarvis"
+    },
+    {
+      "id": "fis_04",
+      "filename": "images/fishing/fis2_05_collected_beach_litter_at_scabbacombe_sands_1_.jpg",
+      "category": "fishing",
+      "label": "漁網與繩索",
+      "icc_item": 17,
+      "hint": "ICC 第 17 項：漁網與繩子。海邊集中收集後的漁業廢棄物。",
+      "source": "https://commons.wikimedia.org/wiki/File:Collected_beach_litter_at_Scabbacombe_Sands_(1).jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "Wikimedia contributor"
+    },
+    {
+      "id": "fis_05",
+      "filename": "images/fishing/fis2_06_collected_beach_litter_at_scabbacombe_sands_5_.jpg",
+      "category": "fishing",
+      "label": "綠色漁網（堆）",
+      "icc_item": 17,
+      "hint": "ICC 第 17 項：漁網。安平蚵棚附近常見類似廢棄物。",
+      "source": "https://commons.wikimedia.org/wiki/File:Collected_beach_litter_at_Scabbacombe_Sands_(5).jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "Wikimedia contributor"
+    },
+
+    {
+      "id": "haz_01",
+      "filename": "images/hazard/haz_01_cigarrillo_la_mochila.jpg",
+      "category": "hazard",
+      "label": "菸蒂（沙地）",
+      "icc_item": 18,
+      "hint": "ICC 第 18 項：菸蒂。海邊抽完丟的，是全球海廢前 5 名。",
+      "source": "https://commons.wikimedia.org/wiki/File:Cigarrillo_La_Mochila.jpg",
+      "license": "CC BY-SA 3.0",
+      "artist": "Washington, Arlette Lum y Hermes Ramírez"
+    },
+    {
+      "id": "haz_02",
+      "filename": "images/hazard/haz_05_face_mask_beach.jpg",
+      "category": "hazard",
+      "label": "口罩（沙灘）",
+      "icc_item": 20,
+      "hint": "ICC 第 20 項：口罩。疫情後變成新的海廢類型。",
+      "source": "https://commons.wikimedia.org/wiki/File:Covid-19_face_masks_microplastic_pollution_at_the_beach_(50576545488).jpg",
+      "license": "CC BY 2.0",
+      "artist": "dronepicr"
+    },
+    {
+      "id": "haz_03",
+      "filename": "images/hazard/haz_06_lighters_marine_debris.jpg",
+      "category": "hazard",
+      "label": "打火機堆",
+      "icc_item": null,
+      "hint": "打火機是抽煙相關廢棄物，跟菸蒂同類。",
+      "source": "https://commons.wikimedia.org/wiki/File:Marine_Debris_--_Lighters_(43102098570).jpg",
+      "license": "Public domain",
+      "artist": "National Marine Sanctuaries"
+    },
+    {
+      "id": "haz_04",
+      "filename": "images/hazard/haz_07_sunscreen_toys_beach.jpg",
+      "category": "hazard",
+      "label": "個人用品（防曬瓶）",
+      "icc_item": null,
+      "hint": "個人衛生／生活用品類，常常從海邊遊客掉下來。",
+      "source": "https://commons.wikimedia.org/wiki/File:Beach_plastic_pollution.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Wikimedia contributor"
+    },
+    {
+      "id": "haz_05",
+      "filename": "images/hazard/haz2_03_20240516_cigarette_litter_at_tram_stop_at_berlin_central_train_station.jpg",
+      "category": "hazard",
+      "label": "菸蒂（多）",
+      "icc_item": 18,
+      "hint": "ICC 第 18 項：菸蒂。一個人的隨手丟，全部加起來就是這樣。",
+      "source": "https://commons.wikimedia.org/wiki/File:20240516_Cigarette_litter_at_tram_stop_at_Berlin_central_train_station.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Wikimedia contributor"
+    },
+    {
+      "id": "haz_06",
+      "filename": "images/hazard/haz2_04_2008_10_21_10_11_20annajcoopercirclecigarettestub.jpg",
+      "category": "hazard",
+      "label": "菸蒂（單支）",
+      "icc_item": 18,
+      "hint": "ICC 第 18 項：菸蒂。一支看起來不多，但全國加起來上億支。",
+      "source": "https://commons.wikimedia.org/wiki/File:2008_10_21_10_11_20AnnajCoopercirclecigarettestub.jpg",
+      "license": "CC BY-SA 3.0",
+      "artist": "Wikimedia contributor"
+    },
+
+    {
+      "id": "oth_01",
+      "filename": "images/other/oth_01_microplastic_found_key_largo_beach_state_park.jpg",
+      "category": "other",
+      "label": "微塑膠",
+      "icc_item": null,
+      "hint": "肉眼能看到的塑膠碎片，但已經太小無法分類。",
+      "source": "https://commons.wikimedia.org/wiki/File:Microplastic-found-key-largo-beach-state-park.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "OceanBlueProject"
+    },
+    {
+      "id": "oth_02",
+      "filename": "images/other/oth_03_microplastics_on_llangennith_beach_geograph.org.uk_7312138.jpg",
+      "category": "other",
+      "label": "微塑膠（沙中）",
+      "icc_item": null,
+      "hint": "比沙子還小的塑膠粒，魚會誤食。",
+      "source": "https://commons.wikimedia.org/wiki/File:Microplastics_on_Llangennith_beach_-_geograph.org.uk_-_7312138.jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "Eirian Evans"
+    },
+    {
+      "id": "oth_03",
+      "filename": "images/other/oth_05_micro_plastiques_sur_la_plage_de_famara_aux_canaries_ifremer_00377_48871_208_.jpg",
+      "category": "other",
+      "label": "微塑膠（彩色）",
+      "icc_item": null,
+      "hint": "彩色微塑膠粒夾在海藻和沙子裡。",
+      "source": "https://commons.wikimedia.org/wiki/File:Micro-plastiques_sur_la_plage_de_Famara_aux_Canaries_(Ifremer_00377-48871_-_208).jpg",
+      "license": "CC BY 4.0",
+      "artist": "Emina Mamaca"
+    },
+    {
+      "id": "oth_04",
+      "filename": "images/other/oth_06_microplastiche.jpg",
+      "category": "other",
+      "label": "微塑膠（粒）",
+      "icc_item": null,
+      "hint": "塑膠工業流出的原料粒，又叫 nurdle。",
+      "source": "https://commons.wikimedia.org/wiki/File:Microplastiche.jpg",
+      "license": "CC BY 2.0",
+      "artist": "Laura"
+    },
+    {
+      "id": "oth_05",
+      "filename": "images/other/oth_07_micro_plastiques_sur_la_plage_de_milibangalala_ifremer_00582_69385_.jpg",
+      "category": "other",
+      "label": "微塑膠（沙地）",
+      "icc_item": null,
+      "hint": "看起來像沙，其實仔細看全部都是塑膠碎片。",
+      "source": "https://commons.wikimedia.org/wiki/File:Micro-plastiques_sur_la_plage_de_Milibangalala_(Ifremer_00582-69385).jpg",
+      "license": "CC BY 4.0",
+      "artist": "Emina Mamaca"
+    },
+    {
+      "id": "oth_06",
+      "filename": "images/other/oth_08_dawlish_warren_nurdles.jpg",
+      "category": "other",
+      "label": "塑膠粒 nurdles",
+      "icc_item": null,
+      "hint": "工業塑膠粒，工廠運送途中流到海。",
+      "source": "https://commons.wikimedia.org/wiki/File:Dawlish_Warren_Nurdles.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Partonez"
+    },
+    {
+      "id": "oth_07",
+      "filename": "images/other/oth_13_plastic_blob.jpg",
+      "category": "other",
+      "label": "塑膠碎塊",
+      "icc_item": null,
+      "hint": "看不出原本是什麼的塑膠碎塊。",
+      "source": "https://commons.wikimedia.org/wiki/File:Sur%C3%A1frica,_Port_Nolloth_31.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "LBM1948"
+    },
+    {
+      "id": "oth_08",
+      "filename": "images/other/oth2_01_nurdles_dispertion_2.jpg",
+      "category": "other",
+      "label": "塑膠粒（散落）",
+      "icc_item": null,
+      "hint": "塑膠原料粒散落地面，最後流入海洋。",
+      "source": "https://commons.wikimedia.org/wiki/File:Nurdles_dispertion_2.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Wikimedia contributor"
+    }
+  ]
+}

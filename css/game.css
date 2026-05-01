@@ -1,0 +1,187 @@
+/* Game-specific styles */
+
+.game-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 16px 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  font-size: 18px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.game-bar .stat { font-weight: 700; }
+.game-bar .stat strong { font-size: 22px; color: var(--accent); }
+
+.game-stage {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 32px 20px;
+  margin-bottom: 20px;
+  box-shadow: var(--shadow-sm);
+  min-height: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.card {
+  background: white;
+  border: 3px solid var(--border);
+  border-radius: var(--radius);
+  padding: 12px;
+  width: 240px;
+  height: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: grab;
+  touch-action: none;
+  box-shadow: var(--shadow-md);
+  transition: transform 0.2s ease;
+}
+.card:active { cursor: grabbing; }
+.card.dragging { transform: rotate(-2deg); }
+.card img {
+  flex: 1;
+  width: 100%;
+  object-fit: contain;
+  background: #F9FAFB;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  pointer-events: none;
+}
+.card .label-hint {
+  font-size: 14px;
+  color: var(--ink-soft);
+  text-align: center;
+}
+
+.feedback {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.95);
+  border-radius: var(--radius);
+  font-size: 56px;
+  font-weight: 800;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.15s ease;
+  text-align: center;
+  padding: 20px;
+}
+.feedback.show { opacity: 1; }
+.feedback .text { font-size: 22px; margin-top: 8px; color: var(--ink); font-weight: 600; }
+.feedback.correct .icon { color: #10B981; }
+.feedback.wrong   .icon { color: #EF4444; }
+
+.bins {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.bin {
+  border-radius: var(--radius);
+  padding: 16px 8px;
+  min-height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  text-align: center;
+  color: white;
+  font-weight: 700;
+  font-size: 16px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  border: 4px solid transparent;
+}
+.bin .emoji { font-size: 32px; margin-bottom: 6px; }
+.bin .icc-hint { font-size: 12px; font-weight: 500; opacity: 0.85; margin-top: 4px; line-height: 1.3; }
+.bin.hover {
+  transform: scale(1.04);
+  border-color: rgba(255,255,255,0.6);
+  box-shadow: var(--shadow-md);
+}
+
+.bin-beverage { background: var(--c-beverage); }
+.bin-food     { background: var(--c-food); }
+.bin-fishing  { background: var(--c-fishing); }
+.bin-hazard   { background: var(--c-hazard); }
+.bin-other    { background: var(--c-other); }
+
+@media (max-width: 700px) {
+  .bins { grid-template-columns: repeat(5, 1fr); gap: 6px; }
+  .bin { font-size: 13px; padding: 10px 4px; min-height: 100px; }
+  .bin .emoji { font-size: 24px; }
+  .bin .icc-hint { display: none; }
+  .card { width: 200px; height: 240px; }
+}
+
+/* Result screen */
+.result {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+.result h2 { margin: 0 0 8px; font-size: 32px; }
+.result .score {
+  font-size: 64px;
+  font-weight: 800;
+  color: var(--accent);
+  margin: 8px 0;
+  line-height: 1;
+}
+.result .score small { font-size: 24px; color: var(--ink-soft); font-weight: 500; }
+.result .breakdown {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 24px 0;
+}
+.result .breakdown .stat-card {
+  padding: 12px;
+  border-radius: 10px;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+}
+.result .breakdown .stat-card .num {
+  display: block;
+  font-size: 28px;
+  font-weight: 800;
+  margin-top: 4px;
+}
+.result .actions {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 16px;
+}
+
+.start-screen {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+.start-screen h2 { margin-top: 0; font-size: 28px; }
+.start-screen .rules {
+  text-align: left;
+  max-width: 480px;
+  margin: 16px auto 24px;
+  font-size: 16px;
+  line-height: 1.8;
+}
