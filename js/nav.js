@@ -4,18 +4,18 @@
 (function () {
   const NAV_ITEMS = [
     { key: 'home',       label: '首頁',       slug: '' },
+    { key: 'items',      label: '認識垃圾',   slug: 'items/' },
     { key: 'categories', label: '5 大類',     slug: 'categories/' },
     { key: 'game',       label: '遊戲',       slug: 'game/' },
     { key: 'stories',    label: '故事',       slug: 'stories/' },
     { key: 'data-viz',   label: '數據',       slug: 'data-viz/' },
     { key: 'action',     label: '行動',       slug: 'action/' },
     { key: 'icc',        label: 'ICC',       slug: 'icc/' },
-    { key: 'next',       label: '下節',       slug: 'next/' },
   ];
 
   // True if the current page is one directory below the site root.
   function isSubPage() {
-    return /\/(categories|game|icc|next|teacher|stories|data-viz|action)(\/|\/[^/]*\.html)?$/.test(
+    return /\/(items|categories|game|icc|next|teacher|stories|data-viz|action)(\/|\/[^/]*\.html)?$/.test(
       window.location.pathname
     );
   }

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>認識垃圾 · 海洋偵查員</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <style>
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 18px;
+      margin: 24px 0;
+    }
+    .gallery .photo-card { animation: fadeIn 0.3s ease-out backwards; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } }
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+      margin: 16px 0 8px;
+      padding: 12px 16px;
+      background: var(--surface);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-sm);
+    }
+    .toolbar .label {
+      font-weight: 600;
+      margin-right: 8px;
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--bg);
+      border: 2px solid var(--border);
+      font-size: 14px;
+      cursor: pointer;
+      font-family: inherit;
+      color: var(--ink);
+    }
+    .pill:hover { border-color: var(--accent); }
+    .pill.active {
+      background: var(--ink);
+      color: white;
+      border-color: var(--ink);
+    }
+    .pill .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+    .count-pill {
+      margin-left: auto;
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="page-head">
+      <h1>認識垃圾</h1>
+      <p>先別急著分類。這裡是台灣海邊真的會撿到的東西——你認得幾樣？</p>
+    </div>
+
+    <p class="lead">
+      下面是 <strong id="count-total">…</strong> 張真實海廢照片。
+      <strong>都是有人從海邊撿到、拍照上傳的</strong>。
+      看一看、認一認，<strong>不用記分類</strong>——這節最後才會學怎麼分。
+    </p>
+
+    <div class="callout callout--note">
+      <h4>👀 看的時候，問自己 3 件事</h4>
+      <p>
+        ① 這是什麼？我家有沒有？<br>
+        ② 它怎麼跑到海邊的？<br>
+        ③ 我覺得最可怕/最常見/最特別的是哪一張？
+      </p>
+    </div>
+
+    <div class="toolbar">
+      <span class="label">想看哪一種？</span>
+      <button class="pill active" data-filter="all">全部</button>
+      <button class="pill" data-filter="beverage"><span class="dot" style="background:var(--c-beverage);"></span>飲料</button>
+      <button class="pill" data-filter="food"><span class="dot" style="background:var(--c-food);"></span>食物</button>
+      <button class="pill" data-filter="fishing"><span class="dot" style="background:var(--c-fishing);"></span>漁業</button>
+      <button class="pill" data-filter="hazard"><span class="dot" style="background:var(--c-hazard);"></span>衛生/危險</button>
+      <button class="pill" data-filter="other"><span class="dot" style="background:var(--c-other);"></span>其他</button>
+      <span class="count-pill" id="count">顯示中：…</span>
+    </div>
+
+    <div class="photo-grid gallery" id="gallery">
+      <p style="color:var(--ink-soft);">圖片載入中…</p>
+    </div>
+
+    <section class="section" style="margin-top:48px;">
+      <h2>看完之後……</h2>
+      <p>
+        你大概注意到了——<strong>這些東西其實可以分成幾類</strong>：
+        裝飲料的（瓶罐杯）、裝食物的（袋子吸管）、漁業用的（網繩浮球）、
+        個人用品（菸蒂口罩牙刷）、和其他不知道怎麼分的。
+      </p>
+      <p>
+        下一步，我們就來把它們整理成 <strong>5 大類</strong>。
+      </p>
+    </section>
+
+    <div class="page-nav">
+      <a class="btn btn-ghost" href="../">← 回首頁</a>
+      <a class="btn btn-primary" href="../categories/">下一步：5 大類分類 →</a>
+    </div>
+  </main>
+
+  <script src="../js/nav.js"></script>
+  <script>
+    OG.renderNav('items');
+    OG.renderFooter();
+
+    (async function loadGallery() {
+      const grid = document.getElementById('gallery');
+      const countEl = document.getElementById('count');
+      const totalEl = document.getElementById('count-total');
+      let data;
+      try {
+        const r = await fetch('../data/items.json', { cache: 'no-store' });
+        data = await r.json();
+      } catch (err) {
+        grid.innerHTML = '<p style="color:var(--c-hazard);">載入失敗。</p>';
+        return;
+      }
+
+      const items = (data.items || []).slice();
+      // Shuffle so categories are mixed when "全部" is selected
+      for (let i = items.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [items[i], items[j]] = [items[j], items[i]];
+      }
+
+      totalEl.textContent = items.length;
+      const cats = data.categories || {};
+
+      function render(filter) {
+        const visible = filter === 'all'
+          ? items
+          : items.filter(it => it.category === filter);
+        countEl.textContent = `顯示中：${visible.length} / ${items.length}`;
+        if (visible.length === 0) {
+          grid.innerHTML = '<p style="color:var(--ink-soft);">這類目前沒有照片。</p>';
+          return;
+        }
+        grid.innerHTML = visible.map((it, i) => {
+          const c = cats[it.category] || { label: it.category, color: '#9CA3AF' };
+          return `
+            <figure class="photo-card" style="animation-delay:${i * 20}ms;">
+              <img src="../${it.filename}" alt="${it.label || ''}" loading="lazy">
+              <figcaption class="photo-card__caption">
+                <strong>${it.label || '海廢'}</strong>
+                <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:${c.color}; margin-right:4px; vertical-align:middle;"></span><span>${c.label}</span>
+                ${it.icc_item ? `<span style="margin-left:8px;">ICC #${it.icc_item}</span>` : ''}
+              </figcaption>
+            </figure>
+          `;
+        }).join('');
+      }
+
+      render('all');
+
+      document.querySelectorAll('.pill').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.pill').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          render(btn.dataset.filter);
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
