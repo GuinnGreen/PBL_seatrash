@@ -3,149 +3,114 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>認識垃圾 · 海洋偵查員</title>
+  <title>認識實物 · 海洋偵查員</title>
   <link rel="stylesheet" href="../css/base.css">
   <style>
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 18px;
-      margin: 24px 0;
-    }
-    .gallery .photo-card { animation: fadeIn 0.3s ease-out backwards; }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } }
     .toolbar {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      align-items: center;
-      margin: 16px 0 8px;
-      padding: 12px 16px;
-      background: var(--surface);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow-sm);
+      gap: 0;
+      align-items: stretch;
+      margin: 24px 0 24px;
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--border);
     }
     .toolbar .label {
-      font-weight: 600;
-      margin-right: 8px;
-      font-size: 14px;
+      font-weight: 700;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
       color: var(--ink-soft);
+      padding: 14px 16px 14px 0;
+      border-right: 1px solid var(--border);
+      align-self: center;
     }
     .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: var(--bg);
-      border: 2px solid var(--border);
+      padding: 12px 18px;
+      background: transparent;
+      border: 0;
+      border-right: 1px solid var(--border);
       font-size: 14px;
       cursor: pointer;
       font-family: inherit;
-      color: var(--ink);
+      color: var(--ink-soft);
+      letter-spacing: 0.04em;
     }
-    .pill:hover { border-color: var(--accent); }
+    .pill:hover { color: var(--ink); background: var(--paper); }
     .pill.active {
       background: var(--ink);
       color: white;
-      border-color: var(--ink);
+      font-weight: 600;
     }
     .pill .dot {
-      width: 12px;
-      height: 12px;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       display: inline-block;
+      margin-right: 6px;
+      vertical-align: 1px;
     }
     .count-pill {
       margin-left: auto;
-      font-size: 13px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
       color: var(--ink-soft);
+      align-self: center;
+      padding: 14px 16px;
     }
   </style>
 </head>
 <body>
   <main>
-    <div class="page-head">
-      <h1>🕵️ 嫌犯資料庫</h1>
-      <p>偵查員報到。這裡是<strong>已被通緝的海廢嫌犯</strong>——你能不能一眼認出來？</p>
-    </div>
+    <header class="page-head">
+      <span class="kicker">Part 01 &nbsp;/&nbsp; The Field Guide</span>
+      <h1>認識實物</h1>
+      <p class="dek">
+        在學會分類之前，先看清楚要分類的對象：台灣與全世界海岸線上，真實被人撿
+        到、拍照、上傳的<span id="count-total">…</span> 樣東西。
+      </p>
+    </header>
 
     <p class="lead">
-      下面 <strong id="count-total">…</strong> 個嫌犯，<strong>每一個都被人從台灣或世界海邊撿到、拍照上傳</strong>過。
-      你的任務很簡單——<strong>先看清楚他們的長相</strong>，分類我們等等再學。
+      下面每一張，都是某人某天蹲在某片沙灘上、用手機拍下、上傳到網路的真實照片。
+      不是插畫、不是示意圖。看一看、認一認——下一節，我們才開始分類。
     </p>
 
-    <div class="quiz">
-      <span class="q-tag">破冰題</span>
-      <h4>你昨天<strong>有沒有</strong>用過下面任何一樣東西？</h4>
-      <div class="options">
-        <button class="opt" data-correct>有（吸管 / 塑膠袋 / 寶特瓶 / 飲料杯…）</button>
-        <button class="opt" data-correct>沒有（你超強）</button>
-      </div>
-      <div class="answer">
-        <strong>沒有絕對的對錯。</strong>但統計上，台灣人平均一天用 <strong>2 個塑膠袋 + 1 支吸管 + 0.5 個寶特瓶</strong>。
-        如果這些不認真處理，就<strong>有機會</strong>變成下面照片裡的東西。<br>
-        意思是——你不是「跟海廢沒關係」，你<strong>就是其中一環</strong>。
-      </div>
-    </div>
-
-    <div class="think">
-      <h4>👀 看圖任務</h4>
-      <p>下捲時，每張照片問自己 3 件事：</p>
-      <ol>
-        <li>這是什麼？<strong>我家裡有嗎？</strong></li>
-        <li>它怎麼跑到海邊的？</li>
-        <li>哪一張<strong>最讓你驚訝</strong>？（記下來，下節會用到）</li>
-      </ol>
-    </div>
-
     <div class="toolbar">
-      <span class="label">想看哪一種？</span>
+      <span class="label">分類檢視</span>
       <button class="pill active" data-filter="all">全部</button>
       <button class="pill" data-filter="beverage"><span class="dot" style="background:var(--c-beverage);"></span>飲料</button>
       <button class="pill" data-filter="food"><span class="dot" style="background:var(--c-food);"></span>食物</button>
       <button class="pill" data-filter="fishing"><span class="dot" style="background:var(--c-fishing);"></span>漁業</button>
-      <button class="pill" data-filter="hazard"><span class="dot" style="background:var(--c-hazard);"></span>衛生/危險</button>
+      <button class="pill" data-filter="hazard"><span class="dot" style="background:var(--c-hazard);"></span>個人衛生</button>
       <button class="pill" data-filter="other"><span class="dot" style="background:var(--c-other);"></span>其他</button>
-      <span class="count-pill" id="count">顯示中：…</span>
+      <span class="count-pill" id="count">…</span>
     </div>
 
-    <div class="photo-grid gallery" id="gallery">
+    <div class="photo-grid" id="gallery">
       <p style="color:var(--ink-soft);">圖片載入中…</p>
     </div>
 
-    <section class="section" style="margin-top:48px;">
-      <h2>看完之後……</h2>
+    <hr class="rule rule-thick">
+
+    <section class="section">
+      <h2><span class="num">Reflection</span>看完之後</h2>
       <p>
-        你大概注意到了——<strong>這些嫌犯可以歸類</strong>：
-        裝飲料的（瓶罐杯）、裝食物的（袋子吸管）、漁業用的（網繩浮球）、
-        個人用品（菸蒂口罩牙刷）、和其他真的不知道怎麼分的。
+        你大概注意到了——這些東西可以歸類：裝飲料的（瓶罐杯）、裝食物的
+        （袋子、吸管）、漁業用的（網、繩、浮球）、個人用品（菸蒂、口罩、
+        牙刷）、和其他真的不知道怎麼分的。
       </p>
-      <div class="quiz">
-        <span class="q-tag">下節預告題</span>
-        <h4>你直覺：<strong>哪一類在台南安平最多？</strong></h4>
-        <div class="options">
-          <button class="opt">飲料容器（寶特瓶、瓶蓋）</button>
-          <button class="opt" data-correct>漁業用具（蚵棚保麗龍）</button>
-          <button class="opt">食物包裝（塑膠袋、吸管）</button>
-          <button class="opt">個人衛生（菸蒂、口罩）</button>
-        </div>
-        <div class="answer">
-          <strong>答案：漁業用具。</strong>因為我們旁邊就是<strong>蚵棚養殖區</strong>。
-          颱風一來蚵棚會破、保麗龍碎成小白點漂上岸——這是台南海岸的<strong>本地特色</strong>。
-          下一頁的「漁業用具」會詳細講。
-        </div>
-      </div>
+      <p>下一節，我們把這 5 大類的來歷一個一個攤開來看。</p>
     </section>
 
     <div class="page-nav">
       <a class="btn btn-ghost" href="../">← 回首頁</a>
-      <a class="btn btn-primary" href="../categories/">下一步：5 大類分類 →</a>
+      <a class="btn btn-primary" href="../categories/">下一節：5 大類分類 →</a>
     </div>
   </main>
 
   <script src="../js/nav.js"></script>
-  <script src="../js/quiz.js"></script>
   <script>
     OG.renderNav('items');
     OG.renderFooter();
@@ -177,19 +142,19 @@
         const visible = filter === 'all'
           ? items
           : items.filter(it => it.category === filter);
-        countEl.textContent = `顯示中：${visible.length} / ${items.length}`;
+        countEl.textContent = `${visible.length} / ${items.length}`;
         if (visible.length === 0) {
           grid.innerHTML = '<p style="color:var(--ink-soft);">這類目前沒有照片。</p>';
           return;
         }
-        grid.innerHTML = visible.map((it, i) => {
+        grid.innerHTML = visible.map(it => {
           const c = cats[it.category] || { label: it.category, color: '#9CA3AF' };
           return `
-            <figure class="photo-card" style="animation-delay:${i * 20}ms;">
+            <figure class="photo-card">
               <img src="../${it.filename}" alt="${it.label || ''}" loading="lazy">
               <figcaption class="photo-card__caption">
                 <strong>${it.label || '海廢'}</strong>
-                <span style="display:inline-block; width:10px; height:10px; border-radius:50%; background:${c.color}; margin-right:4px; vertical-align:middle;"></span><span>${c.label}</span>
+                <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${c.color}; margin-right:4px; vertical-align:middle;"></span><span>${c.label}</span>
                 ${it.icc_item ? `<span style="margin-left:8px;">ICC #${it.icc_item}</span>` : ''}
               </figcaption>
             </figure>

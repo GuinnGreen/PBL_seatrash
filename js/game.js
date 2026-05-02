@@ -221,16 +221,6 @@
     renderCard();
   }
 
-  function rankFor(score, total) {
-    const pct = total ? score / total : 0;
-    if (pct >= 1.0)  return { name: '海洋偵查總局長',   stars: '★★★★★', emoji: '👑', subtitle: '滿分！全 5 類全對，神。' };
-    if (pct >= 0.9)  return { name: '王牌偵查員',       stars: '★★★★★', emoji: '🥇', subtitle: '幾乎完美。下次淨灘可以帶隊。' };
-    if (pct >= 0.8)  return { name: '資深偵查員',       stars: '★★★★',  emoji: '🥈', subtitle: '及格啦，少數失手算正常。' };
-    if (pct >= 0.6)  return { name: '中級偵查員',       stars: '★★★',   emoji: '🥉', subtitle: '基本功有了。再玩一次破自己紀錄。' };
-    if (pct >= 0.4)  return { name: '實習偵查員',       stars: '★★',     emoji: '🔍', subtitle: '還在學習中。回去再看一次 5 大類。' };
-    return                    { name: '線民',           stars: '★',      emoji: '🐌', subtitle: '別灰心——再玩一次，每次會進步。' };
-  }
-
   function showResult() {
     const main = $('main');
     const cats = dataset.categories;
@@ -261,25 +251,22 @@
       ? '飲料容器是台灣海廢前 5 名，記住：瓶/罐/杯/蓋。'
       : '繼續加油，下次淨灘記錄會用更細的 ICC 20 項。';
 
-    const r = rankFor(score, ROUNDS);
     const bestKey = `og_best_${ROUNDS}`;
     const prevBest = parseInt(localStorage.getItem(bestKey) || '0', 10);
     const isNewRecord = score > prevBest;
     if (isNewRecord) localStorage.setItem(bestKey, String(score));
 
     main.innerHTML = `
+      <header class="page-head">
+        <span class="kicker">Result</span>
+        <h1>測驗結束</h1>
+        <p class="dek">${weakMsg}</p>
+      </header>
       <div class="result">
-        <h2>偵查結束！</h2>
-        <div class="rank-badge">
-          <span style="font-size:24px;">${r.emoji}</span>
-          <span>${r.name}</span>
-          <span class="stars">${r.stars}</span>
-        </div>
         <div class="score">${score}<small> / ${ROUNDS}</small></div>
-        <p style="font-size:16px; margin:0 0 8px;">${r.subtitle}</p>
-        ${isNewRecord ? '<p style="font-size:14px; color:var(--c-fishing); font-weight:700;">🎉 新紀錄！</p>'
-                      : (prevBest > 0 ? `<p style="font-size:14px; color:var(--ink-soft);">你的歷史最佳：${prevBest} / ${ROUNDS}</p>` : '')}
-        <p style="font-size:16px;">${weakMsg}<br><span style="color:var(--ink-soft); font-size:14px;">${tip}</span></p>
+        ${isNewRecord ? '<p style="font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); font-weight:700;">New best</p>'
+                      : (prevBest > 0 ? `<p style="font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft);">Personal best · ${prevBest} / ${ROUNDS}</p>` : '')}
+        <p style="font-size:16px; max-width:var(--measure); margin:12px auto 0;">${tip}</p>
         <div class="breakdown">
           ${order.map(k => `
             <div class="stat-card" style="background:${cats[k].color}">
@@ -289,7 +276,7 @@
           `).join('')}
         </div>
         <div class="actions">
-          <button class="btn btn-primary" id="play-again">再玩一次（破紀錄）</button>
+          <button class="btn btn-primary" id="play-again">再測一次</button>
           <a class="btn btn-ghost" href="${ROOT}icc/">看 ICC 對照 →</a>
         </div>
       </div>
@@ -322,23 +309,22 @@
     const bestKey = `og_best_${ROUNDS}`;
     const prevBest = parseInt(localStorage.getItem(bestKey) || '0', 10);
     document.querySelector('main').innerHTML = `
-      <div class="page-head">
-        <h1>🕵️ 分類測驗：你能當偵查員嗎？</h1>
-      </div>
+      <header class="page-head">
+        <span class="kicker">Part 03 &nbsp;/&nbsp; The Test</span>
+        <h1>分類測驗</h1>
+        <p class="dek">把照片拖進對應的分類筐。30 題、即時回饋、隨時可重來。</p>
+      </header>
       <div class="start-screen">
-        <h2>任務說明</h2>
+        <h2>規則</h2>
         <ul class="rules">
-          <li>📦 螢幕中央會跳出一個「嫌犯」照片</li>
-          <li>👆 用手指<strong>拖</strong>到下面正確的分類筐</li>
-          <li>✓ 對 → +1 分</li>
-          <li>✗ 錯 → 給你正解，下一題</li>
-          <li>🎯 共 <strong>30 題</strong>，答完看你拿到什麼偵查員等級</li>
+          <li>螢幕中央會出現一張海廢照片</li>
+          <li>用手指<strong>拖到下面 5 個顏色筐</strong>之一</li>
+          <li>答對 → 加 1 分，下一張</li>
+          <li>答錯 → 顯示正確答案，再下一張</li>
+          <li>共 30 題</li>
         </ul>
-        <p style="margin:8px 0 16px; font-size:14px; color:var(--ink-soft);">
-          等級：線民 → 實習 → 中級 → 資深 → 王牌 → 海洋偵查總局長
-        </p>
-        ${prevBest > 0 ? `<p style="margin:0 0 16px; color:var(--accent); font-weight:600;">你目前最佳成績：${prevBest} / ${ROUNDS}</p>` : ''}
-        <button class="btn btn-primary" id="start-btn">開始任務 →</button>
+        ${prevBest > 0 ? `<p style="margin:0 0 20px; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft);">Personal best · ${prevBest} / ${ROUNDS}</p>` : ''}
+        <button class="btn btn-primary" id="start-btn">開始 →</button>
       </div>
     `;
     document.getElementById('start-btn').addEventListener('click', startRound);
