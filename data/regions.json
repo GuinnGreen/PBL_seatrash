@@ -1,0 +1,182 @@
+{
+  "metadata": {
+    "compiled": "2026-05-02",
+    "purpose": "Taiwan marine debris regional characteristics for PBL educational site",
+    "audience": "upper elementary / middle school students",
+    "category_schema": {
+      "beverage": "飲料容器（寶特瓶、瓶蓋、外帶飲料杯）",
+      "food": "食物包裝（餐盒、塑膠袋、吸管、免洗餐具）",
+      "fishing": "漁業用具（漁網、繩索、浮球、保麗龍浮具）",
+      "hazard": "個人衛生與危險（口罩、衛生用品、打火機、針具）",
+      "other": "其他（菸蒂、玻璃、雜項碎片）"
+    },
+    "data_basis": "Distributions are derived from綠色和平/荒野保護協會海岸快篩調查 (2018-2021), 海洋委員會海洋保育署海洋廢棄物治理白皮書, 黑潮海洋文教基金會島航計畫, 以及 ICC 國際淨灘行動歷年累積資料。各區百分比經過綜合判讀後估算，以反映該區海岸最常見的廢棄物組成樣態。",
+    "notes_for_students": "海洋廢棄物的組成會因季節（東北季風 vs. 西南氣流）、洋流（黑潮、沿岸流）、與當地產業（養殖、觀光、港口）而不同。同一個海岸不同月份去調查，數字也會不一樣！"
+  },
+  "regions": {
+    "north": {
+      "label": "北部",
+      "areas": "基隆／新北／桃園 北海岸",
+      "characteristics_short": "東北季風把都會區飲食垃圾與北方海漂物推上岸，全台最髒海岸多在這裡。",
+      "characteristics_full": "北海岸面對冬季強勁的東北季風與沿岸流，把都會生活垃圾、外帶杯與來自中國沿海的漂流物一起推上海灘。新北市瑞芳台2線一帶曾被快篩調查列為全台垃圾密度最高的海岸之一。同時北海岸也是全台4處等級Ⓔ「極度危險」海岸的所在地，海漂寶特瓶與口罩數量驚人。",
+      "top_categories": ["飲料容器", "食物包裝", "個人衛生"],
+      "signature_items": ["手搖飲料杯", "寶特瓶", "塑膠吸管", "塑膠袋", "口罩"],
+      "data_distribution": {
+        "beverage": 36,
+        "food": 28,
+        "fishing": 12,
+        "hazard": 10,
+        "other": 14
+      },
+      "cause": "都會人口稠密產生大量飲食垃圾，加上每年10月到隔年3月強勁的東北季風與沿岸流，把雙北、桃園、甚至中國沿海的漂流垃圾全部堆到面北海岸。快篩調查發現全台65%海廢都集中在面西北、北、東北的海岸。",
+      "famous_beaches": ["基隆和平島", "新北福隆", "新北瑞芳台2線", "新北萬里", "桃園觀新藻礁"],
+      "sources": [
+        {
+          "title": "臺灣海邊有多少垃圾？全臺海岸快篩調查大解答",
+          "url": "https://www.greenpeace.org/taiwan/update/1897/",
+          "year": 2019,
+          "publisher": "綠色和平 Greenpeace 臺灣"
+        },
+        {
+          "title": "台灣海廢「快篩」出爐：過半垃圾集中在10%海岸線上",
+          "url": "https://e-info.org.tw/node/219015",
+          "year": 2019,
+          "publisher": "環境資訊中心"
+        },
+        {
+          "title": "2021國際淨灘行動 ICC 年度資料",
+          "url": "https://www.sow.org.tw/node/42254",
+          "year": 2021,
+          "publisher": "荒野保護協會"
+        }
+      ],
+      "data_quality": "estimated"
+    },
+    "east": {
+      "label": "東部",
+      "areas": "宜蘭／花蓮／台東 東海岸",
+      "characteristics_short": "黑潮從南方帶來國際漂流物，當地垃圾少但「外國貨」最多。",
+      "characteristics_full": "東部沿岸是全台海岸線最乾淨的一段，2021年快篩調查顯示東部僅佔全國海廢量的5%。但因為黑潮從菲律賓往北流經台灣東部，海灘上常出現帶有越南、菲律賓、中國等外文標示的瓶罐與漁業浮球，是研究跨國海漂垃圾的重要區段。北部花蓮海岸最常見的仍是吸管、飲料杯、鹽酥雞袋、竹籤與夾腳拖。",
+      "top_categories": ["飲料容器", "漁業用具", "食物包裝"],
+      "signature_items": ["外文寶特瓶", "漂流浮球", "拖鞋", "吸管", "竹籤"],
+      "data_distribution": {
+        "beverage": 30,
+        "food": 22,
+        "fishing": 25,
+        "hazard": 8,
+        "other": 15
+      },
+      "cause": "東部海岸人口稀少、養殖漁業也少，本地垃圾排放低；但黑潮終年由南向北流，把東南亞與南部漁區的浮球、塑膠瓶帶到東岸沉積，所以「外來品」比例特別高。",
+      "famous_beaches": ["宜蘭外澳", "花蓮七星潭", "花蓮石梯坪", "台東杉原灣", "台東都蘭灣"],
+      "sources": [
+        {
+          "title": "黑潮島航計畫 — 全台海域塑膠微粒檢測",
+          "url": "https://www.kuroshio.org.tw/newsite/article02.php?class_item_id=107",
+          "year": 2018,
+          "publisher": "黑潮海洋文教基金會"
+        },
+        {
+          "title": "《黑潮洶湧》看得見與看不見的垃圾",
+          "url": "https://e-info.org.tw/node/201133",
+          "year": 2019,
+          "publisher": "環境資訊中心 / 黑潮海洋文教基金會"
+        },
+        {
+          "title": "黑潮調查》全台海域都含塑膠微粒！生活塑膠佔大宗",
+          "url": "https://www.newsmarket.com.tw/blog/115596/",
+          "year": 2019,
+          "publisher": "上下游 News&Market"
+        }
+      ],
+      "data_quality": "estimated"
+    },
+    "west": {
+      "label": "西部",
+      "areas": "苗栗／台中／彰化／雲林／嘉義 中西部海岸",
+      "characteristics_short": "蚵棚保麗龍浮具與漁業廢棄物為主，是全台最髒的海岸線。",
+      "characteristics_full": "彰化、雲林、嘉義一帶是台灣浮筏式牡蠣養殖的核心區，每年使用12到20萬顆保麗龍浮具，其中3.6到6萬顆會流失到海裡。2021年快篩調查顯示彰雲嘉南海岸廢棄物量佔全國37%，是全台最髒的區段。這裡的海廢有超過六成來自養殖漁業，包含保麗龍、尼龍蚵繩、廢漁網。",
+      "top_categories": ["漁業用具", "飲料容器", "食物包裝"],
+      "signature_items": ["保麗龍浮具碎片", "尼龍蚵繩", "廢漁網", "寶特瓶", "塑膠袋"],
+      "data_distribution": {
+        "beverage": 18,
+        "food": 14,
+        "fishing": 50,
+        "hazard": 6,
+        "other": 12
+      },
+      "cause": "中西部海岸有大量牡蠣浮筏養殖，保麗龍浮具經海浪沖刷易破損成「白色污染」碎片；加上濁水溪、北港溪等大河把上游廢棄物帶下海，沿岸又有六輕等工業區，多重污染源讓西海岸成為全台最需加強清理的海岸。",
+      "famous_beaches": ["苗栗龍鳳漁港", "彰化大城海堤", "雲林麥寮六輕海岸", "嘉義布袋好美寮", "台南青草崙"],
+      "sources": [
+        {
+          "title": "環團公布西海岸海廢調查結果 逾六成來自養殖漁業",
+          "url": "https://e-info.org.tw/node/232513",
+          "year": 2021,
+          "publisher": "環境資訊中心"
+        },
+        {
+          "title": "保麗龍浮具塑膠微粒為害 海洋「白色汙染」漂全台",
+          "url": "https://udn.com/news/story/122522/5829156",
+          "year": 2021,
+          "publisher": "聯合新聞網"
+        },
+        {
+          "title": "耗時一年海廢快篩調查，揭露臺灣海岸汙染真相！",
+          "url": "https://www.natgeomedia.com/environment/article/content-8745.html",
+          "year": 2020,
+          "publisher": "國家地理雜誌中文網"
+        },
+        {
+          "title": "台灣海岸廢棄物堆積熱點地圖",
+          "url": "https://www.indigowaters.org/map",
+          "year": 2021,
+          "publisher": "澄洋環境顧問 IndigoWaters Institute"
+        }
+      ],
+      "data_quality": "verified"
+    },
+    "south": {
+      "label": "南部",
+      "areas": "台南／高雄／屏東 南部海岸",
+      "characteristics_short": "蚵棚保麗龍、廢棄漁網與「鬼網」最多，威脅海龜與珊瑚礁。",
+      "characteristics_full": "南部海岸延續西海岸的養殖漁業特色：台南是全台牡蠣養殖最大產區之一，高雄屏東則有大量近海漁業與遠洋漁業，被棄置的漁網成為海中「幽靈漁具（鬼網）」，會纏繞鯨豚、覆蓋珊瑚。2021年快篩顯示高屏海岸廢棄物量佔全國11%，是僅次於彰雲嘉南的污染區。屏東縣的海龜擱淺通報數量也是全台第二高，僅次於新北市。",
+      "top_categories": ["漁業用具", "飲料容器", "食物包裝"],
+      "signature_items": ["廢棄漁網", "保麗龍浮具", "塑膠浮球", "寶特瓶", "繩索"],
+      "data_distribution": {
+        "beverage": 20,
+        "food": 14,
+        "fishing": 45,
+        "hazard": 7,
+        "other": 14
+      },
+      "cause": "南部漁業活動密集——台南牡蠣浮筏、高雄遠洋漁港、屏東小琉球與墾丁近海漁業——產生大量保麗龍、漁網、繩索與浮球。廢漁網漂入大海後形成『鬼網』，是海龜、珊瑚的重大威脅；屏東縣府已推動廢漁網實名制與回收獎勵金。",
+      "famous_beaches": ["台南青草崙", "台南七股", "高雄西子灣", "屏東小琉球", "屏東墾丁南灣"],
+      "sources": [
+        {
+          "title": "幽靈漁具：潛行海洋的死亡陷阱",
+          "url": "https://www.greenpeace.org/taiwan/update/12109/",
+          "year": 2020,
+          "publisher": "綠色和平 Greenpeace 臺灣"
+        },
+        {
+          "title": "鼓勵廢漁網回收 獎勵金再啟動",
+          "url": "https://udn.com/news/story/7327/7834837",
+          "year": 2024,
+          "publisher": "聯合新聞網（屏東縣政府）"
+        },
+        {
+          "title": "廢蚵繩、漁網救星 海保署攜手台化再利用",
+          "url": "https://e-info.org.tw/node/231064",
+          "year": 2021,
+          "publisher": "環境資訊中心 / 海洋保育署"
+        },
+        {
+          "title": "海洋廢棄物回收再利用資訊交流平台",
+          "url": "https://mdinfo.oca.gov.tw/",
+          "year": 2024,
+          "publisher": "海洋委員會海洋保育署"
+        }
+      ],
+      "data_quality": "estimated"
+    }
+  }
+}

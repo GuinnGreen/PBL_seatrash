@@ -2,31 +2,51 @@
 // Uses relative paths so the site works at any GitHub Pages sub-path.
 
 (function () {
-  const NAV_ITEMS = [
-    { key: 'home',       label: '首頁',       slug: '' },
-    { key: 'items',      label: '認識垃圾',   slug: 'items/' },
-    { key: 'categories', label: '5 大類',     slug: 'categories/' },
-    { key: 'game',       label: '遊戲',       slug: 'game/' },
-    { key: 'stories',    label: '故事',       slug: 'stories/' },
-    { key: 'data-viz',   label: '數據',       slug: 'data-viz/' },
-    { key: 'action',     label: '行動',       slug: 'action/' },
-    { key: 'icc',        label: 'ICC',       slug: 'icc/' },
+  // Main nav follows the lesson teaching flow.
+  const PRIMARY_NAV = [
+    { key: 'items',      label: '認識垃圾', slug: 'items/' },
+    { key: 'icc',        label: 'ICC 分類', slug: 'icc/' },
+    { key: 'categories', label: '5 大類',   slug: 'categories/' },
+    { key: 'stories',    label: '故事',     slug: 'stories/' },
+    { key: 'game',       label: '遊戲',     slug: 'game/' },
   ];
 
-  // True if the current page is one directory below the site root.
+  // Secondary pages live inside the "更多 ▾" dropdown.
+  const MORE_NAV = [
+    { key: 'data-viz', label: '數據',     slug: 'data-viz/' },
+    { key: 'action',   label: '行動',     slug: 'action/' },
+    { key: 'teacher',  label: '教師',     slug: 'teacher/' },
+    { key: 'next',     label: '下節預告', slug: 'next/' },
+  ];
+
   function isSubPage() {
     return /\/(items|categories|game|icc|next|teacher|stories|data-viz|action)(\/|\/[^/]*\.html)?$/.test(
       window.location.pathname
     );
   }
 
-  // Returns "" for root pages, "../" for sub-pages.
   function rootPrefix() {
     return isSubPage() ? '../' : '';
   }
 
   function renderNav(activeKey) {
     const prefix = rootPrefix();
+    const moreActive = MORE_NAV.some(item => item.key === activeKey);
+
+    const primaryHTML = PRIMARY_NAV.map(item => `
+      <li><a href="${prefix}${item.slug}"
+             class="${item.key === activeKey ? 'active' : ''}">
+        ${item.label}
+      </a></li>
+    `).join('');
+
+    const moreHTML = MORE_NAV.map(item => `
+      <li><a href="${prefix}${item.slug}"
+             class="${item.key === activeKey ? 'active' : ''}">
+        ${item.label}
+      </a></li>
+    `).join('');
+
     const header = document.createElement('header');
     header.className = 'site-header';
     header.innerHTML = `
@@ -37,17 +57,28 @@
         </h1>
         <nav>
           <ul class="nav-list">
-            ${NAV_ITEMS.map(item => `
-              <li><a href="${prefix}${item.slug}"
-                     class="${item.key === activeKey ? 'active' : ''}">
-                ${item.label}
-              </a></li>
-            `).join('')}
+            ${primaryHTML}
+            <li class="nav-more${moreActive ? ' active' : ''}">
+              <details>
+                <summary>更多 <span aria-hidden="true">▾</span></summary>
+                <ul class="nav-dropdown">
+                  ${moreHTML}
+                </ul>
+              </details>
+            </li>
           </ul>
         </nav>
       </div>
     `;
     document.body.insertBefore(header, document.body.firstChild);
+
+    // Close the dropdown when clicking outside it.
+    const detailsEl = header.querySelector('.nav-more details');
+    if (detailsEl) {
+      document.addEventListener('click', (e) => {
+        if (!detailsEl.contains(e.target)) detailsEl.removeAttribute('open');
+      });
+    }
   }
 
   function renderFooter() {
@@ -61,7 +92,6 @@
     document.body.appendChild(footer);
   }
 
-  // Click-to-enlarge for photo grids
   function enableLightbox() {
     const lb = document.createElement('div');
     lb.className = 'lightbox';
