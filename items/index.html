@@ -66,23 +66,37 @@
 <body>
   <main>
     <div class="page-head">
-      <h1>認識垃圾</h1>
-      <p>先別急著分類。這裡是台灣海邊真的會撿到的東西——你認得幾樣？</p>
+      <h1>🕵️ 嫌犯資料庫</h1>
+      <p>偵查員報到。這裡是<strong>已被通緝的海廢嫌犯</strong>——你能不能一眼認出來？</p>
     </div>
 
     <p class="lead">
-      下面是 <strong id="count-total">…</strong> 張真實海廢照片。
-      <strong>都是有人從海邊撿到、拍照上傳的</strong>。
-      看一看、認一認，<strong>不用記分類</strong>——這節最後才會學怎麼分。
+      下面 <strong id="count-total">…</strong> 個嫌犯，<strong>每一個都被人從台灣或世界海邊撿到、拍照上傳</strong>過。
+      你的任務很簡單——<strong>先看清楚他們的長相</strong>，分類我們等等再學。
     </p>
 
-    <div class="callout callout--note">
-      <h4>👀 看的時候，問自己 3 件事</h4>
-      <p>
-        ① 這是什麼？我家有沒有？<br>
-        ② 它怎麼跑到海邊的？<br>
-        ③ 我覺得最可怕/最常見/最特別的是哪一張？
-      </p>
+    <div class="quiz">
+      <span class="q-tag">破冰題</span>
+      <h4>你昨天<strong>有沒有</strong>用過下面任何一樣東西？</h4>
+      <div class="options">
+        <button class="opt" data-correct>有（吸管 / 塑膠袋 / 寶特瓶 / 飲料杯…）</button>
+        <button class="opt" data-correct>沒有（你超強）</button>
+      </div>
+      <div class="answer">
+        <strong>沒有絕對的對錯。</strong>但統計上，台灣人平均一天用 <strong>2 個塑膠袋 + 1 支吸管 + 0.5 個寶特瓶</strong>。
+        如果這些不認真處理，就<strong>有機會</strong>變成下面照片裡的東西。<br>
+        意思是——你不是「跟海廢沒關係」，你<strong>就是其中一環</strong>。
+      </div>
+    </div>
+
+    <div class="think">
+      <h4>👀 看圖任務</h4>
+      <p>下捲時，每張照片問自己 3 件事：</p>
+      <ol>
+        <li>這是什麼？<strong>我家裡有嗎？</strong></li>
+        <li>它怎麼跑到海邊的？</li>
+        <li>哪一張<strong>最讓你驚訝</strong>？（記下來，下節會用到）</li>
+      </ol>
     </div>
 
     <div class="toolbar">
@@ -103,13 +117,25 @@
     <section class="section" style="margin-top:48px;">
       <h2>看完之後……</h2>
       <p>
-        你大概注意到了——<strong>這些東西其實可以分成幾類</strong>：
+        你大概注意到了——<strong>這些嫌犯可以歸類</strong>：
         裝飲料的（瓶罐杯）、裝食物的（袋子吸管）、漁業用的（網繩浮球）、
-        個人用品（菸蒂口罩牙刷）、和其他不知道怎麼分的。
+        個人用品（菸蒂口罩牙刷）、和其他真的不知道怎麼分的。
       </p>
-      <p>
-        下一步，我們就來把它們整理成 <strong>5 大類</strong>。
-      </p>
+      <div class="quiz">
+        <span class="q-tag">下節預告題</span>
+        <h4>你直覺：<strong>哪一類在台南安平最多？</strong></h4>
+        <div class="options">
+          <button class="opt">飲料容器（寶特瓶、瓶蓋）</button>
+          <button class="opt" data-correct>漁業用具（蚵棚保麗龍）</button>
+          <button class="opt">食物包裝（塑膠袋、吸管）</button>
+          <button class="opt">個人衛生（菸蒂、口罩）</button>
+        </div>
+        <div class="answer">
+          <strong>答案：漁業用具。</strong>因為我們旁邊就是<strong>蚵棚養殖區</strong>。
+          颱風一來蚵棚會破、保麗龍碎成小白點漂上岸——這是台南海岸的<strong>本地特色</strong>。
+          下一頁的「漁業用具」會詳細講。
+        </div>
+      </div>
     </section>
 
     <div class="page-nav">
@@ -119,6 +145,7 @@
   </main>
 
   <script src="../js/nav.js"></script>
+  <script src="../js/quiz.js"></script>
   <script>
     OG.renderNav('items');
     OG.renderFooter();

@@ -3,118 +3,214 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <title>故事集 · 海洋偵查員</title>
+  <title>真實案件檔案 · 海洋偵查員</title>
   <link rel="stylesheet" href="../css/base.css">
 </head>
 <body>
   <main>
     <div class="page-head">
-      <h1>故事集</h1>
-      <p>四個真實案例。每一個都是一張照片背後，一個動物、一片海、一群人的故事。</p>
+      <h1>🗂️ 真實案件檔案</h1>
+      <p>四個真實發生過的案件。每張照片背後，是一個動物、一片海、一群人的故事。</p>
     </div>
 
-    <nav style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px;">
-      <a class="btn btn-ghost" href="#albatross" style="min-height:40px; padding:8px 16px;">🦅 信天翁的胃</a>
-      <a class="btn btn-ghost" href="#turtle" style="min-height:40px; padding:8px 16px;">🐢 海龜的鼻子</a>
-      <a class="btn btn-ghost" href="#seal" style="min-height:40px; padding:8px 16px;">🦭 僧海豹</a>
-      <a class="btn btn-ghost" href="#oyster" style="min-height:40px; padding:8px 16px;">🦪 安平蚵棚</a>
+    <p class="lead">
+      <strong>警告：</strong>下面的故事有些不太好讀。
+      但這些事情<strong>真的發生過</strong>，而且還在發生。<br>
+      看完之後，你大概不會再用一次性塑膠袋了。
+    </p>
+
+    <nav style="display:flex; flex-wrap:wrap; gap:8px; margin:24px 0;">
+      <a class="btn btn-ghost" href="#case-001" style="min-height:40px; padding:8px 16px;">#001 信天翁</a>
+      <a class="btn btn-ghost" href="#case-002" style="min-height:40px; padding:8px 16px;">#002 海龜</a>
+      <a class="btn btn-ghost" href="#case-003" style="min-height:40px; padding:8px 16px;">#003 僧海豹</a>
+      <a class="btn btn-ghost" href="#case-004" style="min-height:40px; padding:8px 16px;">#004 蚵棚</a>
     </nav>
 
-    <article id="albatross" class="story story-blue">
-      <h3>🦅 信天翁的胃</h3>
-      <p>
-        <strong>地點：</strong>太平洋中途島（Midway Island），夏威夷以西 2000 公里。
-        島上沒有人類，但有 100 萬隻信天翁築巢。
-      </p>
-      <p>
-        攝影師 Chris Jordan 在這裡拍下了一系列衝擊全世界的照片：
-        <strong>死掉的信天翁雛鳥，肚子裡塞滿塑膠</strong>——打火機、瓶蓋、牙刷、玩具兵。
-      </p>
-      <p>
-        母信天翁飛幾千公里出海覓食，把<strong>會發亮、會浮的塑膠</strong>當成魚食叼回來餵小鳥。
-        小鳥吃了塑膠胃裡塞滿但<strong>沒營養</strong>，最後活活餓死。
-      </p>
-      <p>
-        中途島每年因此死掉的雛鳥<strong>超過 5000 隻</strong>。
-        而這些塑膠，<strong>都來自我們的陸地</strong>。
-      </p>
-      <p class="source">來源：Chris Jordan《Midway》紀錄片、USFWS 中途島野生動物保護區。</p>
+    <article class="case-file" id="case-001">
+      <div class="case-file__header">
+        <span>📁 案件檔案　CASE FILE</span>
+        <span><span class="num">#001</span> · <span style="color:var(--c-beverage);">飲料容器類</span></span>
+      </div>
+      <div class="case-file__body">
+        <h3>信天翁的胃裡有一支打火機</h3>
+        <div class="meta">
+          <div><strong>地點</strong>太平洋中途島 (Midway)</div>
+          <div><strong>受害者</strong>100 萬隻信天翁雛鳥</div>
+          <div><strong>兇器</strong>瓶蓋、打火機、玩具兵</div>
+          <div><strong>加害者</strong>陸地上的人類</div>
+        </div>
+        <p>
+          中途島，太平洋中央，距離夏威夷 2000 公里。
+          <strong>島上沒有人，但有 100 萬隻信天翁築巢</strong>。
+        </p>
+        <p>
+          2009 年，攝影師 Chris Jordan 來這裡拍照。他看到的是——<br>
+          <strong>一隻一隻死掉的信天翁雛鳥，肚子被剖開後，全是塑膠</strong>。
+        </p>
+        <p>
+          打火機、瓶蓋、牙刷、玩具兵、髮夾、原子筆。
+          全部是<strong>母信天翁從海上叼回來餵小鳥的</strong>——
+          因為塑膠在陽光下會發亮，看起來像魚。
+        </p>
+        <p>
+          小鳥吃了塑膠胃裡塞滿、但沒營養。<strong>活活餓死</strong>。
+        </p>
+        <div class="keypoint" style="background:#FEF3C7; border-left:4px solid var(--c-fishing);">
+          <span class="big">🤯</span>
+          <p>
+            這些塑膠，<strong>都來自陸地</strong>。
+            意思是——你今天在台南丟的瓶蓋，<strong>有可能</strong>真的會跑進中途島某隻雛鳥的胃。
+          </p>
+        </div>
+        <p style="font-size:13px; color:var(--ink-soft); font-style:italic;">
+          來源：Chris Jordan《Midway》紀錄片（2018）、USFWS 中途島野生動物保護區。
+        </p>
+      </div>
     </article>
 
-    <article id="turtle" class="story story-green">
-      <h3>🐢 海龜的鼻子</h3>
-      <p>
-        <strong>地點：</strong>哥斯大黎加海岸，2015 年。
-        海洋生物學家 Christine Figgener 在做欖蠵龜研究時，發現一隻公龜<strong>鼻子裡卡著東西</strong>。
-      </p>
-      <p>
-        他們花了 8 分鐘用鉗子拔出來——那是一根<strong>10 公分長的塑膠吸管</strong>，
-        塞在海龜鼻腔深處，海龜不停地<strong>痛苦哀鳴</strong>。
-      </p>
-      <p>
-        這段影片在 YouTube 上有<strong>超過 1 億次點閱</strong>。
-        全球的吸管禁令——<strong>包括台灣 2019 年的內用禁吸管</strong>——很多就是因為這 8 分鐘的影片。
-      </p>
-      <p>
-        <strong>一根吸管，改變了一個國家的政策。</strong>
-      </p>
-      <p class="source">來源：Christine Figgener (Texas A&amp;M University) YouTube 公開影片。</p>
+    <article class="case-file" id="case-002">
+      <div class="case-file__header">
+        <span>📁 案件檔案　CASE FILE</span>
+        <span><span class="num">#002</span> · <span style="color:var(--c-food);">食物包裝類</span></span>
+      </div>
+      <div class="case-file__body">
+        <h3>一根吸管，改變了一個國家的政策</h3>
+        <div class="meta">
+          <div><strong>地點</strong>哥斯大黎加海岸</div>
+          <div><strong>日期</strong>2015 年</div>
+          <div><strong>受害者</strong>一隻欖蠵龜（公）</div>
+          <div><strong>兇器</strong>10 公分塑膠吸管</div>
+        </div>
+        <p>
+          2015 年，海洋生物學家 Christine Figgener 在做欖蠵龜研究。
+          她發現一隻公龜<strong>鼻子裡卡著什麼東西</strong>。
+        </p>
+        <p>
+          團隊用鉗子一點一點拔。
+          海龜<strong>不停地痛苦哀鳴</strong>，鼻子流血。
+        </p>
+        <p>
+          整整 8 分鐘，他們拉出一根<strong>10 公分長的塑膠吸管</strong>。
+          深深塞在海龜鼻腔。
+        </p>
+        <div class="shock">
+          <span class="tag">影響</span>
+          <div class="big">1<small> 億+</small></div>
+          <div class="label">YouTube 影片觀看次數</div>
+          <div class="compare">這 8 分鐘改變了世界——後來歐盟、台灣、日本、加拿大、新加坡都<strong>禁了一次性塑膠吸管</strong>。</div>
+        </div>
+        <p>
+          台灣<strong>2019 年內用禁吸管</strong>，主因之一就是這支影片。
+          <strong>一根吸管，引發一波全球政策。</strong>
+        </p>
+        <p style="font-size:13px; color:var(--ink-soft); font-style:italic;">
+          來源：Christine Figgener (Texas A&amp;M University) YouTube 公開影片，搜「sea turtle straw」可看。
+        </p>
+      </div>
     </article>
 
-    <article id="seal" class="story story-warn">
-      <h3>🦭 夏威夷僧海豹</h3>
-      <p>
-        <strong>地點：</strong>夏威夷群島。
-        全世界<strong>夏威夷僧海豹只剩 1500 隻</strong>，是地球上最瀕危的海豹之一。
-      </p>
-      <p>
-        這張照片你在「漁業用具」分類頁看過——一隻僧海豹脖子被廢棄漁網纏住，
-        被海浪沖到沙灘上喘息。
-      </p>
-      <p>
-        這就是<strong>幽靈漁網（ghost net）</strong>的傷害：
-        被漁民棄置或意外掉落的漁網，<strong>持續在海裡抓魚</strong>，但沒有人去收。
-        海龜、海豚、鯨魚、海豹都會被纏住。
-      </p>
-      <p>
-        NOAA 漁業署每年在夏威夷海域<strong>移除 50 噸幽靈漁網</strong>，
-        但海洋裡仍有<strong>64 萬噸</strong>，相當於 5 萬輛公車的重量。
-      </p>
-      <p class="source">來源：NOAA Fisheries（圖：dx.doi.org/PD），World Animal Protection 2018 報告。</p>
+    <article class="case-file" id="case-003">
+      <div class="case-file__header">
+        <span>📁 案件檔案　CASE FILE</span>
+        <span><span class="num">#003</span> · <span style="color:var(--c-fishing);">漁業用具類</span></span>
+      </div>
+      <div class="case-file__body">
+        <h3>幽靈漁網——還在抓魚的死亡陷阱</h3>
+        <div class="meta">
+          <div><strong>地點</strong>夏威夷群島</div>
+          <div><strong>瀕危等級</strong>世界僅剩 1500 隻</div>
+          <div><strong>受害者</strong>夏威夷僧海豹（與其他海洋動物）</div>
+          <div><strong>兇器</strong>被棄置的漁網（ghost net）</div>
+        </div>
+        <p>
+          想像有一張漁網，<strong>沒有人去收</strong>。
+          它沉在海裡、漂在表面、卡在礁石——
+          但<strong>它還在繼續抓魚</strong>。
+        </p>
+        <p>
+          海龜會被纏住、海豚會被纏住、海豹也會被纏住。
+          有的脫得開，有的脫不開——脫不開的就<strong>溺死</strong>。
+        </p>
+        <p>
+          這就是「<strong>幽靈漁網（ghost net）</strong>」。
+          全球海洋裡有<strong>64 萬噸</strong>，相當於 5 萬輛公車的重量。
+        </p>
+        <div class="story-warn" style="background:linear-gradient(180deg, #FEE2E2, var(--bg)); border-left:8px solid var(--c-hazard); border-radius:var(--radius); padding:20px; margin:16px 0;">
+          <h4 style="margin:0 0 6px;">這張照片你應該看過</h4>
+          <p>
+            <strong>一隻夏威夷僧海豹</strong>，脖子被廢棄漁網纏住，被海浪沖到沙灘上喘氣。
+            （圖見「漁業用具」分類頁）
+          </p>
+          <p>
+            全世界<strong>夏威夷僧海豹只剩 1500 隻</strong>。
+            少一隻，就是少 0.07%——這個物種隨時可能滅絕。
+          </p>
+        </div>
+        <p>
+          NOAA 漁業署每年從夏威夷海域<strong>移除 50 噸幽靈漁網</strong>。
+          但這只是冰山一角——<strong>世界海洋裡還有 64 萬噸</strong>。
+        </p>
+        <p style="font-size:13px; color:var(--ink-soft); font-style:italic;">
+          來源：NOAA Fisheries、World Animal Protection《Ghost Gear》報告（2018）。
+        </p>
+      </div>
     </article>
 
-    <article id="oyster" class="story">
-      <h3>🦪 安平蚵棚——我們自己的故事</h3>
-      <p>
-        <strong>地點：</strong>台南安平、漁光島月牙灣（就是我們要去的地方）。
-      </p>
-      <p>
-        台南、嘉義、雲林是<strong>全台最大的蚵類養殖區</strong>。
-        蚵棚用<strong>竹竿+保麗龍浮具</strong>搭起來，浮在海上，蚵就掛在繩子上長 6 個月～1 年。
-      </p>
-      <p>
-        但<strong>颱風一來</strong>，蚵棚會破。<strong>保麗龍會碎</strong>。
-        碎成像沙子大小的小白點，混在海邊，<strong>永遠清不乾淨</strong>。
-      </p>
-      <p>
-        這些保麗龍不會分解。<strong>200 年後它還是塑膠</strong>，只是更小。
-        最後跑進魚的肚子，跑進蚵的肚子——而蚵就是養來給人吃的。
-      </p>
-      <p>
-        <strong>這是台南海岸最頭痛的問題之一。</strong>
-        近年有些蚵農改用<strong>無塑包覆型保麗龍</strong>或<strong>環保浮具</strong>，
-        但成本貴 5 倍，推廣很慢。
-      </p>
-      <h4 style="margin-top:16px;">在地英雄：台南社大海廢社</h4>
-      <p>
-        台南社區大學從 <strong>2005 年</strong>開始監測月牙灣，<strong>20 年</strong>沒停。
-        他們用「ICC 國際淨灘行動」標準，每月一次去撿、紀錄、比對。
-      </p>
-      <p>
-        我們淨灘時會跟<strong>社大志工阿凱</strong>合作。我們撿的數據，會加進<strong>他們 20 年的資料庫</strong>。
-        所以你不只是去玩沙——你在做<strong>科學家在做的事</strong>。
-      </p>
-      <p class="source">來源：台南社區大學環境組（beach.tncomu.tw）。</p>
+    <article class="case-file" id="case-004">
+      <div class="case-file__header">
+        <span>📁 案件檔案　CASE FILE</span>
+        <span><span class="num">#004</span> · <span style="color:var(--c-fishing);">本地特殊案件</span></span>
+      </div>
+      <div class="case-file__body">
+        <h3>★ 安平蚵棚——你家旁邊的故事</h3>
+        <div class="meta">
+          <div><strong>地點</strong>臺南安平 · 漁光島月牙灣</div>
+          <div><strong>關係人</strong>5 年級兩班、社大志工、蚵農</div>
+          <div><strong>兇手</strong>保麗龍浮具碎片</div>
+          <div><strong>狀態</strong>★ 進行中（你會去現場）</div>
+        </div>
+        <p>
+          這個案件<strong>就在你家附近</strong>。
+        </p>
+        <p>
+          台南、嘉義、雲林是<strong>全台最大的蚵類養殖區</strong>。
+          蚵農在海裡搭<strong>蚵棚</strong>——竹竿+保麗龍浮具+繩子，蚵就掛在繩子上長 6 個月。
+        </p>
+        <p>
+          但每年<strong>颱風一來</strong>——
+        </p>
+        <ul>
+          <li>蚵棚被打壞</li>
+          <li>保麗龍碎成<strong>沙子大小的小白點</strong></li>
+          <li>漂上漁光島月牙灣</li>
+          <li>混在沙裡，<strong>永遠清不乾淨</strong></li>
+        </ul>
+        <div class="shock">
+          <span class="tag">不會分解</span>
+          <div class="big">200<small>+ 年</small></div>
+          <div class="label">保麗龍碎片在沙裡的時間</div>
+          <div class="compare">而且它<strong>不會「分解」</strong>——只會碎得更小。<br>最後跑進魚的肚子，跑進<strong>蚵</strong>的肚子——而蚵就是養來給人吃的。</div>
+        </div>
+        <h4 style="margin-top:24px;">在地英雄：台南社大海廢社</h4>
+        <p>
+          台南社區大學從 <strong>2005 年</strong>開始監測月牙灣，<strong>20 年沒停</strong>。
+          每月一次去撿、紀錄、比對。
+        </p>
+        <p>
+          兩週後，我們會跟<strong>社大志工阿凱</strong>合作。
+          我們撿的數據，會加進<strong>他們 20 年的資料庫</strong>。
+        </p>
+        <div class="keypoint">
+          <span class="big">🦸</span>
+          <p>
+            你不只是去玩沙——<strong>你會在做科學家在做的事</strong>。
+            你的資料，會跟全國、全球的志工資料合在一起。
+          </p>
+        </div>
+        <p style="font-size:13px; color:var(--ink-soft); font-style:italic;">
+          來源：台南社區大學環境組（beach.tncomu.tw）。
+        </p>
+      </div>
     </article>
 
     <div class="page-nav">

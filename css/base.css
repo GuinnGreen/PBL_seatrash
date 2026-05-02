@@ -700,6 +700,227 @@ main {
 /* Anchor scroll offset for sticky header */
 :target { scroll-margin-top: 80px; }
 
+/* ============================================================
+   Engagement components (shock facts, quiz reveal, case file)
+   ============================================================ */
+
+/* Shock fact — big bold numerical claim */
+.shock {
+  background: linear-gradient(135deg, #1F2937, #0F172A);
+  color: white;
+  border-radius: var(--radius);
+  padding: 28px 24px;
+  margin: 24px 0;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+.shock::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(14,165,233,0.25), transparent 50%);
+  pointer-events: none;
+}
+.shock .tag {
+  display: inline-block;
+  background: var(--c-fishing);
+  color: var(--ink);
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+.shock .big {
+  font-size: 56px;
+  font-weight: 900;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+  margin: 4px 0;
+  background: linear-gradient(135deg, #FCD34D, #F59E0B);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.shock .big small { font-size: 28px; }
+.shock .label { font-size: 16px; opacity: 0.85; margin-top: 6px; }
+.shock .compare {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  font-size: 15px;
+  color: #FCD34D;
+}
+
+/* Reveal quiz — click to reveal answer */
+.quiz {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin: 20px 0;
+  border-left: 6px solid var(--accent);
+  box-shadow: var(--shadow-sm);
+}
+.quiz .q-tag {
+  display: inline-block;
+  background: var(--accent);
+  color: white;
+  padding: 2px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  letter-spacing: 0.05em;
+}
+.quiz h4 { margin: 0 0 12px; font-size: 18px; }
+.quiz .options { display: grid; gap: 8px; margin-bottom: 12px; }
+.quiz .opt {
+  background: var(--bg);
+  border: 2px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 15px;
+  font-family: inherit;
+  text-align: left;
+  color: var(--ink);
+  transition: all 0.15s ease;
+}
+.quiz .opt:hover { border-color: var(--accent); }
+.quiz .opt.correct {
+  background: #DCFCE7;
+  border-color: #16A34A;
+  color: #14532D;
+  font-weight: 600;
+}
+.quiz .opt.wrong {
+  background: #FEE2E2;
+  border-color: #DC2626;
+  color: #7F1D1D;
+}
+.quiz .opt.correct::after { content: ' ✓'; }
+.quiz .opt.wrong::after { content: ' ✗'; }
+.quiz .answer {
+  display: none;
+  background: #FEF3C7;
+  border-radius: 10px;
+  padding: 14px 16px;
+  font-size: 15px;
+  line-height: 1.7;
+  border-left: 4px solid var(--c-fishing);
+  animation: slideIn 0.25s ease-out;
+}
+.quiz .answer.show { display: block; }
+@keyframes slideIn {
+  from { opacity: 0; transform: translateY(-4px); }
+}
+
+/* Case file framing — investigator vibe */
+.case-file {
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 0;
+  margin: 24px 0;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  border: 2px solid var(--ink);
+}
+.case-file__header {
+  background: var(--ink);
+  color: white;
+  padding: 12px 20px;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.case-file__header .num { font-weight: 800; color: var(--c-fishing); }
+.case-file__body { padding: 20px 24px; }
+.case-file__body h3 { margin: 0 0 6px; font-size: 22px; }
+.case-file__body .meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 8px;
+  margin: 12px 0;
+  padding: 12px;
+  background: var(--bg);
+  border-radius: 8px;
+  font-size: 14px;
+}
+.case-file__body .meta strong {
+  display: block;
+  font-size: 12px;
+  color: var(--ink-soft);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 2px;
+}
+
+/* Compare visual: X = Y */
+.compare-vis {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 16px;
+  background: var(--surface);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 16px 0;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+.compare-vis .side .icon { font-size: 56px; line-height: 1; }
+.compare-vis .side .num {
+  font-size: 22px;
+  font-weight: 800;
+  margin-top: 6px;
+  color: var(--accent);
+}
+.compare-vis .side .text { font-size: 14px; color: var(--ink-soft); margin-top: 2px; }
+.compare-vis .equals {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--ink-soft);
+}
+
+/* Detective rank badge (in game result) */
+.rank-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #1F2937, #0F172A);
+  color: white;
+  padding: 10px 18px;
+  border-radius: 999px;
+  margin: 12px 0;
+  font-weight: 700;
+}
+.rank-badge .stars { color: var(--c-fishing); letter-spacing: 1px; }
+
+/* "想想看" prompt */
+.think {
+  background: linear-gradient(180deg, #FEF3C7, var(--bg));
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  margin: 20px 0;
+  border-left: 6px solid var(--c-fishing);
+}
+.think h4 {
+  margin: 0 0 8px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.think p { margin: 4px 0; font-size: 15px; line-height: 1.7; }
+.think ol { margin: 8px 0 0 20px; }
+
 /* Mini ICC item box */
 .icc-item {
   display: inline-block;
