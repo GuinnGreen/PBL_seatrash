@@ -1,0 +1,122 @@
+{
+  "01_pet_bottle": {
+    "url": "LOCAL:images/beverage/bev_11_beach_pet_bottles.jpg",
+    "license": "LOCAL",
+    "credit": "Local file",
+    "alt": "PET bottles washed up on a beach"
+  },
+  "02_bottle_cap": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/3/39/Macro-d%C3%A9chets_sur_la_plage_de_Kersigu%C3%A9nou_%28Ifremer_00945-105643_-_54531%29.jpg",
+    "license": "CC BY 4.0",
+    "credit": "Gregory Rocher / Ifremer / Wikimedia Commons",
+    "alt": "Hundreds of plastic bottle caps washed up at the high tide line on Kersiguenou beach, Brittany"
+  },
+  "03_food_container": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Hardees_fry_container_in_grass.jpg",
+    "license": "CC0 1.0",
+    "credit": "Visviva / Wikimedia Commons",
+    "alt": "Discarded fast-food fry container lying as litter in grass"
+  },
+  "04_non_food_bottle": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Schoonmaakmiddelen.jpg",
+    "license": "CC BY-SA 3.0",
+    "credit": "M. Minderhoud / Wikimedia Commons",
+    "alt": "Plastic bottles of household cleaning products and detergents"
+  },
+  "05_plastic_bag": {
+    "url": "LOCAL:images/food/foo2_03_close_up_of_a_plastic_bag_full_of_trash_on_top_of_a_trash_can_51136251222_.jpg",
+    "license": "LOCAL",
+    "credit": "Local file",
+    "alt": "Plastic bag full of trash"
+  },
+  "06_snack_wrapper": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Snax_Tayto_potato_crisp_packet.jpg",
+    "license": "CC BY-SA 4.0",
+    "credit": "Smirkybec / Wikimedia Commons",
+    "alt": "Discarded potato crisp snack packet found as litter"
+  },
+  "07_straw": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Single_Use_Plastic_Straw.jpg",
+    "license": "CC BY-SA 4.0",
+    "credit": "Ocean Blue Project / Wikimedia Commons",
+    "alt": "Single-use blue plastic straw photographed on a beach during a cleanup in Seaside, Oregon"
+  },
+  "08_drink_cup": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Engangskrus_-_one_time_cup_in_plastics_on_the_beach_of_Bantayan_3.jpg",
+    "license": "CC BY-SA 4.0",
+    "credit": "Oyvind Holmstad / Wikimedia Commons",
+    "alt": "Disposable plastic drink cup as marine debris on Bantayan beach, Philippines"
+  },
+  "09_cutlery": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Macro_of_plastic_fork.jpg",
+    "license": "CC BY-SA 2.0",
+    "credit": "Mark Sebastian / Wikimedia Commons",
+    "alt": "Close-up of a disposable white plastic fork"
+  },
+  "10_glass_bottle": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Glass_bottle_on_the_beach.JPG",
+    "license": "CC BY-SA 4.0",
+    "credit": "Revital Salomon / Wikimedia Commons",
+    "alt": "Empty glass bottle resting on sand near seashells on a beach"
+  },
+  "11_aluminum_can": {
+    "url": "LOCAL:images/beverage/bev_13_coca_cola_can_beach.jpg",
+    "license": "LOCAL",
+    "credit": "Local file",
+    "alt": "Coca-Cola can on a beach"
+  },
+  "12_tetra_pak": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/64/Burton_Mere_-_geograph.org.uk_-_356834.jpg",
+    "license": "CC BY-SA 2.0",
+    "credit": "Stephen Williams / geograph.org.uk / Wikimedia Commons",
+    "alt": "Beach pond strewn with empty bottles and a fruit juice carton blown up from the shore"
+  },
+  "13_fishing_tackle": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/9/99/4_hooked_fishing_bait_lures_viz_jig_spoonlure_plug_spinnerbait.jpg",
+    "license": "CC BY 4.0",
+    "credit": "R. Henrik Nilsson / Wikimedia Commons",
+    "alt": "Four types of hooked fishing lures: jig, spoon, plug and spinnerbait"
+  },
+  "14_fishing_buoy": {
+    "url": "LOCAL:images/fishing/fis_04_nova_scotia_dsc4723_beach_buoy_made_explore_2541453700_.jpg",
+    "license": "LOCAL",
+    "credit": "Local file",
+    "alt": "Fishing buoy on a Nova Scotia beach"
+  },
+  "15_styrofoam_buoy": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/7/77/Yemanja_debris_%28377942330%29.jpg",
+    "license": "CC BY 2.0",
+    "credit": "Vince Alongi / Wikimedia Commons",
+    "alt": "Pieces of styrofoam floats and debris washed up on the beach in Montevideo"
+  },
+  "16_boat_fender": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/5/58/Rubber_Fender_in_port_Vado_Ligure.jpg",
+    "license": "CC BY 3.0",
+    "credit": "Amada44 / Wikimedia Commons",
+    "alt": "Cylindrical black rubber boat fender hanging at the port of Vado Ligure, Italy"
+  },
+  "17_fishing_net": {
+    "url": "LOCAL:images/fishing/fis_02_knotted_net_geograph.org.uk_1297697.jpg",
+    "license": "LOCAL",
+    "credit": "Local file",
+    "alt": "Knotted fishing net"
+  },
+  "18_cigarette_butt": {
+    "url": "LOCAL:images/hazard/haz2_04_2008_10_21_10_11_20annajcoopercirclecigarettestub.jpg",
+    "license": "LOCAL",
+    "credit": "Local file",
+    "alt": "Cigarette butt close-up"
+  },
+  "19_toothbrush": {
+    "url": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Littered_used_kids_toothbrush_at_the_beach.jpg",
+    "license": "CC BY-SA 4.0",
+    "credit": "Kwameghana (Bright Kwame Ayisi) / Wikimedia Commons",
+    "alt": "Discarded children's toothbrush lying as litter on a beach in Ghana"
+  },
+  "20_face_mask": {
+    "url": "LOCAL:images/hazard/haz_05_face_mask_beach.jpg",
+    "license": "LOCAL",
+    "credit": "Local file",
+    "alt": "Disposable face mask on a beach"
+  }
+}
