@@ -2014,3 +2014,294 @@ main {
   margin: 0;
 }
 .region-card .region-signature strong { color: var(--ink); }
+
+/* ============================================================
+   ICC PAGE — 20-item interactive explorer + 5-bucket view
+   ============================================================ */
+
+/* Filter pill bar */
+.icc-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 24px 0 28px;
+}
+.icc-filter-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  min-height: auto;
+  background: var(--paper);
+  color: var(--ink);
+  border: 2px solid var(--border);
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  cursor: pointer;
+  transition: transform .15s, box-shadow .15s, background .2s, border-color .2s;
+  box-shadow: none;
+}
+.icc-filter-pill:hover {
+  border-color: var(--pill-color, var(--ink));
+  transform: translateY(-1px);
+}
+.icc-filter-pill[aria-pressed="true"] {
+  background: var(--pill-color, var(--ink));
+  border-color: var(--pill-color, var(--ink));
+  color: white;
+}
+.icc-filter-pill__icon { font-size: 16px; }
+.icc-filter-pill__count {
+  background: rgba(255,255,255,.25);
+  padding: 1px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.icc-filter-pill[aria-pressed="false"] .icc-filter-pill__count {
+  background: var(--bg);
+  color: var(--ink-soft);
+}
+
+#icc-counter {
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin: 0 0 16px;
+  letter-spacing: 0.04em;
+}
+
+/* Card grid */
+.icc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 14px;
+  margin: 0 0 32px;
+  perspective: 1200px;
+}
+.icc-card {
+  position: relative;
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: opacity .35s, transform .35s, filter .35s;
+  font-family: inherit;
+  min-height: auto;
+  box-shadow: none;
+  box-sizing: border-box;
+}
+.icc-card__inner {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  transition: transform .55s cubic-bezier(.22,.9,.32,1);
+}
+.icc-card.flipped .icc-card__inner { transform: rotateY(180deg); }
+.icc-card__face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 12px 10px;
+  background: var(--paper);
+  border: 2px solid var(--cat-color, var(--border));
+  border-radius: 12px;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  box-shadow: 0 1px 0 rgba(0,0,0,.04), 0 4px 14px -8px rgba(0,0,0,.18);
+}
+.icc-card__back {
+  transform: rotateY(180deg);
+  background: var(--cat-color, var(--ink));
+  color: white;
+  border-color: var(--cat-color, var(--ink));
+}
+.icc-card__num {
+  position: absolute;
+  top: 8px;
+  left: 10px;
+  font-family: var(--font-serif);
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  letter-spacing: 0.04em;
+}
+.icc-card__emoji {
+  font-size: 44px;
+  line-height: 1;
+  margin: 12px 0 8px;
+}
+.icc-card__name {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.3;
+  margin: 0 0 6px;
+}
+.icc-card__cat-badge {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  color: var(--cat-color, var(--ink-soft));
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 2px;
+}
+.icc-card__back-num {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: .85;
+  margin-bottom: 6px;
+}
+.icc-card__back-name {
+  font-family: var(--font-serif);
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0 0 6px;
+  line-height: 1.25;
+}
+.icc-card__stars {
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  color: #FCD34D;
+  margin: 4px 0 8px;
+}
+.icc-card__hint {
+  font-size: 12px;
+  line-height: 1.45;
+  color: rgba(255,255,255,.92);
+  padding: 0 6px;
+  margin: 0 0 8px;
+}
+.icc-card__back-cat {
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: .8;
+}
+.icc-card:hover { transform: translateY(-2px); }
+.icc-card.icc-card--match:not(.flipped) {
+  transform: translateY(-2px);
+  filter: none;
+}
+.icc-card.icc-card--dim {
+  opacity: .25;
+  filter: grayscale(.6);
+  pointer-events: none;
+}
+
+/* Tip below the explorer */
+.icc-tip {
+  font-size: 13px;
+  color: var(--ink-soft);
+  text-align: center;
+  margin: 0 0 32px;
+  padding: 10px;
+  border-top: 1px dashed var(--border);
+  border-bottom: 1px dashed var(--border);
+  letter-spacing: 0.04em;
+}
+
+/* 5-bucket view */
+.icc-buckets {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.icc-bucket {
+  background: var(--paper);
+  border: 1px solid var(--border);
+  border-top: 6px solid var(--bucket-color, var(--ink));
+  border-radius: 6px;
+  padding: 14px 16px 16px;
+  display: flex;
+  flex-direction: column;
+}
+.icc-bucket__head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--border);
+}
+.icc-bucket__icon { font-size: 18px; }
+.icc-bucket__title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  margin: 0;
+  color: var(--ink);
+  flex: 1;
+}
+.icc-bucket__count {
+  font-size: 12px;
+  color: var(--ink-soft);
+  background: var(--bg);
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-weight: 600;
+}
+.icc-bucket__chips {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 14px;
+  flex: 1;
+}
+.icc-bucket__chip {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 10px;
+  background: var(--bg);
+  border-radius: 4px;
+  font-size: 13px;
+  border-left: 3px solid var(--bucket-color);
+}
+.icc-bucket__chip-num {
+  font-family: var(--font-serif);
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--ink-soft);
+  min-width: 18px;
+  text-align: right;
+}
+.icc-bucket__chip-emoji { font-size: 16px; }
+.icc-bucket__chip-name { color: var(--ink); }
+.icc-bucket__highlight {
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  background: transparent;
+  color: var(--bucket-color);
+  border: 1px solid var(--bucket-color);
+  padding: 6px 10px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: 600;
+  min-height: auto;
+  box-shadow: none;
+  transition: background .2s, color .2s;
+}
+.icc-bucket__highlight:hover {
+  background: var(--bucket-color);
+  color: white;
+}
+
+@media (max-width: 600px) {
+  .icc-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .icc-card__emoji { font-size: 36px; }
+  .icc-card__name { font-size: 13px; }
+  .icc-card__back-name { font-size: 14px; }
+  .icc-card__hint { font-size: 11px; }
+}
