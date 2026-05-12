@@ -208,6 +208,32 @@ button:active, .btn:active { transform: translateY(0); }
     margin-top: 4px;
   }
   .nav-dropdown a { padding: 6px 12px; }
+
+  /* Mobile nav: title row + horizontally-scrollable nav row */
+  .site-header__inner { flex-wrap: wrap; align-items: flex-start; }
+  .site-title { width: 100%; }
+  .site-header__inner > nav { width: 100%; min-width: 0; }
+  .nav-list {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-left: 0;
+    border-left: 0;
+    border-top: 1px solid var(--border);
+    padding-top: 6px;
+    margin-top: 8px;
+    scrollbar-width: none;
+    /* mask the right edge to hint scrollability */
+    mask-image: linear-gradient(to right, black 0, black calc(100% - 24px), transparent 100%);
+  }
+  .nav-list::-webkit-scrollbar { display: none; }
+  .nav-list li { flex: 0 0 auto; }
+  .nav-list a {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    border-right: 1px solid var(--border);
+  }
+  .nav-list li:last-child a { border-right: 0; }
 }
 
 main {
@@ -1198,7 +1224,7 @@ main {
 .cat-hero .hero-photo img {
   width: 100%;
   display: block;
-  aspect-ratio: 21 / 9;
+  aspect-ratio: 16 / 9;
   object-fit: cover;
 }
 .cat-hero .hero-photo figcaption {
@@ -2341,4 +2367,146 @@ main {
   .icc-card__back-name { font-size: 16px; }
   .icc-card__hint { font-size: 12px; padding: 0 8px; }
   .icc-card__stars { font-size: 16px; }
+}
+
+/* ============================================================
+   HOME — magazine cover hero + lesson-path step cards
+   ============================================================ */
+.cover-photo {
+  margin: 8px auto 28px;
+  max-width: var(--measure);
+  background: var(--paper);
+}
+.cover-photo img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.cover-photo figcaption {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 8px;
+  padding-top: 6px;
+  line-height: 1.5;
+  max-width: 720px;
+}
+.cover-photo figcaption strong {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-right: 8px;
+}
+
+/* Sub-page hero — same shape as cover-photo, slightly different margin */
+.page-hero {
+  margin: 16px auto 32px;
+  max-width: var(--measure);
+  background: var(--paper);
+}
+.page-hero img {
+  width: 100%;
+  display: block;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+.page-hero figcaption {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 13px;
+  color: var(--ink-soft);
+  margin-top: 8px;
+  padding-top: 6px;
+  line-height: 1.5;
+  max-width: 720px;
+}
+.page-hero figcaption strong {
+  font-family: var(--font-sans);
+  font-style: normal;
+  font-weight: 700;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink);
+  margin-right: 8px;
+}
+
+/* Two-column level card: image left, body right (desktop) */
+@media (min-width: 720px) {
+  .level-card {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 28px;
+    align-items: start;
+    margin: 32px 0;
+  }
+}
+.level-card figure {
+  margin: 0;
+}
+.level-card figure img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+.level-card .level-card__body { min-width: 0; }
+.level-card h2 { margin-top: 0; }
+
+.home-section {
+  margin: 72px 0;
+  border-top: 2px solid var(--ink);
+  padding-top: 20px;
+}
+.home-section > .kicker {
+  display: block;
+  margin-bottom: 6px;
+}
+.home-section > h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.2;
+  margin: 0 0 28px;
+}
+
+/* Step card — overlay numbered badge on the figure */
+.story-card--step figure { position: relative; }
+.story-card--step .step-num {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  font-family: var(--font-serif);
+  font-size: clamp(20px, 2.6vw, 28px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: white;
+  background: rgba(17, 24, 39, 0.85);
+  padding: 10px 14px 12px;
+  font-feature-settings: "lnum" 1;
+}
+.story-card--game .story-kicker {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+.story-card--anping {
+  border-color: var(--ink);
+  border-width: 2px;
+}
+
+/* Wide modifier: span both columns in 2-col story-grid (anping highlight) */
+@media (min-width: 720px) {
+  .story-grid .story-card--wide {
+    grid-column: span 2;
+  }
+  .story-grid .story-card--wide figure { aspect-ratio: 21 / 9; }
 }

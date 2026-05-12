@@ -10,6 +10,16 @@
 <body>
   <main>
 
+    <figure class="page-hero">
+      <img src="../images/beverage/bev_01_plastic_pollution_in_santa_luzia_cape_verde.jpg"
+           alt="海岸線堆積的塑膠瓶罐——這些就是下面數據裡的『一筆紀錄』"
+           loading="eager" fetchpriority="high">
+      <figcaption>
+        <strong>Photograph</strong>
+        每一支瓶罐，都會變成 ICC 表上的一筆數據。
+      </figcaption>
+    </figure>
+
     <header class="page-head">
       <span class="kicker">Part 06 &nbsp;/&nbsp; Data &amp; Charts</span>
       <h1>台灣海廢數據</h1>
@@ -18,6 +28,10 @@
         每一格都是真的人在台灣海邊撿了 20 年才累積出來的。
       </p>
     </header>
+
+    <p class="lead drop-cap">
+      沒有數字，海廢看起來只是「感覺很多」。有了數字，就知道從哪裡先動手。下面五張圖、四張卡片，從整體規模、五類分布、前 10 名、20 年趨勢，一路看到台灣四區海岸的差別——每張圖都是某群志工撿了好幾年才畫得出來。
+    </p>
 
     <noscript>
       <p class="chart-fallback">
@@ -29,9 +43,14 @@
       ⚠ 圖表沒辦法載入（可能是網路或瀏覽器的問題），但下面的文字數據還在。
     </p>
 
+    <hr class="ornament">
+
     <!-- 整體規模 -->
     <section class="section">
-      <h2>整體規模</h2>
+      <h2><span class="num">01 · The Scale</span>整體規模</h2>
+      <p>
+        先把鏡頭拉到最遠——海廢到底有多大？四個數字夠你定位：絕大多數是塑膠、絕大多數來自陸地、每年新增量驚人、目前漂浮在海上的更驚人。
+      </p>
       <div class="facts">
         <div class="fact"><strong>92.8%</strong><span>台灣海廢都是塑膠類</span></div>
         <div class="fact"><strong>88%</strong><span>來自陸地（不是漁業）</span></div>
@@ -40,10 +59,14 @@
       </div>
     </section>
 
+    <hr class="rule">
+
     <!-- Charts: 5 大類 + 材質 -->
     <section class="section">
-      <h2>分類比例</h2>
-      <p>用兩個圓餅圖快速看：海廢都是什麼東西？什麼材質做的？</p>
+      <h2><span class="num">02 · By Category</span>五類 vs 材質</h2>
+      <p>
+        把所有海廢分成兩個角度看：第一個是「<strong>它是什麼東西</strong>」（5 大類），第二個是「<strong>它是什麼做的</strong>」（材質）。前者告訴你問題從哪個習慣來，後者告訴你為什麼這麼難清。
+      </p>
       <div class="chart-grid">
         <figure class="chart-card">
           <figcaption>
@@ -65,22 +88,27 @@
       </div>
     </section>
 
+    <hr class="rule">
+
     <!-- Top 10 horizontal bar -->
     <section class="section">
-      <h2>台灣海廢前 10 名</h2>
-      <p>從 ICC 國際淨灘資料整理出來，台灣海邊最常撿到的 10 樣東西，是這些：</p>
+      <h2><span class="num">03 · The Top 10</span>台灣海廢前 10 名</h2>
+      <p>
+        前 10 名裡面，幾乎全部都是塑膠。瓶蓋、寶特瓶、吸管、菸蒂——這些都是<strong>「你今天可能也用過、明天也可能丟掉」</strong>的東西。它們不是某種神秘的工業廢料，就是日常生活的延伸。
+      </p>
       <figure class="chart-card chart-card-wide">
         <div class="chart-wrap"><canvas id="chart-top10" aria-label="台灣海廢前 10 名水平長條圖"></canvas></div>
         <p class="chart-source">資料來源：荒野 ICC 國際淨灘行動 (2021–2024)</p>
       </figure>
     </section>
 
+    <hr class="rule">
+
     <!-- 20-year trend line chart -->
     <section class="section">
-      <h2>20 年趨勢：什麼變多、什麼變少？</h2>
+      <h2><span class="num">04 · 20-Year Trends</span>什麼變多、什麼變少？</h2>
       <p>
-        台南社區大學從 2005 年起在月牙灣監測——20 年下來，
-        看到的不是「越來越多」，而是<strong>變化的形狀</strong>。
+        台南社區大學從 2005 年起在月牙灣監測——20 年下來，看到的不是一條「越來越多」的直線，而是<strong>變化的形狀</strong>。每一條線背後，都對應到一段社會的轉變：手搖飲料、玻璃押瓶費、新冠疫情。
       </p>
       <figure class="chart-card chart-card-wide">
         <div class="chart-wrap"><canvas id="chart-trend-line" aria-label="20 年海廢趨勢折線圖"></canvas></div>
@@ -95,12 +123,13 @@
       </div>
     </section>
 
+    <hr class="rule">
+
     <!-- 4 regions stacked + ID cards -->
     <section class="section">
-      <h2>台灣四區海廢身份證</h2>
+      <h2><span class="num">05 · Four Coasts</span>台灣四區海廢身份證</h2>
       <p>
-        北部、中西部、南部、東部——每一段海岸都有自己的「特色垃圾」。
-        看這張堆疊圖，再對照下面 4 張卡片，你就懂為什麼了。
+        北部、中西部、南部、東部——每一段海岸都有自己的「特色垃圾」。同樣是台灣，但因為風向、洋流、產業不一樣，海邊撿到的東西就完全不一樣。看這張堆疊圖，再對照下面 4 張卡片，你就懂為什麼了。
       </p>
 
       <figure class="chart-card chart-card-wide">
@@ -132,12 +161,13 @@
       </div>
     </section>
 
+    <hr class="ornament">
+
     <!-- Data journey -->
     <section class="section">
-      <h2>我們的數據要去哪裡？</h2>
+      <h2><span class="num">06 · Your Data Journey</span>我們的數據要去哪裡？</h2>
       <p>
-        你撿到的每一片垃圾，不會只是垃圾——是一筆數據，會傳到全世界。
-        以下就是這個旅程：
+        兩週後在月牙灣，你撿到的每一片垃圾不會只是垃圾——是一筆<strong>進到全國資料庫、再進到全球資料庫</strong>的紀錄。下面就是這個旅程，從你的手指到 Ocean Conservancy。
       </p>
       <div class="journey">
         <div class="step"><strong>1</strong><span>你在月牙灣撿到的每一件物品，都會被記錄物種、材質、地點。</span></div>
@@ -152,6 +182,7 @@
       <a class="btn btn-ghost" href="../">← 回首頁</a>
       <a class="btn btn-primary" href="../action/">下一步：你能做什麼？ →</a>
     </div>
+
   </main>
   <script src="../js/nav.js"></script>
   <script src="../js/charts.js" defer></script>

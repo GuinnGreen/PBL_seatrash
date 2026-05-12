@@ -2,21 +2,19 @@
 // Uses relative paths so the site works at any GitHub Pages sub-path.
 
 (function () {
-  // Main nav follows the lesson teaching flow.
+  // Nav follows the actual lesson flow:
+  // 全台灣→前測→認識實物→安平→五大類→ICC→後測，後接補充頁。
   const PRIMARY_NAV = [
-    { key: 'items',      label: '認識垃圾', slug: 'items/' },
-    { key: 'icc',        label: 'ICC 分類', slug: 'icc/' },
-    { key: 'categories', label: '5 大類',   slug: 'categories/' },
-    { key: 'stories',    label: '故事',     slug: 'stories/' },
-    { key: 'game',       label: '遊戲',     slug: 'game/' },
-  ];
-
-  // Secondary pages live inside the "更多 ▾" dropdown.
-  const MORE_NAV = [
-    { key: 'data-viz', label: '數據',     slug: 'data-viz/' },
-    { key: 'action',   label: '行動',     slug: 'action/' },
-    { key: 'teacher',  label: '教師',     slug: 'teacher/' },
-    { key: 'next',     label: '下節預告', slug: 'next/' },
+    { key: 'data-viz',   label: '台灣海廢',   slug: 'data-viz/' },
+    { key: 'game',       label: '分類遊戲',   slug: 'game/' },
+    { key: 'items',      label: '認識實物',   slug: 'items/' },
+    { key: 'anping',     label: '安平蚵棚',   slug: 'stories/anping.html' },
+    { key: 'categories', label: '5 大類',     slug: 'categories/' },
+    { key: 'icc',        label: 'ICC 20 項',  slug: 'icc/' },
+    { key: 'stories',    label: '案件故事',   slug: 'stories/' },
+    { key: 'action',     label: '行動',       slug: 'action/' },
+    { key: 'teacher',    label: '教師',       slug: 'teacher/' },
+    { key: 'next',       label: '下節預告',   slug: 'next/' },
   ];
 
   function isSubPage() {
@@ -31,16 +29,8 @@
 
   function renderNav(activeKey) {
     const prefix = rootPrefix();
-    const moreActive = MORE_NAV.some(item => item.key === activeKey);
 
     const primaryHTML = PRIMARY_NAV.map(item => `
-      <li><a href="${prefix}${item.slug}"
-             class="${item.key === activeKey ? 'active' : ''}">
-        ${item.label}
-      </a></li>
-    `).join('');
-
-    const moreHTML = MORE_NAV.map(item => `
       <li><a href="${prefix}${item.slug}"
              class="${item.key === activeKey ? 'active' : ''}">
         ${item.label}
@@ -58,26 +48,18 @@
         <nav>
           <ul class="nav-list">
             ${primaryHTML}
-            <li class="nav-more${moreActive ? ' active' : ''}">
-              <details>
-                <summary>更多 <span aria-hidden="true">▾</span></summary>
-                <ul class="nav-dropdown">
-                  ${moreHTML}
-                </ul>
-              </details>
-            </li>
           </ul>
         </nav>
       </div>
     `;
     document.body.insertBefore(header, document.body.firstChild);
 
-    // Close the dropdown when clicking outside it.
-    const detailsEl = header.querySelector('.nav-more details');
-    if (detailsEl) {
-      document.addEventListener('click', (e) => {
-        if (!detailsEl.contains(e.target)) detailsEl.removeAttribute('open');
-      });
+    // On mobile single-row nav, scroll the active item into view.
+    const activeLink = header.querySelector('.nav-list a.active');
+    if (activeLink && activeLink.scrollIntoView) {
+      try {
+        activeLink.scrollIntoView({ inline: 'center', block: 'nearest', behavior: 'auto' });
+      } catch (_) { /* old browsers */ }
     }
   }
 

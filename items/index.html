@@ -147,11 +147,12 @@
           grid.innerHTML = '<p style="color:var(--ink-soft);">這類目前沒有照片。</p>';
           return;
         }
-        grid.innerHTML = visible.map(it => {
+        grid.innerHTML = visible.map((it, i) => {
           const c = cats[it.category] || { label: it.category, color: '#9CA3AF' };
+          const eager = i < 8;
           return `
             <figure class="photo-card">
-              <img src="../${it.filename}" alt="${it.label || ''}" loading="lazy">
+              <img src="../${it.filename}" alt="${it.label || ''}" loading="${eager ? 'eager' : 'lazy'}"${eager ? ' fetchpriority="high"' : ''}>
               <figcaption class="photo-card__caption">
                 <strong>${it.label || '海廢'}</strong>
                 <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:${c.color}; margin-right:4px; vertical-align:middle;"></span><span>${c.label}</span>
