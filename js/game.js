@@ -16,7 +16,33 @@
   let answered = 0;
   let perCatStats = {};
 
+  // Student identity + test mode (pretest|posttest), set after showIdentityForm()
+  let student = { cls: null, seat: null };
+  let mode = null;
+
+  const RECORDS_KEY = 'pbl-game-records';
   const $ = (sel) => document.querySelector(sel);
+
+  function loadRecords() {
+    try { return JSON.parse(localStorage.getItem(RECORDS_KEY) || '[]'); }
+    catch (_) { return []; }
+  }
+  function saveRecord(rec) {
+    const all = loadRecords();
+    const i = all.findIndex(r =>
+      r.cls === rec.cls && r.seat === rec.seat && r.mode === rec.mode);
+    if (i >= 0) all[i] = rec; else all.push(rec);
+    localStorage.setItem(RECORDS_KEY, JSON.stringify(all));
+  }
+  function findRecord(cls, seat, m) {
+    return loadRecords().find(r =>
+      r.cls === cls && r.seat === seat && r.mode === m) || null;
+  }
+  // Auto-detect mode based on this student's prior records on this device.
+  function determineMode(cls, seat) {
+    if (findRecord(cls, seat, 'pretest')) return 'posttest';
+    return 'pretest';
+  }
 
   function shuffle(arr) {
     const a = arr.slice();
@@ -251,21 +277,73 @@
       ? '飲料容器是台灣海廢前 5 名，記住：瓶/罐/杯/蓋。'
       : '繼續加油，下次淨灘記錄會用更細的 ICC 20 項。';
 
-    const bestKey = `og_best_${ROUNDS}`;
-    const prevBest = parseInt(localStorage.getItem(bestKey) || '0', 10);
-    const isNewRecord = score > prevBest;
-    if (isNewRecord) localStorage.setItem(bestKey, String(score));
+    // Persist this attempt as a student record (per-device localStorage).
+    const record = {
+      cls: student.cls,
+      seat: student.seat,
+      mode,
+      score,
+      answered,
+      total: ROUNDS,
+      perCatStats: JSON.parse(JSON.stringify(perCatStats)),
+      timestamp: new Date().toISOString(),
+    };
+    saveRecord(record);
+
+    // Cloud sync (fire-and-forget; surface success/fail in UI).
+    let cloudSyncStatus = 'pending';
+    if (window.OG && typeof window.OG.syncRecord === 'function') {
+      window.OG.syncRecord(record).then(res => {
+        cloudSyncStatus = res.ok ? 'ok' : (res.reason || 'failed');
+        const el = document.getElementById('cloud-sync-status');
+        if (!el) return;
+        if (res.ok) {
+          el.innerHTML = '<span style="color:#047857;">✓ 已上傳到老師那邊</span>';
+        } else if (res.reason === 'not-configured') {
+          el.innerHTML = '<span style="color:var(--ink-soft);">（雲同步未設定，僅存在本機）</span>';
+        } else {
+          el.innerHTML = '<span style="color:var(--c-hazard);">⚠ 上傳失敗，請告訴老師你的成績</span>';
+        }
+      });
+    }
+
+    // Compare to pretest if this is a posttest run.
+    let progressBlock = '';
+    if (mode === 'posttest') {
+      const pre = findRecord(student.cls, student.seat, 'pretest');
+      if (pre) {
+        const diff = score - pre.score;
+        const sign = diff > 0 ? '+' : (diff < 0 ? '' : '±');
+        const color = diff > 0 ? 'var(--accent)' : diff < 0 ? 'var(--c-hazard)' : 'var(--ink-soft)';
+        const word = diff > 0 ? '進步' : diff < 0 ? '退步' : '持平';
+        progressBlock = `
+          <p style="font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:${color}; font-weight:700; margin-top:6px;">
+            前測 ${pre.score} / ${ROUNDS} → 後測 ${score} / ${ROUNDS} · ${word} ${sign}${Math.abs(diff)} 題
+          </p>`;
+      }
+    } else {
+      progressBlock = `
+        <p style="font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft);">
+          前測成績已存 · 學完後回來玩後測比較進步
+        </p>`;
+    }
+
+    const modeLabel = mode === 'pretest' ? 'Pretest · 前測' : 'Posttest · 後測';
+    const headline = mode === 'pretest' ? '前測完成' : '後測完成';
 
     main.innerHTML = `
       <header class="page-head">
-        <span class="kicker">Result</span>
-        <h1>測驗結束</h1>
+        <span class="kicker">${modeLabel}</span>
+        <h1>${headline}</h1>
         <p class="dek">${weakMsg}</p>
+        <p style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-soft); margin-top:8px;">
+          ${student.cls} · 座號 ${student.seat}
+        </p>
       </header>
       <div class="result">
         <div class="score">${score}<small> / ${ROUNDS}</small></div>
-        ${isNewRecord ? '<p style="font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); font-weight:700;">New best</p>'
-                      : (prevBest > 0 ? `<p style="font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft);">Personal best · ${prevBest} / ${ROUNDS}</p>` : '')}
+        ${progressBlock}
+        <p id="cloud-sync-status" style="font-size:12px; letter-spacing:0.06em; margin-top:4px;"><span style="color:var(--ink-soft);">⏳ 上傳中…</span></p>
         <p style="font-size:16px; max-width:var(--measure); margin:12px auto 0;">${tip}</p>
         <div class="breakdown">
           ${order.map(k => `
@@ -276,12 +354,16 @@
           `).join('')}
         </div>
         <div class="actions">
-          <button class="btn btn-primary" id="play-again">再測一次</button>
-          <a class="btn btn-ghost" href="${ROOT}icc/">看 ICC 對照 →</a>
+          ${mode === 'pretest'
+            ? `<a class="btn btn-primary" href="${ROOT}items/">下一步：認識實物 →</a>
+               <a class="btn btn-ghost" href="${ROOT}">回首頁</a>`
+            : `<a class="btn btn-primary" href="${ROOT}action/">下一步：行動 →</a>
+               <button class="btn btn-ghost" id="play-again">重玩後測</button>`}
         </div>
       </div>
     `;
-    document.getElementById('play-again').addEventListener('click', startRound);
+    const again = document.getElementById('play-again');
+    if (again) again.addEventListener('click', startRound);
     if (window.OG && window.OG.renderFooter) window.OG.renderFooter();
   }
 
@@ -305,14 +387,75 @@
     next();
   }
 
-  function showStart() {
-    const bestKey = `og_best_${ROUNDS}`;
-    const prevBest = parseInt(localStorage.getItem(bestKey) || '0', 10);
+  function showIdentityForm() {
     document.querySelector('main').innerHTML = `
       <header class="page-head">
-        <span class="kicker">Part 03 &nbsp;/&nbsp; The Test</span>
-        <h1>分類測驗</h1>
-        <p class="dek">把照片拖進對應的分類筐。30 題、即時回饋、隨時可重來。</p>
+        <span class="kicker">Sign In · 身份登錄</span>
+        <h1>分類遊戲</h1>
+        <p class="dek">先輸入你的班級和座號，老師最後會收齊全班的成績。</p>
+      </header>
+      <form class="game-form" id="identity-form" novalidate>
+        <label class="game-form__field">
+          <span class="game-form__label">班級</span>
+          <input type="text" name="cls" id="cls" required maxlength="10"
+                 placeholder="例如：505" autocomplete="off"
+                 inputmode="numeric" list="cls-options">
+          <datalist id="cls-options">
+            <option value="501"></option>
+            <option value="502"></option>
+            <option value="503"></option>
+            <option value="504"></option>
+            <option value="505"></option>
+            <option value="506"></option>
+            <option value="507"></option>
+            <option value="508"></option>
+          </datalist>
+        </label>
+        <label class="game-form__field">
+          <span class="game-form__label">座號</span>
+          <input type="number" name="seat" id="seat" required min="1" max="40"
+                 inputmode="numeric" placeholder="1 - 40">
+        </label>
+        <p class="game-form__hint" id="form-hint">系統會自動分辨你是<strong>前測</strong>（第一次玩）還是<strong>後測</strong>（學完後再玩）。</p>
+        <button type="submit" class="btn btn-primary">確認 →</button>
+      </form>
+    `;
+    document.getElementById('identity-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const cls = document.getElementById('cls').value.trim();
+      const seat = parseInt(document.getElementById('seat').value, 10);
+      if (!cls || !seat || seat < 1 || seat > 40) {
+        document.getElementById('form-hint').innerHTML =
+          '<strong style="color:var(--c-hazard);">請輸入有效的班級與 1-40 的座號。</strong>';
+        return;
+      }
+      student = { cls, seat };
+      mode = determineMode(cls, seat);
+      // If both modes already done, ask before overwriting posttest.
+      if (mode === 'posttest' && findRecord(cls, seat, 'posttest')) {
+        if (!confirm('你已完成前測 + 後測。要重玩後測（會覆蓋舊成績）嗎？')) {
+          return;
+        }
+      }
+      showStart();
+    });
+  }
+
+  function showStart() {
+    const isPre = mode === 'pretest';
+    const headline = isPre ? '前測 · 先看看你目前的了解' : '後測 · 看看你進步多少';
+    const kicker = isPre ? 'Pretest · 前測' : 'Posttest · 後測';
+    const dek = isPre
+      ? '輸入完了。先別怕，這是「前測」——告訴老師你目前對海廢分類的掌握程度，課後再玩一次比較進步。'
+      : '上次的前測分數已經存好。這次玩完，系統會直接告訴你進步多少。';
+    document.querySelector('main').innerHTML = `
+      <header class="page-head">
+        <span class="kicker">${kicker}</span>
+        <h1>${headline}</h1>
+        <p class="dek">${dek}</p>
+        <p style="font-size:12px; letter-spacing:0.14em; text-transform:uppercase; color:var(--ink-soft); margin-top:8px;">
+          ${student.cls} · 座號 ${student.seat}
+        </p>
       </header>
       <div class="start-screen">
         <h2>規則</h2>
@@ -323,7 +466,6 @@
           <li>答錯 → 顯示正確答案，再下一張</li>
           <li>共 30 題</li>
         </ul>
-        ${prevBest > 0 ? `<p style="margin:0 0 20px; font-size:13px; letter-spacing:0.1em; text-transform:uppercase; color:var(--ink-soft);">Personal best · ${prevBest} / ${ROUNDS}</p>` : ''}
         <button class="btn btn-primary" id="start-btn">開始 →</button>
       </div>
     `;
@@ -351,7 +493,7 @@
       `;
       return;
     }
-    showStart();
+    showIdentityForm();
   }
 
   document.addEventListener('DOMContentLoaded', init);
