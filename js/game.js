@@ -74,12 +74,15 @@
     };
     const bins = $('#bins');
     bins.innerHTML = order.map(key => `
-      <div class="bin bin-${key}" data-cat="${key}" role="button" tabindex="0" aria-label="放到 ${cats[key].label}">
+      <button type="button" class="bin bin-${key}" data-cat="${key}" aria-label="分類為 ${cats[key].label}">
         <div class="emoji">${emojis[key]}</div>
         <div>${cats[key].label}</div>
         <div class="icc-hint">${iccHints[key]}</div>
-      </div>
+      </button>
     `).join('');
+    bins.querySelectorAll('.bin').forEach(btn => {
+      btn.addEventListener('click', () => evaluateAnswer(btn.dataset.cat));
+    });
   }
 
   function pickPool() {
@@ -100,7 +103,7 @@
     card.id = 'current-card';
     card.innerHTML = `
       <img src="${ROOT}${current.filename}" alt="${current.label}" draggable="false">
-      <div class="label-hint">這是什麼？拖到下面正確的分類筐</div>
+      <div class="label-hint">這是什麼？點下面正確的分類</div>
     `;
     stage.appendChild(card);
 
@@ -109,98 +112,8 @@
     fb.id = 'feedback';
     fb.innerHTML = `<div class="icon"></div><div class="text"></div>`;
     stage.appendChild(fb);
-
-    attachDrag(card);
   }
 
-  function attachDrag(card) {
-    let dragging = false;
-    let startX = 0, startY = 0;
-    let origLeft = 0, origTop = 0;
-    let lastBin = null;
-
-    function bins() { return Array.from(document.querySelectorAll('.bin')); }
-
-    function onDown(e) {
-      e.preventDefault();
-      dragging = true;
-      const point = e.touches ? e.touches[0] : e;
-      startX = point.clientX;
-      startY = point.clientY;
-      const rect = card.getBoundingClientRect();
-      origLeft = rect.left;
-      origTop = rect.top;
-      card.style.position = 'fixed';
-      card.style.left = `${origLeft}px`;
-      card.style.top  = `${origTop}px`;
-      card.style.zIndex = 1000;
-      card.classList.add('dragging');
-      try { card.setPointerCapture && e.pointerId && card.setPointerCapture(e.pointerId); } catch (_) {}
-    }
-
-    function onMove(e) {
-      if (!dragging) return;
-      e.preventDefault();
-      const point = e.touches ? e.touches[0] : e;
-      const dx = point.clientX - startX;
-      const dy = point.clientY - startY;
-      card.style.left = `${origLeft + dx}px`;
-      card.style.top  = `${origTop + dy}px`;
-
-      const x = point.clientX, y = point.clientY;
-      let hit = null;
-      for (const b of bins()) {
-        const r = b.getBoundingClientRect();
-        if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) {
-          hit = b;
-          break;
-        }
-      }
-      if (hit !== lastBin) {
-        if (lastBin) lastBin.classList.remove('hover');
-        if (hit) hit.classList.add('hover');
-        lastBin = hit;
-      }
-    }
-
-    function onUp(e) {
-      if (!dragging) return;
-      dragging = false;
-      card.classList.remove('dragging');
-      const point = (e.changedTouches && e.changedTouches[0]) || e;
-      const x = point.clientX, y = point.clientY;
-      let hit = null;
-      for (const b of bins()) {
-        const r = b.getBoundingClientRect();
-        if (x >= r.left && x <= r.right && y >= r.top && y <= r.bottom) {
-          hit = b;
-          break;
-        }
-      }
-      if (lastBin) lastBin.classList.remove('hover');
-      lastBin = null;
-      if (hit) {
-        const cat = hit.getAttribute('data-cat');
-        evaluateAnswer(cat);
-      } else {
-        card.style.transition = 'left 0.2s ease, top 0.2s ease';
-        card.style.left = `${origLeft}px`;
-        card.style.top = `${origTop}px`;
-        setTimeout(() => {
-          card.style.transition = '';
-          card.style.position = '';
-          card.style.left = '';
-          card.style.top = '';
-          card.style.zIndex = '';
-        }, 200);
-      }
-    }
-
-    card.addEventListener('pointerdown', onDown);
-    document.addEventListener('pointermove', onMove);
-    document.addEventListener('pointerup', onUp);
-    document.addEventListener('pointercancel', onUp);
-  }
 
   function evaluateAnswer(chosenCat) {
     if (!current) return;
@@ -290,21 +203,20 @@
     };
     saveRecord(record);
 
-    // Cloud sync (fire-and-forget; surface success/fail in UI).
-    let cloudSyncStatus = 'pending';
-    if (window.OG && typeof window.OG.syncRecord === 'function') {
-      window.OG.syncRecord(record).then(res => {
-        cloudSyncStatus = res.ok ? 'ok' : (res.reason || 'failed');
-        const el = document.getElementById('cloud-sync-status');
-        if (!el) return;
-        if (res.ok) {
-          el.innerHTML = '<span style="color:#047857;">✓ 已上傳到老師那邊</span>';
-        } else if (res.reason === 'not-configured') {
-          el.innerHTML = '<span style="color:var(--ink-soft);">（雲同步未設定，僅存在本機）</span>';
-        } else {
-          el.innerHTML = '<span style="color:var(--c-hazard);">⚠ 上傳失敗，請告訴老師你的成績</span>';
-        }
-      });
+    // Cloud sync via Firebase Firestore (offline-safe; SDK queues writes in IndexedDB).
+    if (window.OG?.firebase?.syncRecord) {
+      window.OG.firebase.syncRecord(record)
+        .then(() => {
+          const el = document.getElementById('cloud-sync-status');
+          if (el) el.innerHTML = '<span style="color:#047857;">✓ 已上傳到老師那邊</span>';
+        })
+        .catch((err) => {
+          const el = document.getElementById('cloud-sync-status');
+          if (el) el.innerHTML = `<span style="color:var(--c-hazard);">⚠ 上傳失敗（${err.code || err.message || 'unknown'}），請告訴老師你的成績</span>`;
+        });
+    } else {
+      const el = document.getElementById('cloud-sync-status');
+      if (el) el.innerHTML = '<span style="color:var(--ink-soft);">（雲同步未設定，僅存在本機）</span>';
     }
 
     // Compare to pretest if this is a posttest run.
@@ -374,7 +286,7 @@
     document.querySelector('main').innerHTML = `
       <div class="page-head">
         <h1>分類遊戲</h1>
-        <p>把卡片拖到正確的分類筐。<strong>30 題</strong>，看你能答對幾題！</p>
+        <p>看圖片、點下面正確的分類。<strong>30 題</strong>，看你能答對幾題！</p>
       </div>
       <div class="game-bar">
         <div class="stat">⭐ <strong id="score">0</strong> 分</div>
@@ -418,6 +330,9 @@
         </label>
         <p class="game-form__hint" id="form-hint">系統會自動分辨你是<strong>前測</strong>（第一次玩）還是<strong>後測</strong>（學完後再玩）。</p>
         <button type="submit" class="btn btn-primary">確認 →</button>
+        <p style="text-align:center; margin:4px 0 0; font-size:13px;">
+          <a href="#" id="teacher-login-link" style="color:var(--ink-soft);">👨‍🏫 我是老師</a>
+        </p>
       </form>
     `;
     document.getElementById('identity-form').addEventListener('submit', (e) => {
@@ -438,6 +353,64 @@
         }
       }
       showStart();
+    });
+    document.getElementById('teacher-login-link').addEventListener('click', (e) => {
+      e.preventDefault();
+      showTeacherLoginForm();
+    });
+
+    // If URL has ?teacher=1, jump straight to teacher login form
+    if (new URLSearchParams(location.search).get('teacher') === '1') {
+      showTeacherLoginForm();
+    }
+  }
+
+  function showTeacherLoginForm() {
+    document.querySelector('main').innerHTML = `
+      <header class="page-head">
+        <span class="kicker">Teacher Sign-In · 教師登入</span>
+        <h1>查看成績儀表板</h1>
+        <p class="dek">輸入老師帳號跟密碼。登入後可以看到全班的前後測對比。</p>
+      </header>
+      <form class="game-form" id="teacher-form" novalidate>
+        <label class="game-form__field">
+          <span class="game-form__label">Email</span>
+          <input type="email" name="email" id="t-email" required autocomplete="username">
+        </label>
+        <label class="game-form__field">
+          <span class="game-form__label">密碼</span>
+          <input type="password" name="password" id="t-password" required autocomplete="current-password">
+        </label>
+        <p class="game-form__hint" id="t-hint">登入後會跳轉到成績儀表板。</p>
+        <button type="submit" class="btn btn-primary">登入 →</button>
+        <p style="text-align:center; margin:4px 0 0; font-size:13px;">
+          <a href="#" id="back-to-student" style="color:var(--ink-soft);">← 回學生模式</a>
+        </p>
+      </form>
+    `;
+    document.getElementById('teacher-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('t-email').value.trim();
+      const password = document.getElementById('t-password').value;
+      const hint = document.getElementById('t-hint');
+      if (!email || !password) {
+        hint.innerHTML = '<strong style="color:var(--c-hazard);">請輸入帳號與密碼。</strong>';
+        return;
+      }
+      hint.textContent = '⏳ 登入中…';
+      try {
+        if (!window.OG?.firebase?.signInTeacher) {
+          throw new Error('Firebase 尚未載入完成，請重新整理');
+        }
+        await window.OG.firebase.signInTeacher(email, password);
+        window.location.href = '../teacher/results.html';
+      } catch (err) {
+        hint.innerHTML = `<strong style="color:var(--c-hazard);">⚠ 登入失敗（${err.code || 'error'}）。請確認帳密。</strong>`;
+      }
+    });
+    document.getElementById('back-to-student').addEventListener('click', (e) => {
+      e.preventDefault();
+      showIdentityForm();
     });
   }
 
@@ -461,7 +434,7 @@
         <h2>規則</h2>
         <ul class="rules">
           <li>螢幕中央會出現一張海廢照片</li>
-          <li>用手指<strong>拖到下面 5 個顏色筐</strong>之一</li>
+          <li>用手指<strong>點下面 5 個顏色按鈕</strong>之一</li>
           <li>答對 → 加 1 分，下一張</li>
           <li>答錯 → 顯示正確答案，再下一張</li>
           <li>共 30 題</li>

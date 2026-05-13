@@ -77,35 +77,34 @@
     </section>
 
     <section style="background:var(--surface); border-radius:var(--radius); padding:24px; box-shadow:var(--shadow-sm); margin-bottom:24px;">
-      <h2 style="margin-top:0;">📊 學生成績（Google Sheet 自動收齊）</h2>
-      <p>學生玩完分類遊戲後，<strong>成績會直接傳到下面這份 Google Sheet</strong>，老師打開試算表就能看到全班全部紀錄——不用再去每一台 iPad 收。</p>
+      <h2 style="margin-top:0;">📊 學生成績儀表板</h2>
+      <p>學生玩完分類遊戲後，成績會即時上傳到 Firebase。儀表板自動依 <strong>班級+座號</strong> 聚合、計算前後測進步——你打開就能看到全班。</p>
       <p style="margin: 14px 0 4px;">
-        <a id="sheet-link" class="btn btn-primary" href="#" target="_blank" rel="noopener">
-          打開成績總表 ↗
-        </a>
+        <a class="btn btn-primary" href="results.html">→ 打開成績儀表板</a>
       </p>
-      <p id="sheet-link-hint" style="font-size:13px; color:var(--ink-soft); margin:6px 0 0;">
-        （請把 Google Sheet 連結填進 teacher/index.html 的 <code>SHEET_URL</code>）
+      <p style="font-size:13px; color:var(--ink-soft); margin:6px 0 0;">
+        需要老師帳號登入。學生不會誤入這頁的資料。
       </p>
 
-      <h3 style="margin-top:24px; font-size:16px;">📋 試算表欄位</h3>
-      <p style="font-size:14px; line-height:1.7;">
-        每一筆學生成績會包含：班級、座號、模式（前測 / 後測）、總分、總題數、五大類各自的對 / 問題數、完成時間。
-        以 <strong>班級 + 座號 + 模式</strong> 為主鍵——同學重玩時新的會被記錄為新一行（以時間戳判斷最新）。
+      <h3 style="margin-top:24px; font-size:16px;">📋 儀表板顯示欄位</h3>
+      <ul style="font-size:14px; line-height:1.7;">
+        <li>班級、座號</li>
+        <li>前測分數 / 時間</li>
+        <li>後測分數 / 時間</li>
+        <li>進步題數、進步 %</li>
+        <li>後測最弱的分類</li>
+      </ul>
+      <p style="font-size:13px; color:var(--ink-soft);">同一位學生重玩時，<strong>同模式</strong>會用最新的紀錄覆寫顯示。</p>
+
+      <h3 style="margin-top:24px; font-size:16px;">🔐 登入資訊</h3>
+      <p style="font-size:14px; line-height:1.8;">
+        進儀表板需要老師帳號。**也可以從 <a href="../game/?teacher=1">分類遊戲頁的「我是老師」連結</a>** 登入後直接跳轉。<br>
+        忘記密碼或需要改密碼：到 <a href="https://console.firebase.google.com/project/pbl-seatrash/authentication/users" target="_blank" rel="noopener">Firebase Console Authentication 頁面</a> 操作。
       </p>
 
-      <h3 style="margin-top:24px; font-size:16px;">⚙️ 一次性設定（如果還沒做）</h3>
-      <ol style="line-height:1.9; font-size:14px;">
-        <li>新建 Google Form，加 11 個欄位（班級、座號、模式、分數、總題數、五類各自的對/問、完成時間）</li>
-        <li>表單右上 ⋮ → 「取得預先填寫的連結」，從預填網址抓 FORM_ID 和每個欄位的 <code>entry.XXXXX</code></li>
-        <li>把 FORM_ID 跟 entry IDs 填進 <code>js/sheets-config.js</code></li>
-        <li>表單右上「回應」→ 連結 Google Sheet，把 Sheet 連結貼進這個頁面下方的 <code>SHEET_URL</code></li>
-        <li>詳細步驟見 <code>js/sheets-config.js</code> 檔案頂端的註解</li>
-      </ol>
-
-      <div class="callout callout--warn" style="margin-top:18px;">
-        <h4>⚠️ 注意：失敗就沒了</h4>
-        <p style="margin:0;">如果學生的網路在玩遊戲時斷線，那一筆成績<strong>不會自動補傳</strong>。學生作答完成的畫面會顯示「⚠ 上傳失敗，請告訴老師你的成績」——老師看到提醒後可以人工記下分數。</p>
+      <div class="callout callout--note" style="margin-top:18px;">
+        <h4>✅ Firebase 同步可靠性</h4>
+        <p style="margin:0;">學生網路抖一下、關 tab、或上課中間連線斷掉，Firebase SDK 會自動把成績暫存在本機，網路恢復後自動補傳——學生跟老師都不用做任何事。</p>
       </div>
     </section>
 
@@ -114,15 +113,6 @@
   <script>
     OG.renderNav('teacher');
     OG.renderFooter();
-
-    // 把這裡換成你的 Google Sheet 連結
-    const SHEET_URL = '';
-    if (SHEET_URL) {
-      const link = document.getElementById('sheet-link');
-      const hint = document.getElementById('sheet-link-hint');
-      link.href = SHEET_URL;
-      hint.style.display = 'none';
-    }
   </script>
 </body>
 </html>

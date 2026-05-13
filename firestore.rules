@@ -1,0 +1,20 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /game_records/{doc} {
+      allow read: if request.auth != null
+        && request.auth.token.firebase.sign_in_provider == 'password';
+      allow create: if request.auth != null
+        && request.resource.data.cls is string
+        && request.resource.data.cls.size() < 20
+        && request.resource.data.seat is number
+        && request.resource.data.seat >= 1
+        && request.resource.data.seat <= 40
+        && request.resource.data.mode in ['pretest', 'posttest']
+        && request.resource.data.score is number
+        && request.resource.data.score >= 0
+        && request.resource.data.score <= 30;
+      allow update, delete: if false;
+    }
+  }
+}

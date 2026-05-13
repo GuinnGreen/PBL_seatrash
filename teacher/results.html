@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>成績儀表板 · 海洋偵查員</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <style>
+    .dash-controls {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      align-items: center;
+      margin: 16px 0 24px;
+    }
+    .dash-summary {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+      margin: 16px 0 28px;
+    }
+    .dash-summary .fact {
+      background: var(--paper);
+      border-left: 3px solid var(--accent);
+      padding: 10px 14px;
+    }
+    .dash-summary .fact strong {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: 28px;
+      line-height: 1.1;
+    }
+    .dash-summary .fact span {
+      font-size: 11px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+    }
+    .results-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 14px;
+    }
+    .results-table th,
+    .results-table td {
+      padding: 10px 12px;
+      text-align: left;
+      border-bottom: 1px solid var(--border);
+    }
+    .results-table th {
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
+      font-weight: 700;
+      border-bottom: 2px solid var(--ink);
+    }
+    .results-table tr:hover { background: var(--paper); }
+    .progress-pos { color: var(--accent); font-weight: 700; }
+    .progress-neg { color: var(--c-hazard); font-weight: 700; }
+    .progress-na  { color: var(--ink-soft); }
+    .empty-state {
+      text-align: center;
+      padding: 40px 20px;
+      color: var(--ink-soft);
+      background: var(--paper);
+      border: 1px dashed var(--border);
+    }
+    .login-prompt {
+      max-width: 480px;
+      margin: 48px auto;
+      padding: 32px;
+      text-align: center;
+      background: var(--paper);
+      border: 2px solid var(--ink);
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <header class="page-head">
+      <span class="kicker">Teacher Dashboard · 成績儀表板</span>
+      <h1>分類遊戲 前 / 後測成績</h1>
+      <p class="dek" id="dash-status">⏳ 載入中…</p>
+    </header>
+
+    <div id="dash-body"></div>
+
+  </main>
+  <script src="../js/nav.js"></script>
+  <script type="module" src="../js/firebase-config.js"></script>
+  <script>OG.renderNav('teacher'); OG.renderFooter();</script>
+  <script>
+    // Wait for firebase to load (module import is async), then check auth & load data.
+    function waitForFirebase() {
+      return new Promise((resolve) => {
+        if (window.OG?.firebase) return resolve();
+        const iv = setInterval(() => {
+          if (window.OG?.firebase) { clearInterval(iv); resolve(); }
+        }, 100);
+      });
+    }
+
+    function renderLoginPrompt(msg) {
+      document.getElementById('dash-status').textContent = '需要登入。';
+      document.getElementById('dash-body').innerHTML = `
+        <div class="login-prompt">
+          <h2 style="margin-top:0;">需要老師身份才能看</h2>
+          <p style="margin: 12px 0 24px; color: var(--ink-soft);">${msg || '請先用老師帳號登入，才能查看全班的前後測成績。'}</p>
+          <a class="btn btn-primary" href="../game/?teacher=1">→ 前往登入</a>
+        </div>
+      `;
+    }
+
+    function fmtTime(iso) {
+      if (!iso) return '—';
+      const d = new Date(iso);
+      if (isNaN(d)) return iso;
+      const p = n => String(n).padStart(2, '0');
+      return `${p(d.getMonth()+1)}/${p(d.getDate())} ${p(d.getHours())}:${p(d.getMinutes())}`;
+    }
+
+    function weakestCategory(perCatStats) {
+      if (!perCatStats) return '—';
+      const labels = { beverage: '飲料', food: '食物', fishing: '漁業', hazard: '衛生', other: '其他' };
+      let weakest = null, worst = 1.1;
+      for (const k of Object.keys(labels)) {
+        const s = perCatStats[k];
+        if (!s || !s.asked) continue;
+        const r = s.correct / s.asked;
+        if (r < worst) { worst = r; weakest = k; }
+      }
+      return weakest ? `${labels[weakest]} ${(worst * 100).toFixed(0)}%` : '—';
+    }
+
+    function downloadCsv(rows) {
+      const header = ['班級','座號','前測','前測時間','後測','後測時間','進步','進步%','後測最弱項'];
+      const body = rows.map(r => [
+        r.cls, r.seat,
+        r.pretest?.score ?? '',
+        fmtTime(r.pretest?.timestamp),
+        r.posttest?.score ?? '',
+        fmtTime(r.posttest?.timestamp),
+        r.progress ?? '',
+        r.progressPct ?? '',
+        r.weakest,
+      ]);
+      const esc = (v) => { const s = String(v ?? ''); return /[",\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s; };
+      const csv = '﻿' + [header, ...body].map(row => row.map(esc).join(',')).join('\r\n');
+      const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `pbl-results-${new Date().toISOString().slice(0,10)}.csv`;
+      document.body.appendChild(a);
+      a.click();
+      setTimeout(() => { a.remove(); URL.revokeObjectURL(url); }, 200);
+    }
+
+    function renderDashboard(records) {
+      // Group by (cls, seat) → { pretest, posttest }
+      const grouped = new Map();
+      for (const r of records) {
+        const key = `${r.cls}__${r.seat}`;
+        if (!grouped.has(key)) grouped.set(key, { cls: r.cls, seat: r.seat, pretest: null, posttest: null });
+        const g = grouped.get(key);
+        const existing = g[r.mode];
+        // Keep the newest record per mode (by timestamp string compare on ISO)
+        if (!existing || (r.timestamp && r.timestamp > existing.timestamp)) {
+          g[r.mode] = r;
+        }
+      }
+
+      // Build sortable rows
+      const STEM_NUM = (s) => { const n = parseInt(s, 10); return isNaN(n) ? 9999 : n; };
+      const rows = [...grouped.values()].map(g => {
+        const pre = g.pretest, post = g.posttest;
+        const progress = (post && pre) ? (post.score - pre.score) : null;
+        const total = post?.total || pre?.total || 30;
+        const progressPct = (post && pre && total) ? Math.round((progress / total) * 100) : null;
+        return {
+          ...g,
+          progress,
+          progressPct,
+          weakest: post ? weakestCategory(post.perCatStats) : '—',
+        };
+      }).sort((a, b) => {
+        const c = STEM_NUM(a.cls) - STEM_NUM(b.cls);
+        if (c !== 0) return c;
+        return (a.seat || 0) - (b.seat || 0);
+      });
+
+      // Summary stats
+      const total = rows.length;
+      const bothDone = rows.filter(r => r.pretest && r.posttest).length;
+      const onlyPre = rows.filter(r => r.pretest && !r.posttest).length;
+      const avgProgress = bothDone > 0
+        ? (rows.filter(r => r.progress != null).reduce((s, r) => s + r.progress, 0) / bothDone).toFixed(1)
+        : '—';
+
+      const dashBody = document.getElementById('dash-body');
+      if (rows.length === 0) {
+        dashBody.innerHTML = `
+          <div class="dash-controls">
+            <button class="btn btn-ghost" id="logout-btn">登出</button>
+            <button class="btn btn-ghost" id="refresh-btn">重新整理</button>
+          </div>
+          <div class="empty-state">
+            <p style="margin: 0; font-size: 16px;">目前還沒有任何學生作答紀錄。</p>
+            <p style="margin: 12px 0 0; font-size: 13px;">學生玩完分類遊戲、按下確認後，會即時上傳到這裡。</p>
+          </div>
+        `;
+      } else {
+        dashBody.innerHTML = `
+          <div class="dash-summary">
+            <div class="fact"><strong>${total}</strong><span>學生數</span></div>
+            <div class="fact"><strong>${bothDone}</strong><span>已完成前+後測</span></div>
+            <div class="fact"><strong>${onlyPre}</strong><span>只完成前測</span></div>
+            <div class="fact"><strong>${avgProgress}</strong><span>平均進步（題）</span></div>
+          </div>
+          <div class="dash-controls">
+            <button class="btn btn-primary" id="csv-btn">📥 下載 CSV</button>
+            <button class="btn btn-ghost" id="refresh-btn">↻ 重新整理</button>
+            <button class="btn btn-ghost" id="logout-btn">登出</button>
+          </div>
+          <table class="results-table">
+            <thead>
+              <tr>
+                <th>班級</th><th>座號</th>
+                <th>前測</th><th>時間</th>
+                <th>後測</th><th>時間</th>
+                <th>進步</th><th>%</th>
+                <th>後測最弱項</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rows.map(r => {
+                const progressCell = r.progress == null
+                  ? '<span class="progress-na">待後測</span>'
+                  : (r.progress > 0
+                    ? `<span class="progress-pos">+${r.progress}</span>`
+                    : r.progress < 0
+                      ? `<span class="progress-neg">${r.progress}</span>`
+                      : '<span class="progress-na">±0</span>');
+                const pctCell = r.progressPct == null ? '—' : `${r.progressPct >= 0 ? '+' : ''}${r.progressPct}%`;
+                return `
+                  <tr>
+                    <td>${r.cls}</td>
+                    <td>${r.seat}</td>
+                    <td>${r.pretest ? `${r.pretest.score}/${r.pretest.total || 30}` : '—'}</td>
+                    <td>${fmtTime(r.pretest?.timestamp)}</td>
+                    <td>${r.posttest ? `${r.posttest.score}/${r.posttest.total || 30}` : '—'}</td>
+                    <td>${fmtTime(r.posttest?.timestamp)}</td>
+                    <td>${progressCell}</td>
+                    <td>${pctCell}</td>
+                    <td>${r.weakest}</td>
+                  </tr>
+                `;
+              }).join('')}
+            </tbody>
+          </table>
+        `;
+        document.getElementById('csv-btn').addEventListener('click', () => downloadCsv(rows));
+      }
+
+      document.getElementById('refresh-btn').addEventListener('click', loadAndRender);
+      document.getElementById('logout-btn').addEventListener('click', async () => {
+        await window.OG.firebase.signOutTeacher();
+        renderLoginPrompt('已登出。');
+      });
+    }
+
+    async function loadAndRender() {
+      try {
+        document.getElementById('dash-status').textContent = '⏳ 載入紀錄中…';
+        const records = await window.OG.firebase.listRecords();
+        document.getElementById('dash-status').textContent = `共 ${records.length} 筆紀錄，按班級+座號聚合如下。`;
+        renderDashboard(records);
+      } catch (err) {
+        document.getElementById('dash-status').textContent = `⚠ 載入失敗：${err.code || err.message}`;
+      }
+    }
+
+    (async function init() {
+      await waitForFirebase();
+      await window.OG.firebase.ready;  // wait for persisted auth state to load
+      window.OG.firebase.onAuthChange(() => {
+        if (window.OG.firebase.isTeacher()) {
+          loadAndRender();
+        } else {
+          renderLoginPrompt();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

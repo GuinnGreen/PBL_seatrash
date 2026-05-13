@@ -34,30 +34,25 @@
   background: white;
   border: 3px solid var(--border);
   border-radius: var(--radius);
-  padding: 16px;
-  width: 360px;
-  height: 420px;
+  padding: 20px;
+  width: 440px;
+  height: 520px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  cursor: grab;
-  touch-action: none;
   box-shadow: var(--shadow-md);
-  transition: transform 0.2s ease;
 }
-.card:active { cursor: grabbing; }
-.card.dragging { transform: rotate(-2deg); }
 .card img {
-  flex: 1;
   width: 100%;
+  height: 400px;
   object-fit: contain;
   background: #F9FAFB;
   border-radius: 8px;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
   pointer-events: none;
 }
 .card .label-hint {
-  font-size: 14px;
+  font-size: 15px;
   color: var(--ink-soft);
   text-align: center;
 }
@@ -89,10 +84,16 @@
   grid-template-columns: repeat(5, 1fr);
   gap: 12px;
 }
+button.bin {
+  font: inherit;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
 .bin {
   border-radius: var(--radius);
-  padding: 16px 8px;
-  min-height: 130px;
+  padding: 18px 10px;
+  min-height: 140px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -100,17 +101,15 @@
   text-align: center;
   color: white;
   font-weight: 700;
-  font-size: 16px;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  font-size: 17px;
+  transition: transform 0.12s ease, box-shadow 0.15s ease, filter 0.15s ease;
   border: 4px solid transparent;
 }
-.bin .emoji { font-size: 32px; margin-bottom: 6px; }
+.bin:hover { filter: brightness(1.08); }
+.bin:focus-visible { outline: 3px solid white; outline-offset: 3px; }
+.bin:active { transform: scale(0.96); }
+.bin .emoji { font-size: 36px; margin-bottom: 6px; }
 .bin .icc-hint { font-size: 12px; font-weight: 500; opacity: 0.85; margin-top: 4px; line-height: 1.3; }
-.bin.hover {
-  transform: scale(1.04);
-  border-color: rgba(255,255,255,0.6);
-  box-shadow: var(--shadow-md);
-}
 
 .bin-beverage { background: var(--c-beverage); }
 .bin-food     { background: var(--c-food); }
@@ -119,11 +118,17 @@
 .bin-other    { background: var(--c-other); }
 
 @media (max-width: 700px) {
-  .bins { grid-template-columns: repeat(5, 1fr); gap: 6px; }
-  .bin { font-size: 13px; padding: 10px 4px; min-height: 100px; }
-  .bin .emoji { font-size: 24px; }
+  .bins {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .bin:nth-child(4) { grid-column: 1 / 2; }
+  .bin:nth-child(5) { grid-column: 2 / 4; }
+  .bin { font-size: 14px; padding: 12px 6px; min-height: 110px; }
+  .bin .emoji { font-size: 28px; }
   .bin .icc-hint { display: none; }
-  .card { width: 280px; height: 340px; padding: 12px; }
+  .card { width: 340px; height: 440px; padding: 14px; }
+  .card img { height: 320px; }
 }
 
 /* Result screen */
