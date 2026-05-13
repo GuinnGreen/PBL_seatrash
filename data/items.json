@@ -1,11 +1,26 @@
 {
   "version": "1.0",
   "categories": {
-    "beverage": { "label": "飲料容器", "color": "#3B82F6" },
-    "food":     { "label": "食物包裝", "color": "#10B981" },
-    "fishing":  { "label": "漁業用具", "color": "#F59E0B" },
-    "hazard":   { "label": "個人衛生與危險", "color": "#EF4444" },
-    "other":    { "label": "其他/不確定", "color": "#6B7280" }
+    "beverage": {
+      "label": "飲料容器",
+      "color": "#3B82F6"
+    },
+    "food": {
+      "label": "食物包裝",
+      "color": "#10B981"
+    },
+    "fishing": {
+      "label": "漁業用具",
+      "color": "#F59E0B"
+    },
+    "hazard": {
+      "label": "個人衛生與危險",
+      "color": "#EF4444"
+    },
+    "other": {
+      "label": "其他/不確定",
+      "color": "#6B7280"
+    }
   },
   "items": [
     {
@@ -118,7 +133,6 @@
       "license": "CC BY-SA 4.0",
       "artist": "Wikimedia contributor"
     },
-
     {
       "id": "foo_01",
       "filename": "images/food/foo_01_collected_trash_bags.jpg",
@@ -141,7 +155,6 @@
       "license": "CC BY 2.0",
       "artist": "Marco Verch"
     },
-
     {
       "id": "fis_01",
       "filename": "images/fishing/fis_01_hawaiian_monk_seal_entangled_in_derelict_fishing_net.jpg",
@@ -197,7 +210,6 @@
       "license": "CC BY-SA 2.0",
       "artist": "Wikimedia contributor"
     },
-
     {
       "id": "haz_01",
       "filename": "images/hazard/haz_01_cigarrillo_la_mochila.jpg",
@@ -264,7 +276,6 @@
       "license": "CC BY-SA 3.0",
       "artist": "Wikimedia contributor"
     },
-
     {
       "id": "oth_01",
       "filename": "images/other/oth_01_microplastic_found_key_largo_beach_state_park.jpg",
@@ -352,6 +363,211 @@
       "source": "https://commons.wikimedia.org/wiki/File:Nurdles_dispertion_2.jpg",
       "license": "CC BY-SA 4.0",
       "artist": "Wikimedia contributor"
+    },
+    {
+      "id": "icc_01",
+      "filename": "images/icc/01_pet_bottle.jpg",
+      "category": "beverage",
+      "label": "寶特瓶",
+      "icc_item": 1,
+      "hint": "台灣海廢第 2 名。瓶身 + 瓶蓋常分開漂。",
+      "license": "LOCAL",
+      "artist": "Local file"
+    },
+    {
+      "id": "icc_02",
+      "filename": "images/icc/02_bottle_cap.jpg",
+      "category": "beverage",
+      "label": "塑膠瓶蓋",
+      "icc_item": 2,
+      "hint": "台灣 + 全球海廢第 1 名。比瓶身更難回收。",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/3/39/Macro-d%C3%A9chets_sur_la_plage_de_Kersigu%C3%A9nou_%28Ifremer_00945-105643_-_54531%29.jpg",
+      "license": "CC BY 4.0",
+      "artist": "Gregory Rocher"
+    },
+    {
+      "id": "icc_03",
+      "filename": "images/icc/03_food_container.jpg",
+      "category": "food",
+      "label": "其他飲料/食物容器",
+      "icc_item": 3,
+      "hint": "便當盒、外帶餐盒——常見到不行。",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/e/e3/Hardees_fry_container_in_grass.jpg",
+      "license": "CC0 1.0",
+      "artist": "Visviva"
+    },
+    {
+      "id": "icc_04",
+      "filename": "images/icc/04_non_food_bottle.jpg",
+      "category": "other",
+      "label": "非食物的瓶罐",
+      "icc_item": 4,
+      "hint": "洗髮精、清潔劑、化學品的瓶子。",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Schoonmaakmiddelen.jpg",
+      "license": "CC BY-SA 3.0",
+      "artist": "M. Minderhoud"
+    },
+    {
+      "id": "icc_05",
+      "filename": "images/icc/05_plastic_bag.jpg",
+      "category": "food",
+      "label": "塑膠提袋",
+      "icc_item": 5,
+      "hint": "台灣每人每年用掉 800 個。",
+      "license": "LOCAL",
+      "artist": "Local file"
+    },
+    {
+      "id": "icc_06",
+      "filename": "images/icc/06_food_wrapper.jpg",
+      "category": "food",
+      "label": "食品包裝袋",
+      "icc_item": 6,
+      "hint": "零食袋、糖果紙、餅乾包裝。",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/0/0b/Snax_Tayto_potato_crisp_packet.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Smirkybec"
+    },
+    {
+      "id": "icc_07",
+      "filename": "images/icc/07_straw.jpg",
+      "category": "food",
+      "label": "吸管",
+      "icc_item": 7,
+      "hint": "改變一個國家政策的那種——案件 02。",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Single_Use_Plastic_Straw.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Ocean Blue Project"
+    },
+    {
+      "id": "icc_08",
+      "filename": "images/icc/08_takeaway_cup.jpg",
+      "category": "beverage",
+      "label": "外帶飲料杯",
+      "icc_item": 8,
+      "hint": "手搖飲杯。台灣每年用 50 億個。",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/f/f4/Engangskrus_-_one_time_cup_in_plastics_on_the_beach_of_Bantayan_3.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Oyvind Holmstad"
+    },
+    {
+      "id": "icc_09",
+      "filename": "images/icc/09_disposable_cutlery.jpg",
+      "category": "food",
+      "label": "免洗餐具",
+      "icc_item": 9,
+      "hint": "筷子、叉子、湯匙——一次性的。",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/dd/Macro_of_plastic_fork.jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "Mark Sebastian"
+    },
+    {
+      "id": "icc_10",
+      "filename": "images/icc/10_glass_bottle.jpg",
+      "category": "beverage",
+      "label": "玻璃瓶",
+      "icc_item": 10,
+      "hint": "會碎裂——但要 100 萬年才會分解。",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/d/d1/Glass_bottle_on_the_beach.JPG",
+      "license": "CC BY-SA 4.0",
+      "artist": "Revital Salomon"
+    },
+    {
+      "id": "icc_11",
+      "filename": "images/icc/11_aluminum_can.jpg",
+      "category": "beverage",
+      "label": "鐵鋁罐",
+      "icc_item": 11,
+      "hint": "可樂罐、啤酒罐。回收率比塑膠高。",
+      "license": "LOCAL",
+      "artist": "Local file"
+    },
+    {
+      "id": "icc_12",
+      "filename": "images/icc/12_tetra_pak.jpg",
+      "category": "beverage",
+      "label": "鋁箔包/利樂包",
+      "icc_item": 12,
+      "hint": "蘋果汁、豆漿那種——多層材料超難回收。"
+    },
+    {
+      "id": "icc_13",
+      "filename": "images/icc/13_fishing_tackle.jpg",
+      "category": "fishing",
+      "label": "釣魚用具",
+      "icc_item": 13,
+      "hint": "魚線、魚鉤、鉛塊——最危險。",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/9/99/4_hooked_fishing_bait_lures_viz_jig_spoonlure_plug_spinnerbait.jpg",
+      "license": "CC BY 4.0",
+      "artist": "R. Henrik Nilsson"
+    },
+    {
+      "id": "icc_14",
+      "filename": "images/icc/14_fishing_buoy.jpg",
+      "category": "fishing",
+      "label": "漁業浮球",
+      "icc_item": 14,
+      "hint": "蚵棚的橘色浮球。西部海岸超多。",
+      "license": "LOCAL",
+      "artist": "Local file"
+    },
+    {
+      "id": "icc_15",
+      "filename": "images/icc/15_styrofoam.jpg",
+      "category": "fishing",
+      "label": "保麗龍浮筒",
+      "icc_item": 15,
+      "hint": "碎成沙子大小——白色污染主犯。"
+    },
+    {
+      "id": "icc_16",
+      "filename": "images/icc/16_boat_fender.jpg",
+      "category": "fishing",
+      "label": "漁船防碰墊",
+      "icc_item": 16,
+      "hint": "漁港邊常見，不太會跑到海邊。",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/5/58/Rubber_Fender_in_port_Vado_Ligure.jpg",
+      "license": "CC BY 3.0",
+      "artist": "Amada44"
+    },
+    {
+      "id": "icc_17",
+      "filename": "images/icc/17_fishing_net.jpg",
+      "category": "fishing",
+      "label": "漁網與繩子",
+      "icc_item": 17,
+      "hint": "幽靈漁網——案件 03。"
+    },
+    {
+      "id": "icc_18",
+      "filename": "images/icc/18_cigarette_butt.jpg",
+      "category": "hazard",
+      "label": "菸蒂",
+      "icc_item": 18,
+      "hint": "全球海廢第 1 名！每年 4.5 兆根。",
+      "license": "LOCAL",
+      "artist": "Local file"
+    },
+    {
+      "id": "icc_19",
+      "filename": "images/icc/19_toothbrush.jpg",
+      "category": "hazard",
+      "label": "牙刷",
+      "icc_item": 19,
+      "hint": "為什麼會在海邊？想想看。",
+      "source": "https://upload.wikimedia.org/wikipedia/commons/6/6c/Littered_used_kids_toothbrush_at_the_beach.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Kwameghana (Bright Kwame Ayisi)"
+    },
+    {
+      "id": "icc_20",
+      "filename": "images/icc/20_face_mask.jpg",
+      "category": "hazard",
+      "label": "口罩",
+      "icc_item": 20,
+      "hint": "2022 新增的第 20 項——疫情後變多。",
+      "license": "LOCAL",
+      "artist": "Local file"
     }
   ]
 }

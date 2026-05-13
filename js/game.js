@@ -90,8 +90,33 @@
     for (const k of Object.keys(dataset.categories)) {
       perCatStats[k] = { asked: 0, correct: 0 };
     }
-    const all = shuffle(dataset.items.filter(it => it.category && it.label));
-    pool = all.slice(0, ROUNDS);
+
+    // Stratified sampling: pick ROUNDS/5 from each category so every student
+    // sees a balanced mix even if the pool is uneven.
+    const cats = Object.keys(dataset.categories);
+    const per = Math.floor(ROUNDS / cats.length);  // e.g. 30 / 5 = 6
+    const remainder = ROUNDS - per * cats.length;  // 0 in our case
+
+    const byCat = {};
+    for (const c of cats) byCat[c] = [];
+    for (const it of dataset.items) {
+      if (!it.category || !it.label) continue;
+      if (byCat[it.category]) byCat[it.category].push(it);
+    }
+
+    const picked = [];
+    const leftover = [];
+    for (const c of cats) {
+      const shuffled = shuffle(byCat[c]);
+      picked.push(...shuffled.slice(0, per));
+      leftover.push(...shuffled.slice(per));
+    }
+    // Fill any shortfall (if some cat had fewer than per items) from leftover.
+    if (picked.length < ROUNDS) {
+      picked.push(...shuffle(leftover).slice(0, ROUNDS - picked.length));
+    }
+    // Final shuffle so categories are interleaved, not blocked.
+    pool = shuffle(picked).slice(0, ROUNDS);
   }
 
   function renderCard() {
