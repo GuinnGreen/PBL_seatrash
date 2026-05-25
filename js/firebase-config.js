@@ -5,7 +5,7 @@
 import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
 import {
   getFirestore, collection, addDoc, getDocs, serverTimestamp,
-  enableIndexedDbPersistence, query, orderBy
+  query, orderBy
 } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 import {
   getAuth, signInAnonymously, signInWithEmailAndPassword,
@@ -24,12 +24,6 @@ const firebaseConfig = {
 const app  = initializeApp(firebaseConfig);
 const db   = getFirestore(app);
 const auth = getAuth(app);
-
-// Offline persistence — Firestore SDK 會自動把寫入 queue 在 IndexedDB，
-// 網路恢復後自動補傳。這是換 Firebase 最大的好處，取代手動 retry。
-enableIndexedDbPersistence(db).catch(() => {
-  /* 多分頁時會 fail，可忽略 */
-});
 
 // 等持久化的 auth state 載入完成；如果沒有任何 user → anonymous 登入
 // 注意：不能直接看 auth.currentUser，初始時是 null，要等 onAuthStateChanged 第一次 fire
