@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>即時挑戰 主控台 · 海洋偵查員</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/live.css">
+</head>
+<body>
+  <div class="live-wrap" style="max-width:960px">
+    <!-- 設定 -->
+    <section id="setup">
+      <h1>即時挑戰 · 主控台</h1>
+      <p>選擇計分模式</p>
+      <button id="mode-individual" class="live-cat-btn" style="background:#2563eb;max-width:240px">個人對戰</button>
+      <button id="mode-group" class="live-cat-btn" style="background:#7c3aed;max-width:240px">小組對戰</button>
+    </section>
+
+    <!-- 等待室 -->
+    <section id="lobby" class="live-hidden">
+      <h2>加入碼</h2>
+      <div id="pin-display" class="live-big"></div>
+      <p>學生開 <strong id="join-url"></strong> 輸入加入碼</p>
+      <h3>已加入(<span id="player-count">0</span>)</h3>
+      <div id="player-list" class="live-grid-screen"></div>
+      <button id="start" class="live-cat-btn" style="background:#16a34a;max-width:240px;margin-top:16px">開始挑戰</button>
+    </section>
+
+    <!-- 出題中 -->
+    <section id="stage" class="live-hidden">
+      <div id="q-progress"></div>
+      <img id="s-img" class="live-q-img" alt="題目">
+      <h2 id="answered-count">已作答 0</h2>
+      <div id="dist" class="live-hidden"></div>
+      <div style="margin-top:16px">
+        <button id="lock" class="live-cat-btn" style="background:#f59e0b;max-width:200px">結束作答</button>
+        <button id="reveal" class="live-cat-btn live-hidden" style="background:#2563eb;max-width:200px">公布正解</button>
+        <button id="next" class="live-cat-btn live-hidden" style="background:#16a34a;max-width:200px">下一題</button>
+      </div>
+    </section>
+
+    <!-- 排行榜 -->
+    <section id="board" class="live-hidden">
+      <h2 id="board-title">排行榜</h2>
+      <div id="board-list" class="live-grid-screen"></div>
+    </section>
+  </div>
+
+  <script type="module" src="../js/firebase-config.js"></script>
+  <script type="module" src="../js/live/host.js"></script>
+</body>
+</html>
