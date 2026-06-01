@@ -1,4 +1,4 @@
-// js/live/player.js — 學生端控制器
+// js/live/player.js — 學生端控制器(v2:ICC 四選一 + round)
 import {
   joinRoom, watchRoom, submitAnswer, watchMyAnswer,
 } from './firebase-live.js';
@@ -8,14 +8,15 @@ const $ = (id) => document.getElementById(id);
 const TIME_LIMIT_MS = 20000;
 
 let pin = null, room = null, mode = null, categories = [];
-let answeredIndex = -1, qStart = 0, myAnswerUnsub = null, roomUnsub = null;
+let answeredKey = null, qStart = 0, myAnswerUnsub = null, roomUnsub = null;
+
+const keyOf = (q) => `${q.round}_${q.index}`;
 
 // 1. 加入碼
 $('pin-go').onclick = async () => {
   const v = $('pin').value.trim();
   if (!isValidPin(v)) { $('pin-err').textContent = '請輸入 4 位數字'; return; }
   pin = v;
-  // 先監看房間,確認存在並取得 mode/categories(先取消舊的訂閱,避免疊加)
   if (roomUnsub) roomUnsub();
   roomUnsub = watchRoom(pin, onRoom);
 };
@@ -24,7 +25,6 @@ function onRoom(data) {
   if (!data) { $('pin-err').textContent = '找不到這個房間'; return; }
   room = data; mode = data.mode; categories = data.categories || [];
   if ($('join-pin').classList.contains('live-hidden')) { renderState(); return; }
-  // 進入取名/選組畫面
   $('join-pin').classList.add('live-hidden');
   $('join-id').classList.remove('live-hidden');
   if (mode === 'group') {
@@ -34,9 +34,8 @@ function onRoom(data) {
     grid.innerHTML = '';
     for (let g = 1; g <= 6; g++) {
       const b = document.createElement('button');
-      b.className = 'live-cat-btn'; b.style.background = 'var(--color-primary,#2563eb)';
-      b.textContent = `第 ${g} 組`; b.dataset.group = g;
-      b.onclick = () => { grid.querySelectorAll('button').forEach(x=>x.style.outline=''); b.style.outline='4px solid #16a34a'; b.dataset.sel='1'; };
+      b.className = 'live-btn'; b.textContent = `第 ${g} 組`; b.dataset.group = g;
+      b.onclick = () => { grid.querySelectorAll('button').forEach((x) => x.classList.remove('is-sel')); b.classList.add('is-sel'); b.dataset.sel = '1'; };
       grid.appendChild(b);
     }
   }
@@ -63,7 +62,7 @@ function renderState() {
   if (!room) return;
   const st = room.state, q = room.currentQuestion;
   if (st === 'question' && q) {
-    if (answeredIndex !== q.index) showQuestion(q);
+    if (answeredKey !== keyOf(q)) showQuestion(q);
   } else if (st === 'reveal' && q) {
     showReveal(q);
   } else { // lobby / locked / ended
@@ -83,32 +82,53 @@ function showQuestion(q) {
   $('q-img').src = `../${q.image}`;
   qStart = performance.now();
   const grid = $('cat-grid'); grid.innerHTML = '';
-  for (const c of categories) {
-    const b = document.createElement('button');
-    b.className = 'live-cat-btn'; b.style.background = c.color;
-    b.textContent = c.label;
-    b.onclick = () => choose(q.index, c.key, b);
-    grid.appendChild(b);
+  if (q.options) {
+    // ICC 四選一
+    for (const o of q.options) {
+      const b = document.createElement('button');
+      b.className = 'live-cat-btn live-cat-btn--icc';
+      b.innerHTML = `<span class="opt-emoji">${o.emoji}</span>${o.name}`;
+      b.onclick = () => choose(q, String(o.id), b);
+      grid.appendChild(b);
+    }
+  } else {
+    // 5 大類
+    for (const c of categories) {
+      const b = document.createElement('button');
+      b.className = 'live-cat-btn';
+      b.style.background = c.color;
+      b.textContent = c.label;
+      b.onclick = () => choose(q, c.key, b);
+      grid.appendChild(b);
+    }
   }
 }
 
-async function choose(index, key, btn) {
-  if (answeredIndex === index) return;
-  answeredIndex = index;
+async function choose(q, choice, btn) {
+  const k = keyOf(q);
+  if (answeredKey === k) return;
+  answeredKey = k;
   const timeMs = Math.min(TIME_LIMIT_MS, performance.now() - qStart);
   $('cat-grid').querySelectorAll('button').forEach((x) => { x.disabled = true; });
-  btn.style.outline = '4px solid #fff';
-  await submitAnswer(pin, index, { choice: key, timeMs });
+  btn.classList.add('is-chosen');
+  await submitAnswer(pin, { index: q.index, round: q.round, choice, timeMs });
 }
 
 function showReveal(q) {
   $('question').classList.add('live-hidden');
   $('waiting').classList.add('live-hidden');
   const r = $('result'); r.classList.remove('live-hidden');
-  const correctCat = categories.find((c) => c.key === q.correct);
-  r.innerHTML = `<h2>正解:${correctCat ? correctCat.label : ''}</h2><p id="my-pts">計分中…</p>`;
+  let correctLabel = '';
+  if (q.options) {
+    const o = q.options.find((x) => String(x.id) === q.correct);
+    correctLabel = o ? `${o.emoji} ${o.name}` : '';
+  } else {
+    const c = categories.find((x) => x.key === q.correct);
+    correctLabel = c ? c.label : '';
+  }
+  r.innerHTML = `<h2>正解:${correctLabel}</h2><p id="my-pts">計分中…</p>`;
   if (myAnswerUnsub) myAnswerUnsub();
-  myAnswerUnsub = watchMyAnswer(pin, q.index, (a) => {
+  myAnswerUnsub = watchMyAnswer(pin, q.index, q.round, (a) => {
     if (!a) { $('my-pts').textContent = '這題你沒有作答'; return; }
     const ok = a.choice === q.correct;
     $('my-pts').textContent = a.points == null ? '計分中…'
