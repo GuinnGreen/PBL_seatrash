@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>即時挑戰 · 海洋偵查員</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/live.css">
+</head>
+<body>
+  <div class="live-wrap">
+    <!-- 1. 輸入加入碼 -->
+    <section id="join-pin">
+      <h1>即時挑戰</h1>
+      <p>輸入老師螢幕上的 4 位數加入碼</p>
+      <input id="pin" class="live-pin-input" inputmode="numeric" maxlength="4" placeholder="0000">
+      <div><button id="pin-go" class="live-cat-btn" style="background:var(--color-primary,#2563eb);max-width:200px;margin-top:16px">加入</button></div>
+      <p id="pin-err" style="color:#dc2626"></p>
+    </section>
+
+    <!-- 2. 取名 / 選組 -->
+    <section id="join-id" class="live-hidden">
+      <h2 id="id-prompt">你的暱稱</h2>
+      <input id="name" class="live-pin-input" style="width:12ch;letter-spacing:normal" maxlength="12">
+      <div id="group-grid" class="live-cat-grid live-hidden"></div>
+      <div><button id="id-go" class="live-cat-btn" style="background:var(--color-primary,#2563eb);max-width:200px;margin-top:16px">準備好了</button></div>
+    </section>
+
+    <!-- 3. 等待 / 作答 / 公布 -->
+    <section id="play" class="live-hidden">
+      <div id="waiting"><h2>等待老師出題…</h2></div>
+      <div id="question" class="live-hidden">
+        <img id="q-img" class="live-q-img" alt="這是什麼垃圾?">
+        <div id="cat-grid" class="live-cat-grid"></div>
+      </div>
+      <div id="result" class="live-hidden"></div>
+    </section>
+  </div>
+
+  <script type="module" src="../js/live/player.js"></script>
+</body>
+</html>
