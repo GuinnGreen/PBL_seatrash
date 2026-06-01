@@ -1,0 +1,22 @@
+[
+  { "id": 1,  "name": "寶特瓶",            "emoji": "🍶", "cat": "beverage" },
+  { "id": 2,  "name": "塑膠瓶蓋",          "emoji": "🔘", "cat": "beverage" },
+  { "id": 3,  "name": "其他飲料/食物容器", "emoji": "🥡", "cat": "food" },
+  { "id": 4,  "name": "非食物的瓶罐",      "emoji": "🧴", "cat": "other" },
+  { "id": 5,  "name": "塑膠提袋",          "emoji": "🛍️", "cat": "food" },
+  { "id": 6,  "name": "食品包裝袋",        "emoji": "🍪", "cat": "food" },
+  { "id": 7,  "name": "吸管",              "emoji": "🥤", "cat": "food" },
+  { "id": 8,  "name": "外帶飲料杯",        "emoji": "☕", "cat": "beverage" },
+  { "id": 9,  "name": "免洗餐具",          "emoji": "🍴", "cat": "food" },
+  { "id": 10, "name": "玻璃瓶",            "emoji": "🍾", "cat": "beverage" },
+  { "id": 11, "name": "鐵鋁罐",            "emoji": "🥫", "cat": "beverage" },
+  { "id": 12, "name": "鋁箔包/利樂包",     "emoji": "🧃", "cat": "beverage" },
+  { "id": 13, "name": "釣魚用具",          "emoji": "🎣", "cat": "fishing" },
+  { "id": 14, "name": "漁業浮球",          "emoji": "🟠", "cat": "fishing" },
+  { "id": 15, "name": "保麗龍浮筒",        "emoji": "⬜", "cat": "fishing" },
+  { "id": 16, "name": "漁船防碰墊",        "emoji": "🛟", "cat": "fishing" },
+  { "id": 17, "name": "漁網與繩子",        "emoji": "🕸️", "cat": "fishing" },
+  { "id": 18, "name": "菸蒂",              "emoji": "🚬", "cat": "hazard" },
+  { "id": 19, "name": "牙刷",              "emoji": "🪥", "cat": "hazard" },
+  { "id": 20, "name": "口罩",              "emoji": "😷", "cat": "hazard" }
+]
