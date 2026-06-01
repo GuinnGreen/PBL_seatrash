@@ -16,5 +16,46 @@ service cloud.firestore {
         && request.resource.data.score <= 30;
       allow update, delete: if false;
     }
+
+    match /live_rooms/{pin} {
+      function isHost() {
+        return request.auth != null
+          && get(/databases/$(database)/documents/live_rooms/$(pin)).data.hostId == request.auth.uid;
+      }
+
+      allow read: if request.auth != null;
+      allow create: if request.auth != null
+        && request.resource.data.hostId == request.auth.uid
+        && request.resource.data.mode in ['individual', 'group']
+        && request.resource.data.state == 'lobby';
+      allow update: if request.auth != null
+        && resource.data.hostId == request.auth.uid;
+      allow delete: if false;
+
+      match /players/{uid} {
+        allow read: if request.auth != null;
+        allow create: if request.auth != null
+          && request.auth.uid == uid
+          && request.resource.data.score == 0;
+        // 本人可改 name/group(但不可改自己分數);主持人可改 score
+        allow update: if request.auth != null && (
+          (request.auth.uid == uid
+            && request.resource.data.score == resource.data.score)
+          || isHost()
+        );
+        allow delete: if false;
+      }
+
+      match /answers/{answerId} {
+        // 主持人可讀全部(計分);學生只能讀自己的(看公布後得分)
+        allow read: if isHost()
+          || (request.auth != null && resource.data.uid == request.auth.uid);
+        allow create: if request.auth != null
+          && request.resource.data.uid == request.auth.uid
+          && request.resource.data.choice is string;
+        allow update: if isHost();   // 主持人回寫 points
+        allow delete: if false;
+      }
+    }
   }
 }
