@@ -9,12 +9,35 @@
 </head>
 <body>
   <div class="live-wrap" style="max-width:960px">
-    <!-- 設定 -->
+    <!-- 設定:難度 → 題數 → 模式 -->
     <section id="setup">
-      <h1>即時挑戰 · 主控台</h1>
-      <p>選擇計分模式</p>
-      <button id="mode-individual" class="live-cat-btn" style="background:#2563eb;max-width:240px">個人對戰</button>
-      <button id="mode-group" class="live-cat-btn" style="background:#7c3aed;max-width:240px">小組對戰</button>
+      <h1 class="live-title">即時挑戰 · 主控台</h1>
+
+      <div id="setup-difficulty" class="setup-step">
+        <p class="setup-q">① 選擇難度</p>
+        <div class="setup-choices">
+          <button class="live-btn live-btn--primary" data-difficulty="basic">簡單<small>看圖選 5 大類</small></button>
+          <button class="live-btn live-btn--accent" data-difficulty="icc">進階<small>ICC 細項四選一</small></button>
+        </div>
+      </div>
+
+      <div id="setup-count" class="setup-step live-hidden">
+        <p class="setup-q">② 選擇題數</p>
+        <div class="setup-choices">
+          <button class="live-btn" data-count="5">5 題</button>
+          <button class="live-btn" data-count="10">10 題</button>
+          <button class="live-btn" data-count="15">15 題</button>
+          <button class="live-btn" data-count="20">20 題</button>
+        </div>
+      </div>
+
+      <div id="setup-mode" class="setup-step live-hidden">
+        <p class="setup-q">③ 計分模式</p>
+        <div class="setup-choices">
+          <button class="live-btn live-btn--primary" data-mode="individual">個人對戰</button>
+          <button class="live-btn live-btn--accent" data-mode="group">小組對戰</button>
+        </div>
+      </div>
     </section>
 
     <!-- 等待室 -->
@@ -44,6 +67,10 @@
     <section id="board" class="live-hidden">
       <h2 id="board-title">排行榜</h2>
       <div id="board-list" class="live-grid-screen"></div>
+      <div id="board-actions" class="live-hidden" style="margin-top:20px">
+        <button id="replay" class="live-btn live-btn--primary">再玩一次</button>
+        <button id="home" class="live-btn">回主選單</button>
+      </div>
     </section>
   </div>
 

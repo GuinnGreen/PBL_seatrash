@@ -1,30 +1,66 @@
-// js/live/host.js — 老師主控台控制器
+// js/live/host.js — 老師主控台控制器(v2:難度/題數/模式、ICC、重玩)
 import {
   createRoom, watchPlayers, pushQuestion, lockAnswers,
-  revealQuestion, endGame, watchAnswers, getAnswersOnce, applyScores,
+  revealQuestion, endGame, watchAnswers, getAnswersOnce, applyScores, resetScores,
 } from './firebase-live.js';
 import { pickLivePool } from './sampling.js';
 import { scoreAnswer, aggregateGroups } from './scoring.js';
+import { buildIccOptions } from './icc.js';
 
 const $ = (id) => document.getElementById(id);
 const TIME_LIMIT_MS = 20000;
-const QUESTIONS = 10;
+const ALL_CATS = ['beverage', 'food', 'fishing', 'hazard', 'other'];
 
-let pin = null, mode = null, categories = [], questionSet = [], index = -1;
+let pin = null, mode = null, difficulty = null, count = 10;
+let categories = [], iccItems = [], rawItems = [];
+let questionSet = [], index = -1, round = 0;
 let players = [], curAnswers = [], answersUnsub = null, boardFinal = false;
 
-async function loadPool() {
-  const res = await fetch('../data/items.live.json');
-  const data = await res.json();
+// --- 設定流程:難度 → 題數 → 模式 ---
+$('setup-difficulty').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-difficulty]'); if (!b) return;
+  difficulty = b.dataset.difficulty;
+  $('setup-difficulty').classList.add('live-hidden');
+  $('setup-count').classList.remove('live-hidden');
+});
+$('setup-count').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-count]'); if (!b) return;
+  count = Number(b.dataset.count);
+  $('setup-count').classList.add('live-hidden');
+  $('setup-mode').classList.remove('live-hidden');
+});
+$('setup-mode').addEventListener('click', (e) => {
+  const b = e.target.closest('[data-mode]'); if (!b) return;
+  start(b.dataset.mode);
+});
+
+async function loadData() {
+  const data = await (await fetch('../data/items.live.json')).json();
   categories = Object.entries(data.categories).map(([key, v]) => ({ key, label: v.label, color: v.color }));
-  const catKeys = categories.map((c) => c.key);
-  questionSet = pickLivePool(data.items, catKeys, QUESTIONS);
+  rawItems = data.items;
+  if (difficulty === 'icc') {
+    iccItems = await (await fetch('../data/icc-items.json')).json();
+  }
+}
+
+// 依難度/題數抽一批題;icc 模式排除 other,並為每題預先產生四選項
+function resample() {
+  if (difficulty === 'icc') {
+    const pool = rawItems.filter((i) => i.category !== 'other');
+    const cats = ['beverage', 'food', 'fishing', 'hazard'];
+    questionSet = pickLivePool(pool, cats, count).map((q) => ({
+      ...q, _options: buildIccOptions(q.icc_item, iccItems),
+    }));
+  } else {
+    questionSet = pickLivePool(rawItems, ALL_CATS, count);
+  }
 }
 
 async function start(selMode) {
   mode = selMode;
-  await loadPool();
-  const { pin: p } = await createRoom({ mode, categories });
+  await loadData();
+  resample();
+  const { pin: p } = await createRoom({ mode, categories, difficulty });
   pin = p;
   $('setup').classList.add('live-hidden');
   $('lobby').classList.remove('live-hidden');
@@ -34,14 +70,11 @@ async function start(selMode) {
     players = list;
     $('player-count').textContent = list.length;
     $('player-list').innerHTML = list
-      .map((p) => `<div class="live-cat-btn" style="background:#475569">${mode === 'group' ? '第' + p.group + '組' : (p.name || '匿名')}</div>`)
+      .map((p) => `<div class="live-chip">${mode === 'group' ? '第' + p.group + '組' : (p.name || '匿名')}</div>`)
       .join('');
     if (!$('board').classList.contains('live-hidden')) renderBoard();
   });
 }
-
-$('mode-individual').onclick = () => start('individual');
-$('mode-group').onclick = () => start('group');
 
 $('start').onclick = () => { $('lobby').classList.add('live-hidden'); $('stage').classList.remove('live-hidden'); nextQuestion(); };
 
@@ -57,9 +90,10 @@ async function nextQuestion() {
   $('lock').classList.remove('live-hidden');
   $('reveal').classList.add('live-hidden');
   $('next').classList.add('live-hidden');
-  await pushQuestion(pin, index, q.filename);
+  const options = difficulty === 'icc' ? q._options : null;
+  await pushQuestion(pin, { index, round, image: q.filename, options });
   if (answersUnsub) answersUnsub();
-  answersUnsub = watchAnswers(pin, index, (list) => {
+  answersUnsub = watchAnswers(pin, index, round, (list) => {
     curAnswers = list;
     $('answered-count').textContent = `已作答 ${list.length}`;
   });
@@ -73,32 +107,49 @@ $('lock').onclick = async () => {
 
 $('reveal').onclick = async () => {
   const q = questionSet[index];
-  const correct = q.category;
-  // 重新讀取所有作答,避免即時快照漏掉最後一刻送出的
-  const answers = await getAnswersOnce(pin, index);
-  // 計分後回寫
+  const correct = difficulty === 'icc' ? String(q.icc_item) : q.category;
+  const answers = await getAnswersOnce(pin, index, round);
   const scored = answers.map((a) => ({
     id: a.id, uid: a.uid,
     points: scoreAnswer({ correct: a.choice === correct, timeMs: a.timeMs, timeLimitMs: TIME_LIMIT_MS }),
   }));
   if (scored.length) await applyScores(pin, scored);
-  await revealQuestion(pin, index, q.filename, correct);
-  // 分布圖
-  const counts = {};
-  for (const c of categories) counts[c.key] = 0;
-  for (const a of answers) counts[a.choice] = (counts[a.choice] || 0) + 1;
-  const max = Math.max(1, ...Object.values(counts));
-  $('dist').innerHTML = categories.map((c) => {
-    const n = counts[c.key] || 0;
-    const mark = c.key === correct ? ' ✅' : '';
-    return `<div style="margin:6px 0;text-align:left">${c.label}${mark}
-      <div class="live-bar" style="width:${(n / max) * 100}%;background:${c.color}"></div> ${n}</div>`;
-  }).join('');
-  $('dist').classList.remove('live-hidden');
+  const options = difficulty === 'icc' ? q._options : null;
+  await revealQuestion(pin, { index, round, image: q.filename, options, correct });
+  renderDistribution(q, correct, answers);
   $('reveal').classList.add('live-hidden');
   $('next').classList.remove('live-hidden');
   showBoard(false);
 };
+
+function renderDistribution(q, correct, answers) {
+  let cells;
+  if (difficulty === 'icc') {
+    const counts = {};
+    q._options.forEach((o) => { counts[String(o.id)] = 0; });
+    for (const a of answers) counts[a.choice] = (counts[a.choice] || 0) + 1;
+    const max = Math.max(1, ...Object.values(counts));
+    cells = q._options.map((o) => {
+      const n = counts[String(o.id)] || 0;
+      const mark = String(o.id) === correct ? ' ✅' : '';
+      return `<div class="dist-row">${o.emoji} ${o.name}${mark}
+        <div class="live-bar" style="width:${(n / max) * 100}%"></div> ${n}</div>`;
+    }).join('');
+  } else {
+    const counts = {};
+    for (const c of categories) counts[c.key] = 0;
+    for (const a of answers) counts[a.choice] = (counts[a.choice] || 0) + 1;
+    const max = Math.max(1, ...Object.values(counts));
+    cells = categories.map((c) => {
+      const n = counts[c.key] || 0;
+      const mark = c.key === correct ? ' ✅' : '';
+      return `<div class="dist-row">${c.label}${mark}
+        <div class="live-bar" style="width:${(n / max) * 100}%;background:${c.color}"></div> ${n}</div>`;
+    }).join('');
+  }
+  $('dist').innerHTML = cells;
+  $('dist').classList.remove('live-hidden');
+}
 
 $('next').onclick = () => { $('board').classList.add('live-hidden'); nextQuestion(); };
 
@@ -106,7 +157,9 @@ function showBoard(final) {
   boardFinal = final;
   renderBoard();
   $('board').classList.remove('live-hidden');
-  if (final) { $('stage').classList.add('live-hidden'); endGame(pin); }
+  $('board-actions').classList.toggle('live-hidden', !final);
+  if (final) $('stage').classList.add('live-hidden');
+  if (final) endGame(pin);
 }
 
 function renderBoard() {
@@ -121,6 +174,29 @@ function renderBoard() {
   }
   $('board-title').textContent = boardFinal ? '🏆 最終排行榜' : '目前排行榜';
   $('board-list').innerHTML = rows.slice(0, 12)
-    .map((r) => `<div class="live-cat-btn" style="background:${r.rank === 1 ? '#f59e0b' : '#475569'}">${r.rank}. ${r.name}<br>${r.score}</div>`)
+    .map((r) => `<div class="live-rank ${r.rank === 1 ? 'live-rank--first' : ''}">${r.rank}. ${r.name}<br>${r.score}</div>`)
     .join('');
 }
+
+// --- 重玩 ---
+$('replay').onclick = async () => {
+  await resetScores(pin, players.map((p) => p.uid));
+  round += 1;
+  index = -1;
+  resample();
+  $('board').classList.add('live-hidden');
+  $('stage').classList.remove('live-hidden');
+  nextQuestion();
+};
+$('home').onclick = async () => {
+  await endGame(pin);
+  if (answersUnsub) answersUnsub();
+  pin = null; index = -1; round = 0; players = [];
+  $('board').classList.add('live-hidden');
+  $('lobby').classList.add('live-hidden');
+  $('stage').classList.add('live-hidden');
+  $('setup').classList.remove('live-hidden');
+  $('setup-count').classList.add('live-hidden');
+  $('setup-mode').classList.add('live-hidden');
+  $('setup-difficulty').classList.remove('live-hidden');
+};
