@@ -8,15 +8,16 @@ const $ = (id) => document.getElementById(id);
 const TIME_LIMIT_MS = 20000;
 
 let pin = null, room = null, mode = null, categories = [];
-let answeredIndex = -1, qStart = 0, myAnswerUnsub = null;
+let answeredIndex = -1, qStart = 0, myAnswerUnsub = null, roomUnsub = null;
 
 // 1. 加入碼
 $('pin-go').onclick = async () => {
   const v = $('pin').value.trim();
   if (!isValidPin(v)) { $('pin-err').textContent = '請輸入 4 位數字'; return; }
   pin = v;
-  // 先監看房間,確認存在並取得 mode/categories
-  watchRoom(pin, onRoom);
+  // 先監看房間,確認存在並取得 mode/categories(先取消舊的訂閱,避免疊加)
+  if (roomUnsub) roomUnsub();
+  roomUnsub = watchRoom(pin, onRoom);
 };
 
 function onRoom(data) {

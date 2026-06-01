@@ -2,7 +2,7 @@
 // 即時挑戰的 Firestore 封裝。重用 firebase-config.js 既有的 app/匿名 auth。
 // 正解不寫進玩家可讀的欄位;出題只下發 image,公布時才寫 correct。
 import {
-  doc, getDoc, setDoc, updateDoc, collection, onSnapshot,
+  doc, getDoc, getDocs, setDoc, updateDoc, collection, onSnapshot,
   query, where, serverTimestamp, increment, writeBatch,
 } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 import { db, auth, ready } from '../firebase-config.js';
@@ -84,6 +84,12 @@ export async function submitAnswer(pin, index, { choice, timeMs }) {
 export function watchAnswers(pin, index, cb) {
   const q = query(answersCol(pin), where('qIndex', '==', index));
   return onSnapshot(q, (s) => cb(s.docs.map((d) => ({ id: d.id, ...d.data() }))));
+}
+// 主持端:一次讀取某題所有作答(公布計分時用,避免即時快照漏掉最後送出的)
+export async function getAnswersOnce(pin, index) {
+  const q = query(answersCol(pin), where('qIndex', '==', index));
+  const snap = await getDocs(q);
+  return snap.docs.map((d) => ({ id: d.id, ...d.data() }));
 }
 // 學生端:監看自己這題的作答(取得公布後的 points)
 export function watchMyAnswer(pin, index, cb) {

@@ -1,7 +1,7 @@
 // js/live/host.js — 老師主控台控制器
 import {
   createRoom, watchPlayers, pushQuestion, lockAnswers,
-  revealQuestion, endGame, watchAnswers, applyScores,
+  revealQuestion, endGame, watchAnswers, getAnswersOnce, applyScores,
 } from './firebase-live.js';
 import { pickLivePool } from './sampling.js';
 import { scoreAnswer, aggregateGroups } from './scoring.js';
@@ -11,7 +11,7 @@ const TIME_LIMIT_MS = 20000;
 const QUESTIONS = 10;
 
 let pin = null, mode = null, categories = [], questionSet = [], index = -1;
-let players = [], curAnswers = [], answersUnsub = null;
+let players = [], curAnswers = [], answersUnsub = null, boardFinal = false;
 
 async function loadPool() {
   const res = await fetch('../data/items.live.json');
@@ -36,6 +36,7 @@ async function start(selMode) {
     $('player-list').innerHTML = list
       .map((p) => `<div class="live-cat-btn" style="background:#475569">${mode === 'group' ? '第' + p.group + '組' : (p.name || '匿名')}</div>`)
       .join('');
+    if (!$('board').classList.contains('live-hidden')) renderBoard();
   });
 }
 
@@ -73,8 +74,10 @@ $('lock').onclick = async () => {
 $('reveal').onclick = async () => {
   const q = questionSet[index];
   const correct = q.category;
+  // 重新讀取所有作答,避免即時快照漏掉最後一刻送出的
+  const answers = await getAnswersOnce(pin, index);
   // 計分後回寫
-  const scored = curAnswers.map((a) => ({
+  const scored = answers.map((a) => ({
     id: a.id, uid: a.uid,
     points: scoreAnswer({ correct: a.choice === correct, timeMs: a.timeMs, timeLimitMs: TIME_LIMIT_MS }),
   }));
@@ -83,7 +86,7 @@ $('reveal').onclick = async () => {
   // 分布圖
   const counts = {};
   for (const c of categories) counts[c.key] = 0;
-  for (const a of curAnswers) counts[a.choice] = (counts[a.choice] || 0) + 1;
+  for (const a of answers) counts[a.choice] = (counts[a.choice] || 0) + 1;
   const max = Math.max(1, ...Object.values(counts));
   $('dist').innerHTML = categories.map((c) => {
     const n = counts[c.key] || 0;
@@ -100,6 +103,13 @@ $('reveal').onclick = async () => {
 $('next').onclick = () => { $('board').classList.add('live-hidden'); nextQuestion(); };
 
 function showBoard(final) {
+  boardFinal = final;
+  renderBoard();
+  $('board').classList.remove('live-hidden');
+  if (final) { $('stage').classList.add('live-hidden'); endGame(pin); }
+}
+
+function renderBoard() {
   let rows;
   if (mode === 'group') {
     const totals = aggregateGroups(players);
@@ -109,10 +119,8 @@ function showBoard(final) {
     rows = players.slice().sort((a, b) => (b.score || 0) - (a.score || 0))
       .map((p, i) => ({ name: p.name || '匿名', score: p.score || 0, rank: i + 1 }));
   }
-  $('board-title').textContent = final ? '🏆 最終排行榜' : '目前排行榜';
+  $('board-title').textContent = boardFinal ? '🏆 最終排行榜' : '目前排行榜';
   $('board-list').innerHTML = rows.slice(0, 12)
     .map((r) => `<div class="live-cat-btn" style="background:${r.rank === 1 ? '#f59e0b' : '#475569'}">${r.rank}. ${r.name}<br>${r.score}</div>`)
     .join('');
-  $('board').classList.remove('live-hidden');
-  if (final) { $('stage').classList.add('live-hidden'); endGame(pin); }
 }

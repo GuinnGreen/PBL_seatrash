@@ -52,7 +52,9 @@ service cloud.firestore {
           || (request.auth != null && resource.data.uid == request.auth.uid);
         allow create: if request.auth != null
           && request.resource.data.uid == request.auth.uid
-          && request.resource.data.choice is string;
+          && request.resource.data.choice is string
+          && get(/databases/$(database)/documents/live_rooms/$(pin)).data.state == 'question'
+          && get(/databases/$(database)/documents/live_rooms/$(pin)).data.currentIndex == request.resource.data.qIndex;
         allow update: if isHost();   // 主持人回寫 points
         allow delete: if false;
       }
