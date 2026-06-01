@@ -1,15 +1,94 @@
-/* css/live.css — 即時挑戰共用樣式 */
-.live-wrap { max-width: 720px; margin: 0 auto; padding: 24px 16px; text-align: center; }
-.live-pin-input { font-size: 2rem; letter-spacing: 0.3em; text-align: center; width: 8ch;
-  padding: 12px; border: 2px solid var(--color-border, #cbd5e1); border-radius: 12px; }
-.live-cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 16px; }
-.live-cat-btn { padding: 20px; font-size: 1.1rem; color: #fff; border: none; border-radius: 14px;
-  cursor: pointer; min-height: 84px; }
-.live-cat-btn:disabled { opacity: 0.45; cursor: default; }
+/* css/live.css — 即時挑戰樣式(貼齊 base.css 的海洋雜誌風 token) */
+.live-wrap {
+  max-width: 760px; margin: 0 auto; padding: 32px 18px; text-align: center;
+  font-family: var(--font-sans);
+  color: var(--ink, #111827);
+}
+body { background: var(--bg, #F4EFE6); }
+
+.live-title {
+  font-family: var(--font-serif); font-size: clamp(1.6rem, 4vw, 2.4rem);
+  letter-spacing: 0.04em; margin-bottom: 8px;
+}
+
+/* 設定步驟 */
+.setup-step { margin: 22px 0; }
+.setup-q { font-weight: 700; color: var(--ink-soft, #4B5563); margin-bottom: 12px; }
+.setup-choices { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+
+/* 通用按鈕 */
+.live-btn {
+  appearance: none; cursor: pointer; border: 1px solid var(--border, #D6CFC2);
+  background: var(--surface, #fff); color: var(--ink, #111827);
+  font: inherit; font-weight: 700; font-size: 1.05rem;
+  padding: 16px 22px; border-radius: var(--radius, 4px);
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,.05));
+  display: inline-flex; flex-direction: column; gap: 4px; align-items: center;
+  transition: transform .08s ease, box-shadow .12s ease, background .12s ease;
+  min-width: 120px; min-height: 60px;
+}
+.live-btn small { font-weight: 500; opacity: .7; font-size: .82rem; }
+.live-btn:hover { box-shadow: var(--shadow-md, 0 6px 18px rgba(0,0,0,.08)); }
+.live-btn:active { transform: translateY(1px) scale(.99); }
+.live-btn.is-sel { outline: 3px solid var(--accent, #B45309); outline-offset: 2px; }
+.live-btn--primary { background: var(--c-beverage, #1E40AF); color: #fff; border-color: transparent; }
+.live-btn--accent  { background: var(--accent, #B45309); color: #fff; border-color: transparent; }
+
+/* 加入碼輸入 */
+.live-pin-input {
+  font-size: 2.4rem; letter-spacing: 0.3em; text-align: center; width: 7ch;
+  padding: 14px; border: 2px solid var(--border, #D6CFC2);
+  border-radius: var(--radius, 4px); background: var(--surface, #fff); font-weight: 800;
+}
+
+/* 大號 PIN(主機投影) */
+.live-big {
+  font-family: var(--font-serif); font-size: clamp(3rem, 12vw, 6rem);
+  font-weight: 800; letter-spacing: 0.12em; color: var(--accent, #B45309);
+  margin: 8px 0;
+}
+
+/* 答題按鈕格(5 大類 / 四選一共用) */
+.live-cat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 18px; }
+.live-cat-btn {
+  padding: 22px 16px; font-size: 1.15rem; font-weight: 700; color: #fff;
+  border: none; border-radius: var(--radius, 4px); cursor: pointer; min-height: 96px;
+  box-shadow: var(--shadow-sm, 0 1px 2px rgba(0,0,0,.05));
+  transition: transform .08s ease, filter .12s ease;
+}
+.live-cat-btn:hover { filter: brightness(1.05); }
+.live-cat-btn:active { transform: translateY(1px) scale(.99); }
+.live-cat-btn:disabled { opacity: .5; cursor: default; }
+.live-cat-btn--icc { background: var(--surface, #fff); color: var(--ink, #111827); border: 1px solid var(--border, #D6CFC2); }
+.live-cat-btn--icc .opt-emoji { display: block; font-size: 1.8rem; margin-bottom: 4px; }
+.live-cat-btn.is-chosen { outline: 4px solid var(--ink, #111827); outline-offset: 2px; }
 .live-cat-btn.is-correct { outline: 4px solid #16a34a; }
 .live-cat-btn.is-wrong { outline: 4px solid #dc2626; }
-.live-q-img { max-width: 100%; max-height: 50vh; border-radius: 14px; }
-.live-big { font-size: 3rem; font-weight: 800; letter-spacing: 0.15em; }
-.live-grid-screen { display: grid; gap: 8px; grid-template-columns: repeat(auto-fill, minmax(120px,1fr)); }
-.live-bar { height: 24px; background: var(--color-primary, #2563eb); border-radius: 6px; }
+
+/* 題目圖 */
+.live-q-img {
+  max-width: 100%; max-height: 52vh; border-radius: var(--radius, 4px);
+  box-shadow: var(--shadow-md, 0 6px 18px rgba(0,0,0,.08));
+}
+
+/* 等待室名牌 */
+.live-grid-screen { display: grid; gap: 10px; grid-template-columns: repeat(auto-fill, minmax(130px,1fr)); margin-top: 12px; }
+.live-chip {
+  background: var(--surface, #fff); border: 1px solid var(--border, #D6CFC2);
+  border-radius: var(--radius, 4px); padding: 12px; font-weight: 700;
+  animation: live-pop .25s ease;
+}
+@keyframes live-pop { from { transform: scale(.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+/* 分布長條圖 */
+.dist-row { margin: 8px 0; text-align: left; font-weight: 600; }
+.live-bar { height: 22px; background: var(--accent, #B45309); border-radius: 3px; transition: width .4s ease; display: inline-block; vertical-align: middle; margin: 0 8px; }
+
+/* 排行榜 */
+.live-rank {
+  background: var(--surface, #fff); border: 1px solid var(--border, #D6CFC2);
+  border-radius: var(--radius, 4px); padding: 14px; font-weight: 700; font-size: 1.05rem;
+}
+.live-rank--first { background: var(--accent, #B45309); color: #fff; border-color: transparent; transform: scale(1.04); }
+
 .live-hidden { display: none !important; }
