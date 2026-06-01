@@ -27,6 +27,7 @@ service cloud.firestore {
       allow create: if request.auth != null
         && request.resource.data.hostId == request.auth.uid
         && request.resource.data.mode in ['individual', 'group']
+        && request.resource.data.difficulty in ['basic', 'icc']
         && request.resource.data.state == 'lobby';
       allow update: if request.auth != null
         && resource.data.hostId == request.auth.uid;
@@ -54,7 +55,8 @@ service cloud.firestore {
           && request.resource.data.uid == request.auth.uid
           && request.resource.data.choice is string
           && get(/databases/$(database)/documents/live_rooms/$(pin)).data.state == 'question'
-          && get(/databases/$(database)/documents/live_rooms/$(pin)).data.currentIndex == request.resource.data.qIndex;
+          && get(/databases/$(database)/documents/live_rooms/$(pin)).data.currentIndex == request.resource.data.qIndex
+          && get(/databases/$(database)/documents/live_rooms/$(pin)).data.round == request.resource.data.round;
         allow update: if isHost();   // 主持人回寫 points
         allow delete: if false;
       }
