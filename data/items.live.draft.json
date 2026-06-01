@@ -1,0 +1,339 @@
+{
+  "version": "0.1-draft",
+  "categories": {
+    "beverage": {
+      "label": "飲料容器",
+      "color": "#3B82F6"
+    },
+    "food": {
+      "label": "食物包裝",
+      "color": "#10B981"
+    },
+    "fishing": {
+      "label": "漁業用具",
+      "color": "#F59E0B"
+    },
+    "hazard": {
+      "label": "個人衛生與危險",
+      "color": "#EF4444"
+    },
+    "other": {
+      "label": "其他/不確定",
+      "color": "#6B7280"
+    }
+  },
+  "items": [
+    {
+      "id": "live_beverage_01",
+      "filename": "images/live/live_bev_01_puppy_playing_with_plastic_bottle.jpg",
+      "category": "beverage",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Puppy_Playing_With_Plastic_Bottle.jpg",
+      "license": "CC BY 4.0",
+      "artist": "Kpubkalanami",
+      "title": "File:Puppy Playing With Plastic Bottle.jpg"
+    },
+    {
+      "id": "live_beverage_02",
+      "filename": "images/live/live_bev_02_rivage_en_d_tresse.jpg",
+      "category": "beverage",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Rivage_en_d%C3%A9tresse.jpg",
+      "license": "CC0",
+      "artist": "Merstel007",
+      "title": "File:Rivage en détresse.jpg"
+    },
+    {
+      "id": "live_beverage_03",
+      "filename": "images/live/live_bev_03_clean_the_bay_2012_7324648864_.jpg",
+      "category": "beverage",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Clean_the_Bay_2012_(7324648864).jpg",
+      "license": "Public domain",
+      "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
+      "title": "File:Clean the Bay 2012 (7324648864).jpg"
+    },
+    {
+      "id": "live_beverage_04",
+      "filename": "images/live/live_bev_04_pr_sence_humaine_absence_d_assainissement.jpg",
+      "category": "beverage",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Pr%C3%A9sence_humaine,_absence_d%E2%80%99assainissement.jpg",
+      "license": "CC0",
+      "artist": "Merstel007",
+      "title": "File:Présence humaine, absence d’assainissement.jpg"
+    },
+    {
+      "id": "live_beverage_05",
+      "filename": "images/live/live_bev_05_120602_a_on889_241_7336154692_.jpg",
+      "category": "beverage",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:120602-A-ON889-241_(7336154692).jpg",
+      "license": "Public domain",
+      "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
+      "title": "File:120602-A-ON889-241 (7336154692).jpg"
+    },
+    {
+      "id": "live_beverage_06",
+      "filename": "images/live/live_bev_06_clean_the_bay_2012_7324646526_.jpg",
+      "category": "beverage",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Clean_the_Bay_2012_(7324646526).jpg",
+      "license": "Public domain",
+      "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
+      "title": "File:Clean the Bay 2012 (7324646526).jpg"
+    },
+    {
+      "id": "live_beverage_07",
+      "filename": "images/live/live_bev_07_120602_a_on889_244_7336155476_.jpg",
+      "category": "beverage",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:120602-A-ON889-244_(7336155476).jpg",
+      "license": "Public domain",
+      "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
+      "title": "File:120602-A-ON889-244 (7336155476).jpg"
+    },
+    {
+      "id": "live_beverage_08",
+      "filename": "images/live/live_bev_08_140607_a_on889_72_14189120967_.jpg",
+      "category": "beverage",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:140607-A-ON889-72_(14189120967).jpg",
+      "license": "Public domain",
+      "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
+      "title": "File:140607-A-ON889-72 (14189120967).jpg"
+    },
+    {
+      "id": "live_food_01",
+      "filename": "images/live/live_foo_01_obama_biscuit.jpg",
+      "category": "food",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Obama_Biscuit.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Newfoundlandguy",
+      "title": "File:Obama Biscuit.jpg"
+    },
+    {
+      "id": "live_food_02",
+      "filename": "images/live/live_foo_02_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011_4.jpg",
+      "category": "food",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Morro_Bay,_CA_Sandspit_Coastal_Cleanup_Day_(CCD),_Saturday,_September_17,_2011_4.jpg",
+      "license": "CC BY 2.0",
+      "artist": "Mike Baird",
+      "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011 4.jpg"
+    },
+    {
+      "id": "live_food_03",
+      "filename": "images/live/live_foo_03_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011.jpg",
+      "category": "food",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Morro_Bay,_CA_Sandspit_Coastal_Cleanup_Day_(CCD),_Saturday,_September_17,_2011.jpg",
+      "license": "CC BY 2.0",
+      "artist": "Mike Baird",
+      "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011.jpg"
+    },
+    {
+      "id": "live_food_04",
+      "filename": "images/live/live_foo_04_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011_14.jpg",
+      "category": "food",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Morro_Bay,_CA_Sandspit_Coastal_Cleanup_Day_(CCD),_Saturday,_September_17,_2011_14.jpg",
+      "license": "CC BY 2.0",
+      "artist": "Mike Baird",
+      "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011 14.jpg"
+    },
+    {
+      "id": "live_food_05",
+      "filename": "images/live/live_foo_05_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011_12.jpg",
+      "category": "food",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Morro_Bay,_CA_Sandspit_Coastal_Cleanup_Day_(CCD),_Saturday,_September_17,_2011_12.jpg",
+      "license": "CC BY 2.0",
+      "artist": "Mike Baird",
+      "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011 12.jpg"
+    },
+    {
+      "id": "live_food_06",
+      "filename": "images/live/live_foo_06_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011_10.jpg",
+      "category": "food",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Morro_Bay,_CA_Sandspit_Coastal_Cleanup_Day_(CCD),_Saturday,_September_17,_2011_10.jpg",
+      "license": "CC BY 2.0",
+      "artist": "Mike Baird",
+      "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011 10.jpg"
+    },
+    {
+      "id": "live_food_07",
+      "filename": "images/live/live_foo_07_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011_6157309791_.jpg",
+      "category": "food",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Morro_Bay,_CA_Sandspit_Coastal_Cleanup_Day_(CCD),_Saturday,_September_17,_2011_(6157309791).jpg",
+      "license": "CC BY 2.0",
+      "artist": "Mike Baird from Morro Bay, USA",
+      "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011 (6157309791).jpg"
+    },
+    {
+      "id": "live_food_08",
+      "filename": "images/live/live_foo_08_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011_6157297925_.jpg",
+      "category": "food",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Morro_Bay,_CA_Sandspit_Coastal_Cleanup_Day_(CCD),_Saturday,_September_17,_2011_(6157297925).jpg",
+      "license": "CC BY 2.0",
+      "artist": "Mike Baird from Morro Bay, USA",
+      "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011 (6157297925).jpg"
+    },
+    {
+      "id": "live_fishing_01",
+      "filename": "images/live/live_fis_01_marine_litter_a_transatlantic_traveller_flickr_snemann.jpg",
+      "category": "fishing",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Marine_litter_-_a_transatlantic_traveller_-_Flickr_-_Snemann.jpg",
+      "license": "CC0",
+      "artist": "Bo Eide from Tromsø, Norway",
+      "title": "File:Marine litter - a transatlantic traveller - Flickr - Snemann.jpg"
+    },
+    {
+      "id": "live_fishing_02",
+      "filename": "images/live/live_fis_02_marine_debris_on_midway_atoll_8125814318_.jpg",
+      "category": "fishing",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Marine_Debris_on_Midway_Atoll_(8125814318).jpg",
+      "license": "Public domain",
+      "artist": "NOAA Marine Debris Program",
+      "title": "File:Marine Debris on Midway Atoll (8125814318).jpg"
+    },
+    {
+      "id": "live_fishing_03",
+      "filename": "images/live/live_fis_03_marine_debris_on_midway_atoll_8125791731_.jpg",
+      "category": "fishing",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Marine_Debris_on_Midway_Atoll_(8125791731).jpg",
+      "license": "Public domain",
+      "artist": "NOAA Marine Debris Program",
+      "title": "File:Marine Debris on Midway Atoll (8125791731).jpg"
+    },
+    {
+      "id": "live_hazard_01",
+      "filename": "images/live/live_haz_01_cigarrillo_la_mochila.jpg",
+      "category": "hazard",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Cigarrillo_La_Mochila.jpg",
+      "license": "CC BY-SA 3.0",
+      "artist": "Washington, Arlette Lum y Hermes Ramírez",
+      "title": "File:Cigarrillo La Mochila.jpg"
+    },
+    {
+      "id": "live_hazard_02",
+      "filename": "images/live/live_haz_02_marine_debris_lighters_43102098570_.jpg",
+      "category": "hazard",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Marine_Debris_--_Lighters_(43102098570).jpg",
+      "license": "Public domain",
+      "artist": "National Marine Sanctuaries",
+      "title": "File:Marine Debris -- Lighters (43102098570).jpg"
+    },
+    {
+      "id": "live_hazard_03",
+      "filename": "images/live/live_haz_03_pmnm_laysan_albatross_and_debris_28250723916_.jpg",
+      "category": "hazard",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:PMNM_-_Laysan_Albatross_And_Debris_(28250723916).jpg",
+      "license": "Public domain",
+      "artist": "David Slater/NOAA – National Marine Sanctuaries",
+      "title": "File:PMNM - Laysan Albatross And Debris (28250723916).jpg"
+    },
+    {
+      "id": "live_hazard_04",
+      "filename": "images/live/live_haz_04_rubbish_chesil_beach_geograph.org.uk_1297651.jpg",
+      "category": "hazard",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Rubbish,_Chesil_beach_-_geograph.org.uk_-_1297651.jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "Nigel Mykura",
+      "title": "File:Rubbish, Chesil beach - geograph.org.uk - 1297651.jpg"
+    },
+    {
+      "id": "live_hazard_05",
+      "filename": "images/live/live_haz_05_flostam_tern_island.jpg",
+      "category": "hazard",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Flostam_tern_island.JPG",
+      "license": "Public domain",
+      "artist": "Duncan Wright, USFWS",
+      "title": "File:Flostam tern island.JPG"
+    },
+    {
+      "id": "live_other_01",
+      "filename": "images/live/live_oth_01_leslie_skora_and_a_big_pile_of_trash_on_the_south_hallo_bay_beach_gyre_trip_hallo_bay_june_2013_22330230882_.jpg",
+      "category": "other",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Leslie_Skora_and_a_big_pile_of_trash_on_the_south_Hallo_Bay_beach,_GYRE_Trip,_Hallo_Bay,_June_2013_(22330230882).jpg",
+      "license": "Public domain",
+      "artist": "Katmai National Park and Preserve",
+      "title": "File:Leslie Skora and a big pile of trash on the south Hallo Bay beach, GYRE Trip, Hallo Bay, June 2013 (22330230882).jpg"
+    },
+    {
+      "id": "live_other_02",
+      "filename": "images/live/live_oth_02_jamaica_17_nations_join_forces_for_massive_beach_cleanup_160626_m_tv331_133.jpg",
+      "category": "other",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Jamaica,_17_nations_join_forces_for_massive_beach_cleanup_160626-M-TV331-133.jpg",
+      "license": "Public domain",
+      "artist": "Cpl. Justin Updegraff",
+      "title": "File:Jamaica, 17 nations join forces for massive beach cleanup 160626-M-TV331-133.jpg"
+    }
+  ]
+}
