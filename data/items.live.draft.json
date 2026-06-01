@@ -49,19 +49,7 @@
     },
     {
       "id": "live_beverage_03",
-      "filename": "images/live/live_bev_03_clean_the_bay_2012_7324648864_.jpg",
-      "category": "beverage",
-      "label": "",
-      "icc_item": null,
-      "hint": "",
-      "source": "https://commons.wikimedia.org/wiki/File:Clean_the_Bay_2012_(7324648864).jpg",
-      "license": "Public domain",
-      "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
-      "title": "File:Clean the Bay 2012 (7324648864).jpg"
-    },
-    {
-      "id": "live_beverage_04",
-      "filename": "images/live/live_bev_04_pr_sence_humaine_absence_d_assainissement.jpg",
+      "filename": "images/live/live_bev_03_pr_sence_humaine_absence_d_assainissement.jpg",
       "category": "beverage",
       "label": "",
       "icc_item": null,
@@ -72,8 +60,8 @@
       "title": "File:Présence humaine, absence d’assainissement.jpg"
     },
     {
-      "id": "live_beverage_05",
-      "filename": "images/live/live_bev_05_120602_a_on889_241_7336154692_.jpg",
+      "id": "live_beverage_04",
+      "filename": "images/live/live_bev_04_120602_a_on889_241_7336154692_.jpg",
       "category": "beverage",
       "label": "",
       "icc_item": null,
@@ -84,8 +72,8 @@
       "title": "File:120602-A-ON889-241 (7336154692).jpg"
     },
     {
-      "id": "live_beverage_06",
-      "filename": "images/live/live_bev_06_clean_the_bay_2012_7324646526_.jpg",
+      "id": "live_beverage_05",
+      "filename": "images/live/live_bev_05_clean_the_bay_2012_7324646526_.jpg",
       "category": "beverage",
       "label": "",
       "icc_item": null,
@@ -96,8 +84,8 @@
       "title": "File:Clean the Bay 2012 (7324646526).jpg"
     },
     {
-      "id": "live_beverage_07",
-      "filename": "images/live/live_bev_07_120602_a_on889_244_7336155476_.jpg",
+      "id": "live_beverage_06",
+      "filename": "images/live/live_bev_06_120602_a_on889_244_7336155476_.jpg",
       "category": "beverage",
       "label": "",
       "icc_item": null,
@@ -106,6 +94,18 @@
       "license": "Public domain",
       "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
       "title": "File:120602-A-ON889-244 (7336155476).jpg"
+    },
+    {
+      "id": "live_beverage_07",
+      "filename": "images/live/live_bev_07_140607_a_on889_01_14369575415_.jpg",
+      "category": "beverage",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:140607-A-ON889-01_(14369575415).jpg",
+      "license": "Public domain",
+      "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
+      "title": "File:140607-A-ON889-01 (14369575415).jpg"
     },
     {
       "id": "live_beverage_08",
@@ -118,6 +118,30 @@
       "license": "Public domain",
       "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
       "title": "File:140607-A-ON889-72 (14189120967).jpg"
+    },
+    {
+      "id": "live_beverage_09",
+      "filename": "images/live/live_bev_09_clean_the_bay_2012_7324646166_.jpg",
+      "category": "beverage",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Clean_the_Bay_2012_(7324646166).jpg",
+      "license": "Public domain",
+      "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
+      "title": "File:Clean the Bay 2012 (7324646166).jpg"
+    },
+    {
+      "id": "live_beverage_10",
+      "filename": "images/live/live_bev_10_clean_the_bay_2012_7324647610_.jpg",
+      "category": "beverage",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Clean_the_Bay_2012_(7324647610).jpg",
+      "license": "Public domain",
+      "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
+      "title": "File:Clean the Bay 2012 (7324647610).jpg"
     },
     {
       "id": "live_food_01",
@@ -133,19 +157,7 @@
     },
     {
       "id": "live_food_02",
-      "filename": "images/live/live_foo_02_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011_4.jpg",
-      "category": "food",
-      "label": "",
-      "icc_item": null,
-      "hint": "",
-      "source": "https://commons.wikimedia.org/wiki/File:Morro_Bay,_CA_Sandspit_Coastal_Cleanup_Day_(CCD),_Saturday,_September_17,_2011_4.jpg",
-      "license": "CC BY 2.0",
-      "artist": "Mike Baird",
-      "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011 4.jpg"
-    },
-    {
-      "id": "live_food_03",
-      "filename": "images/live/live_foo_03_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011.jpg",
+      "filename": "images/live/live_foo_02_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011.jpg",
       "category": "food",
       "label": "",
       "icc_item": null,
@@ -154,6 +166,18 @@
       "license": "CC BY 2.0",
       "artist": "Mike Baird",
       "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011.jpg"
+    },
+    {
+      "id": "live_food_03",
+      "filename": "images/live/live_foo_03_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011_4.jpg",
+      "category": "food",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Morro_Bay,_CA_Sandspit_Coastal_Cleanup_Day_(CCD),_Saturday,_September_17,_2011_4.jpg",
+      "license": "CC BY 2.0",
+      "artist": "Mike Baird",
+      "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011 4.jpg"
     },
     {
       "id": "live_food_04",
@@ -216,6 +240,30 @@
       "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011 (6157297925).jpg"
     },
     {
+      "id": "live_food_09",
+      "filename": "images/live/live_foo_09_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011_6157855906_.jpg",
+      "category": "food",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Morro_Bay,_CA_Sandspit_Coastal_Cleanup_Day_(CCD),_Saturday,_September_17,_2011_(6157855906).jpg",
+      "license": "CC BY 2.0",
+      "artist": "Mike Baird from Morro Bay, USA",
+      "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011 (6157855906).jpg"
+    },
+    {
+      "id": "live_food_10",
+      "filename": "images/live/live_foo_10_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011_6157314785_.jpg",
+      "category": "food",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Morro_Bay,_CA_Sandspit_Coastal_Cleanup_Day_(CCD),_Saturday,_September_17,_2011_(6157314785).jpg",
+      "license": "CC BY 2.0",
+      "artist": "Mike Baird from Morro Bay, USA",
+      "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011 (6157314785).jpg"
+    },
+    {
       "id": "live_fishing_01",
       "filename": "images/live/live_fis_01_marine_litter_a_transatlantic_traveller_flickr_snemann.jpg",
       "category": "fishing",
@@ -229,19 +277,7 @@
     },
     {
       "id": "live_fishing_02",
-      "filename": "images/live/live_fis_02_marine_debris_on_midway_atoll_8125814318_.jpg",
-      "category": "fishing",
-      "label": "",
-      "icc_item": null,
-      "hint": "",
-      "source": "https://commons.wikimedia.org/wiki/File:Marine_Debris_on_Midway_Atoll_(8125814318).jpg",
-      "license": "Public domain",
-      "artist": "NOAA Marine Debris Program",
-      "title": "File:Marine Debris on Midway Atoll (8125814318).jpg"
-    },
-    {
-      "id": "live_fishing_03",
-      "filename": "images/live/live_fis_03_marine_debris_on_midway_atoll_8125791731_.jpg",
+      "filename": "images/live/live_fis_02_marine_debris_on_midway_atoll_8125791731_.jpg",
       "category": "fishing",
       "label": "",
       "icc_item": null,
@@ -252,32 +288,80 @@
       "title": "File:Marine Debris on Midway Atoll (8125791731).jpg"
     },
     {
-      "id": "live_hazard_01",
-      "filename": "images/live/live_haz_01_cigarrillo_la_mochila.jpg",
-      "category": "hazard",
+      "id": "live_fishing_03",
+      "filename": "images/live/live_fis_03_marine_debris_on_midway_atoll_8125814318_.jpg",
+      "category": "fishing",
       "label": "",
       "icc_item": null,
       "hint": "",
-      "source": "https://commons.wikimedia.org/wiki/File:Cigarrillo_La_Mochila.jpg",
-      "license": "CC BY-SA 3.0",
-      "artist": "Washington, Arlette Lum y Hermes Ramírez",
-      "title": "File:Cigarrillo La Mochila.jpg"
-    },
-    {
-      "id": "live_hazard_02",
-      "filename": "images/live/live_haz_02_marine_debris_lighters_43102098570_.jpg",
-      "category": "hazard",
-      "label": "",
-      "icc_item": null,
-      "hint": "",
-      "source": "https://commons.wikimedia.org/wiki/File:Marine_Debris_--_Lighters_(43102098570).jpg",
+      "source": "https://commons.wikimedia.org/wiki/File:Marine_Debris_on_Midway_Atoll_(8125814318).jpg",
       "license": "Public domain",
-      "artist": "National Marine Sanctuaries",
-      "title": "File:Marine Debris -- Lighters (43102098570).jpg"
+      "artist": "NOAA Marine Debris Program",
+      "title": "File:Marine Debris on Midway Atoll (8125814318).jpg"
     },
     {
-      "id": "live_hazard_03",
-      "filename": "images/live/live_haz_03_pmnm_laysan_albatross_and_debris_28250723916_.jpg",
+      "id": "live_fishing_04",
+      "filename": "images/live/live_fis_04_fishing_net_at_malloch_s_beach_campobello_island_new_brunswick_canada_nara_550305.jpg",
+      "category": "fishing",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:FISHING_NET_AT_MALLOCH%27S_BEACH,_CAMPOBELLO_ISLAND,_NEW_BRUNSWICK,_CANADA_-_NARA_-_550305.jpg",
+      "license": "Public domain",
+      "artist": "Lee Lockwood",
+      "title": "File:FISHING NET AT MALLOCH'S BEACH, CAMPOBELLO ISLAND, NEW BRUNSWICK, CANADA - NARA - 550305.jpg"
+    },
+    {
+      "id": "live_fishing_05",
+      "filename": "images/live/live_fis_05_purse_seine_fishing_net_at_malloch_s_beach_campobello_island_new_brunswick_canada_nara_550306.jpg",
+      "category": "fishing",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:PURSE_SEINE_(FISHING_NET)_AT_MALLOCH%27S_BEACH,_CAMPOBELLO_ISLAND,_NEW_BRUNSWICK,_CANADA_-_NARA_-_550306.jpg",
+      "license": "Public domain",
+      "artist": "Lee Lockwood",
+      "title": "File:PURSE SEINE (FISHING NET) AT MALLOCH'S BEACH, CAMPOBELLO ISLAND, NEW BRUNSWICK, CANADA - NARA - 550306.jpg"
+    },
+    {
+      "id": "live_fishing_06",
+      "filename": "images/live/live_fis_06_fisherman_net_smelt_off_gold_bluff_beach_nara_543046.jpg",
+      "category": "fishing",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:FISHERMAN_NET_SMELT_OFF_GOLD_BLUFF_BEACH_-_NARA_-_543046.jpg",
+      "license": "Public domain",
+      "artist": "Tomas Sennett",
+      "title": "File:FISHERMAN NET SMELT OFF GOLD BLUFF BEACH - NARA - 543046.jpg"
+    },
+    {
+      "id": "live_fishing_07",
+      "filename": "images/live/live_fis_07_polystyrene_balls_01.jpg",
+      "category": "fishing",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Polystyrene_balls_-_01.jpg",
+      "license": "CC0",
+      "artist": "Anna Frodesiak",
+      "title": "File:Polystyrene balls - 01.jpg"
+    },
+    {
+      "id": "live_fishing_08",
+      "filename": "images/live/live_fis_08_polystyrene_balls_02.jpg",
+      "category": "fishing",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Polystyrene_balls_-_02.jpg",
+      "license": "CC0",
+      "artist": "Anna Frodesiak",
+      "title": "File:Polystyrene balls - 02.jpg"
+    },
+    {
+      "id": "live_hazard_01",
+      "filename": "images/live/live_haz_01_pmnm_laysan_albatross_and_debris_28250723916_.jpg",
       "category": "hazard",
       "label": "",
       "icc_item": null,
@@ -288,8 +372,8 @@
       "title": "File:PMNM - Laysan Albatross And Debris (28250723916).jpg"
     },
     {
-      "id": "live_hazard_04",
-      "filename": "images/live/live_haz_04_rubbish_chesil_beach_geograph.org.uk_1297651.jpg",
+      "id": "live_hazard_02",
+      "filename": "images/live/live_haz_02_rubbish_chesil_beach_geograph.org.uk_1297651.jpg",
       "category": "hazard",
       "label": "",
       "icc_item": null,
@@ -300,8 +384,8 @@
       "title": "File:Rubbish, Chesil beach - geograph.org.uk - 1297651.jpg"
     },
     {
-      "id": "live_hazard_05",
-      "filename": "images/live/live_haz_05_flostam_tern_island.jpg",
+      "id": "live_hazard_03",
+      "filename": "images/live/live_haz_03_flostam_tern_island.jpg",
       "category": "hazard",
       "label": "",
       "icc_item": null,
@@ -312,28 +396,172 @@
       "title": "File:Flostam tern island.JPG"
     },
     {
+      "id": "live_hazard_04",
+      "filename": "images/live/live_haz_04_coast_watch_1979_20471410490_.jpg",
+      "category": "hazard",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Coast_watch_(1979)_(20471410490).jpg",
+      "license": "No restrictions",
+      "artist": "Internet Archive Book Images",
+      "title": "File:Coast watch (1979) (20471410490).jpg"
+    },
+    {
+      "id": "live_hazard_05",
+      "filename": "images/live/live_haz_05_thick_smog_blankets_india_s_capital_city_nesdis_2019_11_01_.jpg",
+      "category": "hazard",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Thick_Smog_Blankets_India%E2%80%99s_Capital_City_(NESDIS_2019-11-01).jpg",
+      "license": "Public domain",
+      "artist": "NOAA",
+      "title": "File:Thick Smog Blankets India’s Capital City (NESDIS 2019-11-01).jpg"
+    },
+    {
+      "id": "live_hazard_06",
+      "filename": "images/live/live_haz_06_thick_smog_blankets_india_s_capital_city_nesdis_2019_11_01_delhi_image_.jpg",
+      "category": "hazard",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Thick_Smog_Blankets_India%E2%80%99s_Capital_City_(NESDIS_2019-11-01_delhi-image).jpg",
+      "license": "Public domain",
+      "artist": "NOAA",
+      "title": "File:Thick Smog Blankets India’s Capital City (NESDIS 2019-11-01 delhi-image).jpg"
+    },
+    {
+      "id": "live_hazard_07",
+      "filename": "images/live/live_haz_07_vanishing_cornwall_flickr_giles_watson_s_poetry_and_prose.jpg",
+      "category": "hazard",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Vanishing_Cornwall_-_Flickr_-_Giles_Watson%27s_poetry_and_prose.jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "Giles Watson from Oxfordshire, England",
+      "title": "File:Vanishing Cornwall - Flickr - Giles Watson's poetry and prose.jpg"
+    },
+    {
       "id": "live_other_01",
-      "filename": "images/live/live_oth_01_leslie_skora_and_a_big_pile_of_trash_on_the_south_hallo_bay_beach_gyre_trip_hallo_bay_june_2013_22330230882_.jpg",
+      "filename": "images/live/live_oth_01_sea_garbage_on_tommy_beach_7.jpg",
       "category": "other",
       "label": "",
       "icc_item": null,
       "hint": "",
-      "source": "https://commons.wikimedia.org/wiki/File:Leslie_Skora_and_a_big_pile_of_trash_on_the_south_Hallo_Bay_beach,_GYRE_Trip,_Hallo_Bay,_June_2013_(22330230882).jpg",
-      "license": "Public domain",
-      "artist": "Katmai National Park and Preserve",
-      "title": "File:Leslie Skora and a big pile of trash on the south Hallo Bay beach, GYRE Trip, Hallo Bay, June 2013 (22330230882).jpg"
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Tommy_Beach_7.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Tommy Beach 7.jpg"
     },
     {
       "id": "live_other_02",
-      "filename": "images/live/live_oth_02_jamaica_17_nations_join_forces_for_massive_beach_cleanup_160626_m_tv331_133.jpg",
+      "filename": "images/live/live_oth_02_sea_garbage_on_crystal_beach_15.jpg",
       "category": "other",
       "label": "",
       "icc_item": null,
       "hint": "",
-      "source": "https://commons.wikimedia.org/wiki/File:Jamaica,_17_nations_join_forces_for_massive_beach_cleanup_160626-M-TV331-133.jpg",
-      "license": "Public domain",
-      "artist": "Cpl. Justin Updegraff",
-      "title": "File:Jamaica, 17 nations join forces for massive beach cleanup 160626-M-TV331-133.jpg"
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Crystal_Beach_15.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Crystal Beach 15.jpg"
+    },
+    {
+      "id": "live_other_03",
+      "filename": "images/live/live_oth_03_sea_garbage_on_crystal_beach_10.jpg",
+      "category": "other",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Crystal_Beach_10.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Crystal Beach 10.jpg"
+    },
+    {
+      "id": "live_other_04",
+      "filename": "images/live/live_oth_04_sea_garbage_on_crystal_beach_6.jpg",
+      "category": "other",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Crystal_Beach_6.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Crystal Beach 6.jpg"
+    },
+    {
+      "id": "live_other_05",
+      "filename": "images/live/live_oth_05_sea_garbage_on_crystal_beach_11.jpg",
+      "category": "other",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Crystal_Beach_11.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Crystal Beach 11.jpg"
+    },
+    {
+      "id": "live_other_06",
+      "filename": "images/live/live_oth_06_sea_garbage_on_crystal_beach_5.jpg",
+      "category": "other",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Crystal_Beach_5.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Crystal Beach 5.jpg"
+    },
+    {
+      "id": "live_other_07",
+      "filename": "images/live/live_oth_07_sea_garbage_on_tommy_beach_17.jpg",
+      "category": "other",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Tommy_Beach_17.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Tommy Beach 17.jpg"
+    },
+    {
+      "id": "live_other_08",
+      "filename": "images/live/live_oth_08_sea_garbage_on_tommy_beach_5.jpg",
+      "category": "other",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Tommy_Beach_5.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Tommy Beach 5.jpg"
+    },
+    {
+      "id": "live_other_09",
+      "filename": "images/live/live_oth_09_sea_garbage_on_crystal_beach_3.jpg",
+      "category": "other",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Crystal_Beach_3.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Crystal Beach 3.jpg"
+    },
+    {
+      "id": "live_other_10",
+      "filename": "images/live/live_oth_10_sea_garbage_on_tommy_beach_14.jpg",
+      "category": "other",
+      "label": "",
+      "icc_item": null,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Tommy_Beach_14.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Tommy Beach 14.jpg"
     }
   ]
 }
