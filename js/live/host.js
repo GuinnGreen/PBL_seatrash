@@ -14,7 +14,7 @@ const ALL_CATS = ['beverage', 'food', 'fishing', 'hazard', 'other'];
 let pin = null, mode = null, difficulty = null, count = 10;
 let categories = [], iccItems = [], rawItems = [];
 let questionSet = [], index = -1, round = 0;
-let players = [], curAnswers = [], answersUnsub = null, boardFinal = false;
+let players = [], curAnswers = [], answersUnsub = null, playersUnsub = null, boardFinal = false;
 
 // --- 設定流程:難度 → 題數 → 模式 ---
 $('setup-difficulty').addEventListener('click', (e) => {
@@ -66,7 +66,7 @@ async function start(selMode) {
   $('lobby').classList.remove('live-hidden');
   $('pin-display').textContent = pin;
   $('join-url').textContent = location.origin + location.pathname.replace('host.html', '');
-  watchPlayers(pin, (list) => {
+  playersUnsub = watchPlayers(pin, (list) => {
     players = list;
     $('player-count').textContent = list.length;
     $('player-list').innerHTML = list
@@ -191,6 +191,7 @@ $('replay').onclick = async () => {
 $('home').onclick = async () => {
   await endGame(pin);
   if (answersUnsub) answersUnsub();
+  if (playersUnsub) playersUnsub();
   pin = null; index = -1; round = 0; players = [];
   $('board').classList.add('live-hidden');
   $('lobby').classList.add('live-hidden');
