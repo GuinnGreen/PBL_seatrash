@@ -19,34 +19,42 @@ USER_AGENT = "OceanGuardianPBL/0.1 (educational; contact: yu.sheng611@gmail.com)
 OK_LICENSES = ("CC0", "CC BY", "Public domain", "PDM", "No restrictions")
 BAD_LICENSES = ("Fair use",)
 SKIP_TERMS = ("logo", "diagram", "infographic", "cartoon", "illustration", "map of", "chart")
-PER_CATEGORY_TARGET = 8  # 多抓,之後人工挑
+PER_CATEGORY_TARGET = 10  # 多抓,之後人工挑
 
 # 與 scrape.py 不同的查詢字串,盡量抓到不一樣的照片
 QUERIES = {
-    "beverage": ["plastic bottle shoreline", "aluminium can litter coast", "bottle cap sand pollution"],
-    "food":     ["plastic wrapper beach", "styrofoam food container ocean", "plastic bag tide line"],
-    "fishing":  ["fishing rope tangled beach", "trawl net washed ashore", "buoy marine litter"],
-    "hazard":   ["cigarette butt sand close up", "disposable mask shoreline", "lighter beach plastic"],
-    "other":    ["beach cleanup pile", "assorted plastic debris coast", "shoreline waste survey"],
+    "beverage": ["plastic bottle shoreline", "aluminium can litter coast", "bottle cap sand pollution", "drink bottle beach waste"],
+    "food":     ["plastic wrapper beach", "styrofoam food container ocean", "plastic bag tide line", "snack packaging beach litter"],
+    "fishing":  ["fishing rope tangled beach", "trawl net washed ashore", "buoy marine litter", "fishing net beach pollution", "abandoned fishing gear shore", "polystyrene float coast"],
+    "hazard":   ["cigarette butt sand close up", "disposable mask shoreline", "lighter beach plastic", "cigarette filter beach litter", "face mask ocean pollution", "syringe washed up beach"],
+    "other":    ["garbage on beach", "beach trash photograph", "marine debris shoreline", "ocean plastic pollution beach", "litter washed ashore", "coastal plastic pollution"],
 }
 
 def session():
     s = requests.Session(); s.headers.update({"User-Agent": USER_AGENT}); return s
 
 def existing_titles():
-    """讀 items.json,蒐集已用過的來源,避免重複。"""
+    """讀 items.json,蒐集已用過的來源(含從 wiki URL 還原的 File: 標題),避免重複。"""
     used = set()
     p = DATA_DIR / "items.json"
-    if p.exists():
-        data = json.loads(p.read_text(encoding="utf-8"))
-        for it in data.get("items", []):
-            for key in ("source", "title", "filename"):
-                v = it.get(key)
-                if v:
-                    used.add(v.strip().lower())
+    if not p.exists():
+        return used
+    data = json.loads(p.read_text(encoding="utf-8"))
+    for it in data.get("items", []):
+        # 原始欄位直接比對(URL、檔名)
+        for key in ("source", "title", "filename"):
+            v = it.get(key)
+            if v:
+                used.add(v.strip().lower())
+        # 從 source URL 還原 Wikimedia 的 "File:Xxx.jpg" 標題(底線→空格)
+        src = it.get("source") or ""
+        m = re.search(r"/wiki/(File:[^?#]+)", src)
+        if m:
+            bare = m.group(1).replace("_", " ").strip()
+            used.add(bare.lower())
     return used
 
-def search_files(s, query, limit=20):
+def search_files(s, query, limit=30):
     params = {"action": "query", "list": "search", "srsearch": query,
               "srnamespace": 6, "srlimit": limit, "format": "json", "formatversion": 2}
     r = s.get(API, params=params, timeout=30); r.raise_for_status()
