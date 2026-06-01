@@ -11,6 +11,7 @@
     { key: 'anping',     label: '安平蚵棚',   slug: 'stories/anping.html' },
     { key: 'categories', label: '5 大類',     slug: 'categories/' },
     { key: 'icc',        label: 'ICC 20 項',  slug: 'icc/' },
+    { key: 'live',       label: '加入房間',   slug: 'live/' },
     { key: 'stories',    label: '案件故事',   slug: 'stories/' },
     { key: 'action',     label: '行動',       slug: 'action/' },
     { key: 'teacher',    label: '教師',       slug: 'teacher/' },
