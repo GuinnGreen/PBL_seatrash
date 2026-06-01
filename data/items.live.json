@@ -298,6 +298,138 @@
       "license": "CC0",
       "artist": "Syced",
       "title": "File:Sea garbage on Crystal Beach 3.jpg"
+    },
+    {
+      "id": "live_food_03",
+      "filename": "images/live/live_foo_03_single_use_plastic_straw.jpg",
+      "category": "food",
+      "label": "藍色塑膠吸管",
+      "icc_item": 7,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Single_Use_Plastic_Straw.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Ocean Blue Project A Oregon Nonprofit",
+      "title": "File:Single Use Plastic Straw.jpg"
+    },
+    {
+      "id": "live_food_05",
+      "filename": "images/live/live_foo_04_plastic_straws_littered_on_gravel_driveway.jpg",
+      "category": "food",
+      "label": "兩根塑膠吸管",
+      "icc_item": 7,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Plastic_straws_littered_on_gravel_driveway.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "The earth hero",
+      "title": "File:Plastic straws littered on gravel driveway.jpg"
+    },
+    {
+      "id": "live_food_06",
+      "filename": "images/live/live_foo_07_zwerfvuil_mcdonalds_i.jpg",
+      "category": "food",
+      "label": "速食店外帶杯與吸管",
+      "icc_item": 8,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Zwerfvuil_McDonalds_I.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Donk A",
+      "title": "File:Zwerfvuil McDonalds I.jpg"
+    },
+    {
+      "id": "live_food_07",
+      "filename": "images/live/live_foo_09_physical_weathering_styrofoam_cup_lake_michigan_obverse.jpg",
+      "category": "food",
+      "label": "海邊保麗龍杯",
+      "icc_item": 8,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Physical_weathering_styrofoam_cup_Lake_Michigan_obverse.jpg",
+      "license": "CC0",
+      "artist": "Visviva",
+      "title": "File:Physical weathering styrofoam cup Lake Michigan obverse.jpg"
+    },
+    {
+      "id": "live_food_08",
+      "filename": "images/live/live_foo_10_physical_weathering_styrofoam_cup_lake_michigan.jpg",
+      "category": "food",
+      "label": "破裂的保麗龍杯",
+      "icc_item": 8,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Physical_weathering_styrofoam_cup_Lake_MIchigan.jpg",
+      "license": "CC0",
+      "artist": "Visviva",
+      "title": "File:Physical weathering styrofoam cup Lake MIchigan.jpg"
+    },
+    {
+      "id": "live_food_09",
+      "filename": "images/live/live_foo_15_clean_the_bay_2012_7324645112_.jpg",
+      "category": "food",
+      "label": "草地上的塑膠袋",
+      "icc_item": 5,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Clean_the_Bay_2012_(7324645112).jpg",
+      "license": "Public domain",
+      "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
+      "title": "File:Clean the Bay 2012 (7324645112).jpg"
+    },
+    {
+      "id": "live_hazard_03",
+      "filename": "images/live/live_haz_01_cigarettes_flickr_capitan_giona.jpg",
+      "category": "hazard",
+      "label": "佈滿菸蒂的長椅",
+      "icc_item": 18,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Cigarettes_-_Flickr_-_Capitan_Giona.jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "Salvatore Barbera from Amsterdam, The Netherlands",
+      "title": "File:Cigarettes - Flickr - Capitan Giona.jpg"
+    },
+    {
+      "id": "live_hazard_04",
+      "filename": "images/live/live_haz_09_discarded_face_mask_marked_covid_on_the_ground.jpg",
+      "category": "hazard",
+      "label": "丟棄的口罩",
+      "icc_item": 20,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Discarded_Face_Mask_Marked_%E2%80%9CCOVID%E2%80%9D_on_the_Ground.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "A S M Jobaer",
+      "title": "File:Discarded Face Mask Marked “COVID” on the Ground.jpg"
+    },
+    {
+      "id": "live_hazard_05",
+      "filename": "images/live/live_haz_11_discarded_face_mask_along_the_pavement_in_clarendon.jpg",
+      "category": "hazard",
+      "label": "人行道上的醫療口罩",
+      "icc_item": 20,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Discarded_face_mask_along_the_pavement_in_Clarendon.jpg",
+      "license": "CC BY-SA 3.0",
+      "artist": "Ser Amantio di Nicolao",
+      "title": "File:Discarded face mask along the pavement in Clarendon.jpg"
+    },
+    {
+      "id": "live_hazard_06",
+      "filename": "images/live/live_haz_12_disposable_face_mask_on_street_east_downtown_vancouver_during_coronavirus_pandemic_49732418483_.jpg",
+      "category": "hazard",
+      "label": "馬路上的拋棄式口罩",
+      "icc_item": 20,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Disposable_Face_Mask_on_street,_East_Downtown,_Vancouver_during_coronavirus_pandemic_(49732418483).jpg",
+      "license": "CC BY 2.0",
+      "artist": "GoToVan from Vancouver, Canada",
+      "title": "File:Disposable Face Mask on street, East Downtown, Vancouver during coronavirus pandemic (49732418483).jpg"
+    },
+    {
+      "id": "live_hazard_07",
+      "filename": "images/live/live_haz_16_disposable_face_mask_on_street_east_downtown_vancouver_during_coronavirus_pandemic_49732965471_.jpg",
+      "category": "hazard",
+      "label": "街角的N95口罩",
+      "icc_item": 20,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Disposable_Face_Mask_on_street,_East_Downtown,_Vancouver_during_coronavirus_pandemic_(49732965471).jpg",
+      "license": "CC BY 2.0",
+      "artist": "GoToVan from Vancouver, Canada",
+      "title": "File:Disposable Face Mask on street, East Downtown, Vancouver during coronavirus pandemic (49732965471).jpg"
     }
   ]
 }
