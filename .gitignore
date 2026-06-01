@@ -10,3 +10,7 @@ data/items.food.json
 /tmp/
 *.pid
 *.log
+
+# Python caches
+scripts/__pycache__/
+__pycache__/

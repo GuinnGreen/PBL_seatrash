@@ -1,0 +1,303 @@
+{
+  "version": "1.0",
+  "categories": {
+    "beverage": {
+      "label": "飲料容器",
+      "color": "#3B82F6"
+    },
+    "food": {
+      "label": "食物包裝",
+      "color": "#10B981"
+    },
+    "fishing": {
+      "label": "漁業用具",
+      "color": "#F59E0B"
+    },
+    "hazard": {
+      "label": "個人衛生與危險",
+      "color": "#EF4444"
+    },
+    "other": {
+      "label": "其他/不確定",
+      "color": "#6B7280"
+    }
+  },
+  "items": [
+    {
+      "id": "live_beverage_02",
+      "filename": "images/live/live_bev_02_rivage_en_d_tresse.jpg",
+      "category": "beverage",
+      "label": "海邊寶特瓶堆",
+      "icc_item": 1,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Rivage_en_d%C3%A9tresse.jpg",
+      "license": "CC0",
+      "artist": "Merstel007",
+      "title": "File:Rivage en détresse.jpg"
+    },
+    {
+      "id": "live_beverage_03",
+      "filename": "images/live/live_bev_03_pr_sence_humaine_absence_d_assainissement.jpg",
+      "category": "beverage",
+      "label": "湖岸塑膠瓶堆",
+      "icc_item": 1,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Pr%C3%A9sence_humaine,_absence_d%E2%80%99assainissement.jpg",
+      "license": "CC0",
+      "artist": "Merstel007",
+      "title": "File:Présence humaine, absence d’assainissement.jpg"
+    },
+    {
+      "id": "live_beverage_09",
+      "filename": "images/live/live_bev_09_clean_the_bay_2012_7324646166_.jpg",
+      "category": "beverage",
+      "label": "沙灘塑膠瓶",
+      "icc_item": 1,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Clean_the_Bay_2012_(7324646166).jpg",
+      "license": "Public domain",
+      "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
+      "title": "File:Clean the Bay 2012 (7324646166).jpg"
+    },
+    {
+      "id": "live_beverage_10",
+      "filename": "images/live/live_bev_10_clean_the_bay_2012_7324647610_.jpg",
+      "category": "beverage",
+      "label": "草叢瓶罐",
+      "icc_item": 1,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Clean_the_Bay_2012_(7324647610).jpg",
+      "license": "Public domain",
+      "artist": "U.S. Army Corps of Engineers Norfolk District from United States",
+      "title": "File:Clean the Bay 2012 (7324647610).jpg"
+    },
+    {
+      "id": "live_hazard_02",
+      "filename": "images/live/live_haz_02_rubbish_chesil_beach_geograph.org.uk_1297651.jpg",
+      "category": "beverage",
+      "label": "海岸塑膠瓶與水桶",
+      "icc_item": 1,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Rubbish,_Chesil_beach_-_geograph.org.uk_-_1297651.jpg",
+      "license": "CC BY-SA 2.0",
+      "artist": "Nigel Mykura",
+      "title": "File:Rubbish, Chesil beach - geograph.org.uk - 1297651.jpg"
+    },
+    {
+      "id": "live_other_08",
+      "filename": "images/live/live_oth_08_sea_garbage_on_tommy_beach_5.jpg",
+      "category": "beverage",
+      "label": "沙灘藍色寶特瓶",
+      "icc_item": 1,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Tommy_Beach_5.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Tommy Beach 5.jpg"
+    },
+    {
+      "id": "live_other_10",
+      "filename": "images/live/live_oth_10_sea_garbage_on_tommy_beach_14.jpg",
+      "category": "beverage",
+      "label": "大寶特瓶（麥茶）",
+      "icc_item": 1,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Tommy_Beach_14.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Tommy Beach 14.jpg"
+    },
+    {
+      "id": "live_food_01",
+      "filename": "images/live/live_foo_01_obama_biscuit.jpg",
+      "category": "food",
+      "label": "零食包裝袋",
+      "icc_item": 6,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Obama_Biscuit.jpg",
+      "license": "CC BY-SA 4.0",
+      "artist": "Newfoundlandguy",
+      "title": "File:Obama Biscuit.jpg"
+    },
+    {
+      "id": "live_fishing_01",
+      "filename": "images/live/live_fis_01_marine_litter_a_transatlantic_traveller_flickr_snemann.jpg",
+      "category": "fishing",
+      "label": "海灘漁業浮球",
+      "icc_item": 14,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Marine_litter_-_a_transatlantic_traveller_-_Flickr_-_Snemann.jpg",
+      "license": "CC0",
+      "artist": "Bo Eide from Tromsø, Norway",
+      "title": "File:Marine litter - a transatlantic traveller - Flickr - Snemann.jpg"
+    },
+    {
+      "id": "live_fishing_02",
+      "filename": "images/live/live_fis_02_marine_debris_on_midway_atoll_8125791731_.jpg",
+      "category": "fishing",
+      "label": "礁岩上的浮球",
+      "icc_item": 14,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Marine_Debris_on_Midway_Atoll_(8125791731).jpg",
+      "license": "Public domain",
+      "artist": "NOAA Marine Debris Program",
+      "title": "File:Marine Debris on Midway Atoll (8125791731).jpg"
+    },
+    {
+      "id": "live_fishing_03",
+      "filename": "images/live/live_fis_03_marine_debris_on_midway_atoll_8125814318_.jpg",
+      "category": "fishing",
+      "label": "海岸漁業浮球",
+      "icc_item": 14,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Marine_Debris_on_Midway_Atoll_(8125814318).jpg",
+      "license": "Public domain",
+      "artist": "NOAA Marine Debris Program",
+      "title": "File:Marine Debris on Midway Atoll (8125814318).jpg"
+    },
+    {
+      "id": "live_fishing_04",
+      "filename": "images/live/live_fis_04_fishing_net_at_malloch_s_beach_campobello_island_new_brunswick_canada_nara_550305.jpg",
+      "category": "fishing",
+      "label": "漁網浮子堆",
+      "icc_item": 14,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:FISHING_NET_AT_MALLOCH%27S_BEACH,_CAMPOBELLO_ISLAND,_NEW_BRUNSWICK,_CANADA_-_NARA_-_550305.jpg",
+      "license": "Public domain",
+      "artist": "Lee Lockwood",
+      "title": "File:FISHING NET AT MALLOCH'S BEACH, CAMPOBELLO ISLAND, NEW BRUNSWICK, CANADA - NARA - 550305.jpg"
+    },
+    {
+      "id": "live_fishing_05",
+      "filename": "images/live/live_fis_05_purse_seine_fishing_net_at_malloch_s_beach_campobello_island_new_brunswick_canada_nara_550306.jpg",
+      "category": "fishing",
+      "label": "成堆漁網浮子",
+      "icc_item": 14,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:PURSE_SEINE_(FISHING_NET)_AT_MALLOCH%27S_BEACH,_CAMPOBELLO_ISLAND,_NEW_BRUNSWICK,_CANADA_-_NARA_-_550306.jpg",
+      "license": "Public domain",
+      "artist": "Lee Lockwood",
+      "title": "File:PURSE SEINE (FISHING NET) AT MALLOCH'S BEACH, CAMPOBELLO ISLAND, NEW BRUNSWICK, CANADA - NARA - 550306.jpg"
+    },
+    {
+      "id": "live_hazard_01",
+      "filename": "images/live/live_haz_01_pmnm_laysan_albatross_and_debris_28250723916_.jpg",
+      "category": "hazard",
+      "label": "成堆打火機",
+      "icc_item": 18,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:PMNM_-_Laysan_Albatross_And_Debris_(28250723916).jpg",
+      "license": "Public domain",
+      "artist": "David Slater/NOAA – National Marine Sanctuaries",
+      "title": "File:PMNM - Laysan Albatross And Debris (28250723916).jpg"
+    },
+    {
+      "id": "live_food_02",
+      "filename": "images/live/live_foo_02_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011.jpg",
+      "category": "other",
+      "label": "海灘清出的雜物桶",
+      "icc_item": 5,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Morro_Bay,_CA_Sandspit_Coastal_Cleanup_Day_(CCD),_Saturday,_September_17,_2011.jpg",
+      "license": "CC BY 2.0",
+      "artist": "Mike Baird",
+      "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011.jpg"
+    },
+    {
+      "id": "live_food_04",
+      "filename": "images/live/live_foo_04_morro_bay_ca_sandspit_coastal_cleanup_day_ccd_saturday_september_17_2011_14.jpg",
+      "category": "other",
+      "label": "沙灘垃圾分類桶",
+      "icc_item": 5,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Morro_Bay,_CA_Sandspit_Coastal_Cleanup_Day_(CCD),_Saturday,_September_17,_2011_14.jpg",
+      "license": "CC BY 2.0",
+      "artist": "Mike Baird",
+      "title": "File:Morro Bay, CA Sandspit Coastal Cleanup Day (CCD), Saturday, September 17, 2011 14.jpg"
+    },
+    {
+      "id": "live_other_02",
+      "filename": "images/live/live_oth_02_sea_garbage_on_crystal_beach_15.jpg",
+      "category": "other",
+      "label": "沙灘塑膠浮子",
+      "icc_item": 14,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Crystal_Beach_15.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Crystal Beach 15.jpg"
+    },
+    {
+      "id": "live_other_03",
+      "filename": "images/live/live_oth_03_sea_garbage_on_crystal_beach_10.jpg",
+      "category": "other",
+      "label": "草叢混合垃圾堆",
+      "icc_item": 1,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Crystal_Beach_10.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Crystal Beach 10.jpg"
+    },
+    {
+      "id": "live_other_04",
+      "filename": "images/live/live_oth_04_sea_garbage_on_crystal_beach_6.jpg",
+      "category": "other",
+      "label": "海岸浮球與瓶罐",
+      "icc_item": 14,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Crystal_Beach_6.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Crystal Beach 6.jpg"
+    },
+    {
+      "id": "live_other_05",
+      "filename": "images/live/live_oth_05_sea_garbage_on_crystal_beach_11.jpg",
+      "category": "other",
+      "label": "海漂垃圾堆",
+      "icc_item": 15,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Crystal_Beach_11.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Crystal Beach 11.jpg"
+    },
+    {
+      "id": "live_other_06",
+      "filename": "images/live/live_oth_06_sea_garbage_on_crystal_beach_5.jpg",
+      "category": "other",
+      "label": "各色漁業浮球",
+      "icc_item": 14,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Crystal_Beach_5.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Crystal Beach 5.jpg"
+    },
+    {
+      "id": "live_other_07",
+      "filename": "images/live/live_oth_07_sea_garbage_on_tommy_beach_17.jpg",
+      "category": "other",
+      "label": "黑色漁業浮球",
+      "icc_item": 14,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Tommy_Beach_17.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Tommy Beach 17.jpg"
+    },
+    {
+      "id": "live_other_09",
+      "filename": "images/live/live_oth_09_sea_garbage_on_crystal_beach_3.jpg",
+      "category": "other",
+      "label": "海岸塑膠雜物堆",
+      "icc_item": 5,
+      "hint": "",
+      "source": "https://commons.wikimedia.org/wiki/File:Sea_garbage_on_Crystal_Beach_3.jpg",
+      "license": "CC0",
+      "artist": "Syced",
+      "title": "File:Sea garbage on Crystal Beach 3.jpg"
+    }
+  ]
+}
