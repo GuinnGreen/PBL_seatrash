@@ -80,3 +80,6 @@ window.OG.firebase = {
 
   currentUser: () => auth.currentUser,
 };
+
+// 供 live 模組以 ES module 方式重用同一個 app 的 db/auth/匿名登入狀態
+export { db, auth, readyPromise as ready };
