@@ -219,7 +219,7 @@ async function downloadZip() {
           id: record.iccId,
           name: record.iccName || '未分類',
         };
-        const blob = await getPhotoBlobWithRetry(record, i + 1);
+        const blob = await getPhotoBlobForZip(record, i + 1);
         const folder = zip.folder(formatIccFolderName(item));
         folder.file(formatPhotoFileName(record), blob);
         completed += 1;
@@ -253,6 +253,16 @@ async function getPhotoBlob(record) {
   return getCleanupPhotoBlob(record.storagePath);
 }
 
+async function getPhotoBlobForZip(record, index) {
+  try {
+    const url = await getPhotoUrl(record);
+    return await renderImageUrlToJpegBlob(url);
+  } catch (err) {
+    setDownloadStatus(`第 ${index} 張改用備援下載…`);
+    return getPhotoBlobWithRetry(record, index);
+  }
+}
+
 async function getPhotoBlobWithRetry(record, index) {
   let lastError = null;
   for (let attempt = 1; attempt <= 3; attempt++) {
@@ -267,6 +277,35 @@ async function getPhotoBlobWithRetry(record, index) {
     }
   }
   throw lastError;
+}
+
+function renderImageUrlToJpegBlob(url) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    const timer = setTimeout(() => reject(new Error('圖片載入逾時')), 45000);
+    img.crossOrigin = 'anonymous';
+    img.onload = () => {
+      clearTimeout(timer);
+      try {
+        const canvas = document.createElement('canvas');
+        canvas.width = img.naturalWidth || img.width;
+        canvas.height = img.naturalHeight || img.height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0);
+        canvas.toBlob((blob) => {
+          if (blob) resolve(blob);
+          else reject(new Error('照片轉檔失敗'));
+        }, 'image/jpeg', 0.9);
+      } catch (err) {
+        reject(err);
+      }
+    };
+    img.onerror = () => {
+      clearTimeout(timer);
+      reject(new Error('照片下載失敗'));
+    };
+    img.src = url;
+  });
 }
 
 function barRow(label, count, total) {
