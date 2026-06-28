@@ -247,29 +247,50 @@
 
 .cleanup-controls {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 12px;
+  grid-template-columns: minmax(150px, 180px) minmax(190px, 230px) minmax(180px, 1fr);
+  gap: 14px;
   align-items: end;
-  margin: 20px 0;
+  margin: 0;
+}
+
+.cleanup-controls-panel {
+  padding: 18px;
+}
+
+.cleanup-controls-panel .cleanup-status {
+  margin-top: 10px;
 }
 
 .cleanup-summary {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 12px;
-  margin: 18px 0;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0;
+  margin: 14px 0;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--surface);
+  box-shadow: var(--shadow-sm);
 }
 
 .cleanup-stat {
-  background: var(--paper);
+  min-height: 94px;
+  display: grid;
+  align-content: center;
+  background: var(--surface);
   border-left: 4px solid var(--accent);
-  padding: 14px 16px;
+  border-right: 1px solid var(--border);
+  padding: 16px 18px;
+}
+.cleanup-stat:last-child {
+  border-right: 0;
 }
 .cleanup-stat strong {
   display: block;
   font-family: var(--font-serif);
-  font-size: 28px;
+  font-size: 26px;
   line-height: 1.15;
+  overflow-wrap: anywhere;
 }
 .cleanup-stat span {
   font-size: 11px;
@@ -280,8 +301,9 @@
 
 .cleanup-dashboard-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
+  grid-template-columns: minmax(220px, .8fr) minmax(260px, 1fr) minmax(300px, 1.2fr) minmax(220px, .8fr);
+  gap: 14px;
+  align-items: start;
 }
 
 .cleanup-bar-row {
@@ -343,10 +365,17 @@
 .cleanup-photo figcaption span { color: var(--ink-soft); }
 
 .cleanup-actions {
+  grid-column: 1 / -1;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   align-items: center;
+  justify-content: flex-end;
+  padding-top: 2px;
+}
+
+.cleanup-actions .btn {
+  min-height: 46px;
 }
 
 .cleanup-picker[hidden] {
@@ -523,9 +552,44 @@
   }
 }
 
+@media (max-width: 1100px) {
+  .cleanup-dashboard-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 720px) {
   .cleanup-panel {
     padding: 18px;
+  }
+
+  .cleanup-controls {
+    grid-template-columns: 1fr;
+  }
+
+  .cleanup-actions {
+    justify-content: stretch;
+  }
+
+  .cleanup-actions .btn {
+    flex: 1 1 150px;
+  }
+
+  .cleanup-summary,
+  .cleanup-dashboard-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cleanup-summary {
+    border: 0;
+    gap: 10px;
+    background: transparent;
+    box-shadow: none;
+  }
+
+  .cleanup-stat {
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
   }
 
   .cleanup-photo-queue {
