@@ -211,14 +211,15 @@ async function downloadZip() {
   $('#zip-btn').disabled = true;
   try {
     let completed = 0;
-    const workers = Array.from({ length: Math.min(4, filtered.length) }, async (_, workerIndex) => {
-      for (let i = workerIndex; i < filtered.length; i += 4) {
+    const concurrency = Math.min(2, filtered.length);
+    const workers = Array.from({ length: concurrency }, async (_, workerIndex) => {
+      for (let i = workerIndex; i < filtered.length; i += concurrency) {
         const record = filtered[i];
         const item = iccItems.find((x) => Number(x.id) === Number(record.iccId)) || {
           id: record.iccId,
           name: record.iccName || '未分類',
         };
-        const blob = await getPhotoBlob(record);
+        const blob = await getPhotoBlobWithRetry(record, i + 1);
         const folder = zip.folder(formatIccFolderName(item));
         folder.file(formatPhotoFileName(record), blob);
         completed += 1;
@@ -252,6 +253,22 @@ async function getPhotoBlob(record) {
   return getCleanupPhotoBlob(record.storagePath);
 }
 
+async function getPhotoBlobWithRetry(record, index) {
+  let lastError = null;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      if (attempt > 1) {
+        setDownloadStatus(`第 ${index} 張重試下載中… (${attempt}/3)`);
+        await delay(700 * attempt);
+      }
+      return await getPhotoBlob(record);
+    } catch (err) {
+      lastError = err;
+    }
+  }
+  throw lastError;
+}
+
 function barRow(label, count, total) {
   const pct = total ? Math.round((count / total) * 100) : 0;
   return `
@@ -281,7 +298,7 @@ async function loadFirebaseConfig() {
 }
 
 function getFirebaseApi() {
-  firebaseApiPromise ||= import('./firebase-cleanup.js?v=zip-blob');
+  firebaseApiPromise ||= import('./firebase-cleanup.js?v=zip-stable');
   return firebaseApiPromise;
 }
 
@@ -304,6 +321,10 @@ function setDownloadStatus(text) {
 
 function today() {
   return new Date().toISOString().slice(0, 10);
+}
+
+function delay(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
 }
 
 function escapeHtml(value) {

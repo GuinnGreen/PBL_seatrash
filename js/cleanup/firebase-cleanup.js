@@ -12,12 +12,14 @@ import {
   getDownloadURL,
   getStorage,
   ref,
+  setMaxOperationRetryTime,
   uploadBytesResumable,
 } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js';
 import { app, auth, db, ready } from '../firebase-config.js';
 import { buildCleanupRecord } from './cleanup-utils.js';
 
 const storage = getStorage(app);
+setMaxOperationRetryTime(storage, 10 * 60 * 1000);
 const photosCol = collection(db, 'cleanup_photos');
 
 export function newCleanupPhotoId() {
