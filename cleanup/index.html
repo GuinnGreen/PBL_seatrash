@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>淨灘照片上傳 · 海洋偵查員</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/cleanup.css">
+</head>
+<body>
+  <main>
+    <header class="page-head">
+      <span class="kicker">Yuguang Cleanup &nbsp;/&nbsp; ICC Upload</span>
+      <h1>上傳漁光島淨灘照片</h1>
+      <p class="dek">
+        先選班級與小組，一次加入多張照片；點每張縮圖標記 ICC 分類，全部標完後再批次上傳。
+      </p>
+    </header>
+
+    <div class="cleanup-shell cleanup-shell--upload">
+      <section class="cleanup-panel">
+        <form class="cleanup-form" id="cleanup-form" novalidate>
+          <label class="cleanup-field">
+            <span class="cleanup-label">班級</span>
+            <select class="cleanup-select" id="class-id" name="classId" required>
+              <option value="">請選班級</option>
+              <option value="505">505</option>
+              <option value="506">506</option>
+            </select>
+          </label>
+
+          <label class="cleanup-field">
+            <span class="cleanup-label">小組</span>
+            <input id="group" name="group" type="text" maxlength="20" placeholder="例如：第 3 組" autocomplete="off" required>
+          </label>
+
+          <label class="cleanup-field">
+            <span class="cleanup-label">照片</span>
+            <input id="photo" name="photo" type="file" accept="image/*" multiple required>
+          </label>
+
+          <div class="cleanup-queue-head">
+            <strong>照片佇列</strong>
+            <span id="queue-count">尚未選擇照片</span>
+          </div>
+          <div class="cleanup-photo-queue" id="photo-queue">
+            <p class="cleanup-empty">可一次選多張照片，選完後點縮圖分類。</p>
+          </div>
+
+          <p class="cleanup-status" id="status" aria-live="polite"></p>
+          <button class="btn btn-primary" id="submit-btn" type="submit">上傳已分類照片 →</button>
+        </form>
+      </section>
+
+      <aside class="cleanup-panel">
+        <h2 style="margin-top:0;">批次進度</h2>
+        <div class="cleanup-overall-progress" aria-hidden="true">
+          <i id="overall-progress"></i>
+        </div>
+        <ul class="cleanup-uploaded" id="uploaded-list">
+          <li class="cleanup-empty">這台 iPad 尚未上傳照片。</li>
+        </ul>
+      </aside>
+    </div>
+  </main>
+
+  <div class="cleanup-picker" id="icc-picker" hidden>
+    <div class="cleanup-picker__backdrop" data-close-picker></div>
+    <section class="cleanup-picker__panel" role="dialog" aria-modal="true" aria-labelledby="picker-title">
+      <header class="cleanup-picker__head">
+        <div>
+          <span class="cleanup-label">ICC 分類</span>
+          <h2 id="picker-title">選擇這張照片的分類</h2>
+        </div>
+        <button class="cleanup-icon-btn" type="button" data-close-picker aria-label="關閉">×</button>
+      </header>
+      <div class="cleanup-picker__body">
+        <figure class="cleanup-picker__preview">
+          <img id="picker-image" alt="目前分類照片">
+          <figcaption id="picker-photo-name"></figcaption>
+        </figure>
+        <div class="cleanup-picker__work">
+          <div class="cleanup-tabs" id="icc-tabs" role="tablist"></div>
+          <div class="cleanup-icc-button-grid" id="icc-options">
+            <p class="cleanup-empty">分類載入中…</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="../js/nav.js?v=cleanup"></script>
+  <script>OG.renderNav('cleanup'); OG.renderFooter();</script>
+  <script type="module" src="../js/cleanup/upload.js?v=cleanup"></script>
+</body>
+</html>

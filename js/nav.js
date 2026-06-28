@@ -11,6 +11,7 @@
     { key: 'anping',     label: '安平蚵棚',   slug: 'stories/anping.html' },
     { key: 'categories', label: '5 大類',     slug: 'categories/' },
     { key: 'icc',        label: 'ICC 20 項',  slug: 'icc/' },
+    { key: 'cleanup',    label: '淨灘上傳',   slug: 'cleanup/' },
     { key: 'live',       label: '加入房間',   slug: 'live/' },
     { key: 'stories',    label: '案件故事',   slug: 'stories/' },
     { key: 'action',     label: '行動',       slug: 'action/' },
@@ -19,7 +20,7 @@
   ];
 
   function isSubPage() {
-    return /\/(items|categories|game|icc|next|teacher|stories|data-viz|action)(\/|\/[^/]*\.html)?$/.test(
+    return /\/(items|categories|game|icc|cleanup|next|teacher|stories|data-viz|action)(\/|\/[^/]*\.html)?$/.test(
       window.location.pathname
     );
   }

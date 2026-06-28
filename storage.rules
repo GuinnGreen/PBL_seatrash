@@ -1,0 +1,18 @@
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    function isTeacher() {
+      return request.auth != null
+        && request.auth.token.firebase.sign_in_provider == 'password';
+    }
+
+    match /cleanup/yuguang/{fileName} {
+      allow read: if isTeacher();
+      allow create: if request.auth != null
+        && fileName.matches('^[A-Za-z0-9_-]+\\.jpg$')
+        && request.resource.size < 5 * 1024 * 1024
+        && request.resource.contentType == 'image/jpeg';
+      allow update, delete: if false;
+    }
+  }
+}

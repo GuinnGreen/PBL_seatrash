@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>淨灘照片統計 · 海洋偵查員</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/cleanup.css">
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="page-head">
+      <span class="kicker">Teacher Dashboard &nbsp;/&nbsp; Yuguang Cleanup</span>
+      <h1>漁光島 ICC 照片統計</h1>
+      <p class="dek" id="cleanup-status">載入中…</p>
+    </header>
+
+    <div id="cleanup-body">
+      <section class="cleanup-panel">
+        <div class="cleanup-controls">
+          <label class="cleanup-field">
+            <span class="cleanup-label">班級篩選</span>
+            <select class="cleanup-filter" id="filter-class">
+              <option value="all">全部班級</option>
+              <option value="505">505</option>
+              <option value="506">506</option>
+              <option value="unknown">未標班級</option>
+            </select>
+          </label>
+          <label class="cleanup-field">
+            <span class="cleanup-label">ICC 篩選</span>
+            <select class="cleanup-filter" id="filter-icc">
+              <option value="all">全部 ICC</option>
+            </select>
+          </label>
+          <label class="cleanup-field">
+            <span class="cleanup-label">小組篩選</span>
+            <input class="cleanup-filter" id="filter-group" type="text" placeholder="例如：第 3 組">
+          </label>
+          <div class="cleanup-actions">
+            <button class="btn btn-primary" id="csv-btn" type="button">下載 CSV</button>
+            <button class="btn btn-ghost" id="zip-btn" type="button">依 ICC 下載 ZIP</button>
+            <button class="btn btn-ghost" id="logout-btn" type="button">登出</button>
+          </div>
+        </div>
+        <p class="cleanup-status" id="download-status" aria-live="polite"></p>
+      </section>
+
+      <section class="cleanup-summary" id="summary"></section>
+
+      <section class="cleanup-dashboard-grid">
+        <div class="cleanup-panel">
+          <h2 style="margin-top:0;">班級上傳數</h2>
+          <div id="class-bars"></div>
+        </div>
+        <div class="cleanup-panel">
+          <h2 style="margin-top:0;">5 大類</h2>
+          <div id="category-bars"></div>
+        </div>
+        <div class="cleanup-panel">
+          <h2 style="margin-top:0;">ICC 項目 Top 8</h2>
+          <div id="icc-bars"></div>
+        </div>
+        <div class="cleanup-panel">
+          <h2 style="margin-top:0;">小組上傳數</h2>
+          <div id="group-bars"></div>
+        </div>
+      </section>
+
+      <section class="cleanup-panel" style="margin-top:18px;">
+        <h2 style="margin-top:0;">照片牆</h2>
+        <div class="cleanup-gallery" id="gallery">
+          <p class="cleanup-empty">照片載入中…</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/nav.js?v=cleanup"></script>
+  <script>OG.renderNav('cleanup'); OG.renderFooter();</script>
+  <script type="module" src="../js/cleanup/results.js?v=cleanup"></script>
+</body>
+</html>

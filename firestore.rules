@@ -17,6 +17,37 @@ service cloud.firestore {
       allow update, delete: if false;
     }
 
+    match /cleanup_photos/{photoId} {
+      function isTeacher() {
+        return request.auth != null
+          && request.auth.token.firebase.sign_in_provider == 'password';
+      }
+
+      allow read: if isTeacher();
+      allow create: if request.auth != null
+        && request.resource.data.activity == 'yuguang'
+        && request.resource.data.photoId == photoId
+        && request.resource.data.ownerUid == request.auth.uid
+        && request.resource.data.classId in ['505', '506']
+        && request.resource.data.group is string
+        && request.resource.data.group.size() > 0
+        && request.resource.data.group.size() <= 20
+        && request.resource.data.iccId is number
+        && request.resource.data.iccId >= 1
+        && request.resource.data.iccId <= 20
+        && request.resource.data.iccName is string
+        && request.resource.data.iccName.size() > 0
+        && request.resource.data.category in ['beverage', 'food', 'fishing', 'hazard', 'other']
+        && request.resource.data.storagePath == 'cleanup/yuguang/' + photoId + '.jpg'
+        && request.resource.data.width is number
+        && request.resource.data.width > 0
+        && request.resource.data.width <= 2000
+        && request.resource.data.height is number
+        && request.resource.data.height > 0
+        && request.resource.data.height <= 2000;
+      allow update, delete: if false;
+    }
+
     match /live_rooms/{pin} {
       function isHost() {
         return request.auth != null
