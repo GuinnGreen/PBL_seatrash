@@ -298,7 +298,7 @@ async function loadFirebaseConfig() {
 }
 
 function getFirebaseApi() {
-  firebaseApiPromise ||= import('./firebase-cleanup.js?v=zip-stable');
+  firebaseApiPromise ||= import('./firebase-cleanup.js?v=zip-retry');
   return firebaseApiPromise;
 }
 
