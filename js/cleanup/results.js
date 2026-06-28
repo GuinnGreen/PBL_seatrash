@@ -217,8 +217,7 @@ async function downloadZip() {
         id: record.iccId,
         name: record.iccName || '未分類',
       };
-      const url = await getPhotoUrl(record);
-      const blob = await fetch(url).then((res) => res.blob());
+      const blob = await getPhotoBlob(record);
       const folder = zip.folder(formatIccFolderName(item));
       folder.file(formatPhotoFileName(record), blob);
     }
@@ -238,6 +237,11 @@ async function getPhotoUrl(record) {
   const url = await getCleanupPhotoUrl(record.storagePath);
   urlCache.set(record.storagePath, url);
   return url;
+}
+
+async function getPhotoBlob(record) {
+  const { getCleanupPhotoBlob } = await getFirebaseApi();
+  return getCleanupPhotoBlob(record.storagePath);
 }
 
 function barRow(label, count, total) {
@@ -269,7 +273,7 @@ async function loadFirebaseConfig() {
 }
 
 function getFirebaseApi() {
-  firebaseApiPromise ||= import('./firebase-cleanup.js');
+  firebaseApiPromise ||= import('./firebase-cleanup.js?v=zip-blob');
   return firebaseApiPromise;
 }
 

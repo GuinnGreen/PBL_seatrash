@@ -8,6 +8,7 @@ import {
   setDoc,
 } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js';
 import {
+  getBlob,
   getDownloadURL,
   getStorage,
   ref,
@@ -83,6 +84,10 @@ export function watchCleanupPhotos(cb, onError) {
 
 export function getCleanupPhotoUrl(storagePath) {
   return getDownloadURL(ref(storage, storagePath));
+}
+
+export function getCleanupPhotoBlob(storagePath) {
+  return getBlob(ref(storage, storagePath));
 }
 
 function uploadResumable(storageRef, blob, onProgress) {
