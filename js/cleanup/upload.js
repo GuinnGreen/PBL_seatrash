@@ -1,5 +1,5 @@
 import { CATEGORY_LABELS } from './cleanup-utils.js';
-import { compressImageFile } from './image.js';
+import { compressImageFile } from './image.js?v=compress-size';
 
 const $ = (sel) => document.querySelector(sel);
 
@@ -325,7 +325,7 @@ function setStatus(message, type) {
 }
 
 function loadCleanupApi() {
-  cleanupApiPromise ||= import('./firebase-cleanup.js');
+  cleanupApiPromise ||= import('./firebase-cleanup.js?v=upload-context');
   return cleanupApiPromise;
 }
 

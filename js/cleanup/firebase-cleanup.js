@@ -40,7 +40,11 @@ export async function uploadCleanupPhoto({
 
   const storagePath = `cleanup/yuguang/${photoId}.jpg`;
   const storageRef = ref(storage, storagePath);
-  await uploadResumable(storageRef, blob, onProgress);
+  try {
+    await uploadResumable(storageRef, blob, onProgress);
+  } catch (err) {
+    throw addContext(err, '照片檔案上傳失敗');
+  }
 
   const record = buildCleanupRecord({
     photoId,
@@ -53,12 +57,21 @@ export async function uploadCleanupPhoto({
     ownerUid: uid,
   }, iccItems);
 
-  await setDoc(doc(db, 'cleanup_photos', photoId), {
-    ...record,
-    createdAt: serverTimestamp(),
-  });
+  try {
+    await setDoc(doc(db, 'cleanup_photos', photoId), {
+      ...record,
+      createdAt: serverTimestamp(),
+    });
+  } catch (err) {
+    throw addContext(err, '照片資料寫入失敗');
+  }
 
   return record;
+}
+
+function addContext(err, prefix) {
+  err.message = `${prefix}：${err.code || err.message || 'unknown'}`;
+  return err;
 }
 
 export function watchCleanupPhotos(cb, onError) {
