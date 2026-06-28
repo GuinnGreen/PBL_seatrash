@@ -41,10 +41,44 @@ function renderLoginPrompt() {
   $('#cleanup-body').innerHTML = `
     <div class="cleanup-panel cleanup-login">
       <h2>需要老師身份才能查看</h2>
-      <p>請先用老師帳號登入，再回到這裡看全班上傳結果。</p>
-      <a class="btn btn-primary" href="../game/?teacher=1">前往登入 →</a>
+      <p>請用老師帳號登入，即可查看漁光島淨灘照片統計。</p>
+      <form class="cleanup-login-form" id="cleanup-login-form" novalidate>
+        <label class="cleanup-field">
+          <span class="cleanup-label">Email</span>
+          <input class="cleanup-filter" id="cleanup-email" type="email" autocomplete="username" required>
+        </label>
+        <label class="cleanup-field">
+          <span class="cleanup-label">密碼</span>
+          <input class="cleanup-filter" id="cleanup-password" type="password" autocomplete="current-password" required>
+        </label>
+        <p class="cleanup-status" id="cleanup-login-status" aria-live="polite"></p>
+        <button class="btn btn-primary" type="submit">登入統計頁 →</button>
+      </form>
     </div>
   `;
+  $('#cleanup-login-form').addEventListener('submit', onTeacherLogin);
+}
+
+async function onTeacherLogin(event) {
+  event.preventDefault();
+  const email = $('#cleanup-email').value.trim();
+  const password = $('#cleanup-password').value;
+  const status = $('#cleanup-login-status');
+  if (!email || !password) {
+    status.textContent = '請輸入老師帳號與密碼。';
+    status.dataset.type = 'error';
+    return;
+  }
+  try {
+    status.textContent = '登入中…';
+    status.dataset.type = 'busy';
+    await window.OG.firebase.signInTeacher(email, password);
+    status.textContent = '登入成功，載入統計中…';
+    status.dataset.type = 'ok';
+  } catch (err) {
+    status.textContent = `登入失敗：${err.code || err.message || '請確認帳密'}`;
+    status.dataset.type = 'error';
+  }
 }
 
 async function loadIccItems() {

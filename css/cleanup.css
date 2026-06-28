@@ -507,6 +507,15 @@
 
 .cleanup-empty { color: var(--ink-soft); margin: 0; }
 .cleanup-login { text-align: center; max-width: 520px; margin: 0 auto; }
+.cleanup-login-form {
+  display: grid;
+  gap: 14px;
+  margin-top: 22px;
+  text-align: left;
+}
+.cleanup-login-form .btn {
+  justify-self: center;
+}
 
 @media (min-width: 900px) {
   .cleanup-shell--upload {
