@@ -210,18 +210,26 @@ async function downloadZip() {
   const zip = new window.JSZip();
   $('#zip-btn').disabled = true;
   try {
-    for (let i = 0; i < filtered.length; i++) {
-      const record = filtered[i];
-      setDownloadStatus(`打包中 ${i + 1} / ${filtered.length}…`);
-      const item = iccItems.find((x) => Number(x.id) === Number(record.iccId)) || {
-        id: record.iccId,
-        name: record.iccName || '未分類',
-      };
-      const blob = await getPhotoBlob(record);
-      const folder = zip.folder(formatIccFolderName(item));
-      folder.file(formatPhotoFileName(record), blob);
-    }
-    const out = await zip.generateAsync({ type: 'blob' });
+    let completed = 0;
+    const workers = Array.from({ length: Math.min(4, filtered.length) }, async (_, workerIndex) => {
+      for (let i = workerIndex; i < filtered.length; i += 4) {
+        const record = filtered[i];
+        const item = iccItems.find((x) => Number(x.id) === Number(record.iccId)) || {
+          id: record.iccId,
+          name: record.iccName || '未分類',
+        };
+        const blob = await getPhotoBlob(record);
+        const folder = zip.folder(formatIccFolderName(item));
+        folder.file(formatPhotoFileName(record), blob);
+        completed += 1;
+        setDownloadStatus(`下載照片中 ${completed} / ${filtered.length}…`);
+      }
+    });
+    await Promise.all(workers);
+    setDownloadStatus('正在產生 ZIP…');
+    const out = await zip.generateAsync({ type: 'blob' }, (meta) => {
+      setDownloadStatus(`正在產生 ZIP… ${Math.round(meta.percent)}%`);
+    });
     downloadBlob(out, `yuguang-cleanup-photos-${today()}.zip`);
     setDownloadStatus('ZIP 已下載。');
   } catch (err) {
